@@ -56,10 +56,20 @@ public class ExtractText {
                 String texto = source.getTextExtractor().setIncludeAttributes(false).toString();
                 String [] palabras = texto.split("\\s|\\?|¿|\\.|\\,|:|;|¡|!");
 		System.out.println(texto);
-                for (String word : palabras){
-                    if (!word.isEmpty())
+                Hashtable<String,Integer> terminos = new Hashtable<String, Integer> (3000);
+                Integer value = 0;
+                for (String word : palabras){                    
+                    if (!word.isEmpty()){
+                        value = terminos.get(word);
+                        if (value == null)
+                            terminos.put(word, 1);
+                        else
+                            terminos.
                         System.out.println(word);
+                    }
                 }
+                
+
 
 		/*System.out.println("\nSame again but this time extend the TextExtractor class to also exclude text from P elements and any elements with class=\"control\":\n");
 		TextExtractor textExtractor=new TextExtractor(source) {
