@@ -63,12 +63,20 @@ public class ExtractText {
                         value = terminos.get(word);
                         if (value == null)
                             terminos.put(word, 1);
-                        else
-                            terminos.
-                        System.out.println(word);
+                        else{
+                            terminos.remove(word);
+                            terminos.put(word, value + 1);
+                        }
+                        //System.out.println(word);
                     }
                 }
-                
+                int size = terminos.size();
+                Enumeration<String> llaves = terminos.keys();
+                String termino;
+                for (int i = 0; i < size; i++){
+                    termino = llaves.nextElement();
+                    System.out.println("termino " + (i+1) + " " + termino + " frecuencia " + terminos.get(termino));
+                }
 
 
 		/*System.out.println("\nSame again but this time extend the TextExtractor class to also exclude text from P elements and any elements with class=\"control\":\n");
