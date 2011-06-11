@@ -42,26 +42,32 @@ public class ExtractText {
 		String keywords=getMetaValue(source,"keywords");
 		System.out.println(keywords==null ? "(none)" : keywords);
 	
-		System.out.println("\nLinks to other documents:");
-		List<Element> linkElements=source.getAllElements(HTMLElementName.A);
+		//System.out.println("\nLinks to other documents:");
+		/*List<Element> linkElements=source.getAllElements(HTMLElementName.A);
 		for (Element linkElement : linkElements) {
 			String href=linkElement.getAttributeValue("href");
 			if (href==null) continue;
 			// A element can contain other tags so need to extract the text from it:
 			String label=linkElement.getContent().getTextExtractor().toString();
 			System.out.println(label+" <"+href+'>');
-		}
+		}*/
 
 		System.out.println("\nAll text from file (exluding content inside SCRIPT and STYLE elements):\n");
-		System.out.println(source.getTextExtractor().setIncludeAttributes(false).toString());
+                String texto = source.getTextExtractor().setIncludeAttributes(false).toString();
+                String [] palabras = texto.split("\\s|\\?|¿|\\.|\\,|:|;|¡|!");
+		System.out.println(texto);
+                for (String word : palabras){
+                    if (!word.isEmpty())
+                        System.out.println(word);
+                }
 
-		System.out.println("\nSame again but this time extend the TextExtractor class to also exclude text from P elements and any elements with class=\"control\":\n");
+		/*System.out.println("\nSame again but this time extend the TextExtractor class to also exclude text from P elements and any elements with class=\"control\":\n");
 		TextExtractor textExtractor=new TextExtractor(source) {
 			public boolean excludeElement(StartTag startTag) {
 				return startTag.getName()==HTMLElementName.P || "control".equalsIgnoreCase(startTag.getAttributeValue("class"));
 			}
 		};
-		System.out.println(textExtractor.setIncludeAttributes(false).toString());
+		System.out.println(textExtractor.setIncludeAttributes(false).toString());*/
   }
 
 	private static String getTitle(Source source) {
