@@ -1,0 +1,381 @@
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>SEPLN - Sociedad Espa&ntilde;ola para el Procesamiento del Lenguaje Natural</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style>
+<link href="css/estilos.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="tira">
+	<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" >
+  <tr>
+    <td align="center" valign="top">
+	<table width="940" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+      <tr>
+        <td width="100%" align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td align="left" valign="top"><a href="index.php"><img src="img/logo_superior.png" width="332" height="201" border="0"></a></td>
+                </tr>
+                <tr>
+		  
+
+<td><img src="img/bot/inicio.jpg" width="332" height="32"></td>
+	                </tr>
+              </table>
+			  	</td>
+            </tr>
+          </table>
+    </td>
+	    <td width="607" align="left" valign="top"><img src="img/banner_superior.EN.png" width="628" height="218" border="0" usemap="#mapbandera">
+		<map name="mapbandera" id="mapbandera">
+      		<area shape="rect" coords="600,202,626,216" href="?lang=en">
+    	</map>
+	</td>
+      </tr>
+    </table>
+
+      <table width="960" height="300" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+        <tr>
+ 	                <td width="199" align="left" valign="top" background="img/bot/final.jpg" bgcolor="#993333">
+	<table width="64%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="left" valign="top"><a href="objetivos.php"><img src="img/bot/am-objetivos.jpg" width="199" height="29" border="0"></a></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top"><a href="publicaciones.php"><img src="img/bot/am-publicaciones.jpg" width="199" height="29" border="0"></a></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top"><a href="revistaSEPLN/revistas.php"><img src="img/bot/amc-revistas.jpg" width="199" height="29" border="0"></a></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top"><a href="revistaSEPLN/monografias.php"><img src="img/bot/amc-monografias.jpg" width="199" height="29" border="0"></a></td>
+            </tr>
+<!--			
+            <tr>
+              <td align="left" valign="top"><img src="img/bot/amc-prensa.jpg" width="199" height="29"></td>
+            </tr>
+-->
+            <tr>
+              <td align="left" valign="top"><a href="actividades.php"><img src="img/bot/am-actividades.jpg" width="199" height="29" border="0"></a></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top"><a href="http://www.uhu.es/sepln2011" target="_blank"><img src="img/bot/amc-huelva2011.jpg" width="199" height="29" border="0"></a></td>
+            </tr>			
+            <tr>
+              <td align="left" valign="top"><a href="http://users.dsic.upv.es/grupos/nle/sepln-workshops/" target="_blank"><img src="img/bot/amc-valencia2010.jpg" width="199" height="29" border="0"></a></td>
+            </tr>			
+            <tr>
+              <td align="left" valign="top"><a href="http://ixa2.si.ehu.es/sepln2009/" target="_blank"><img src="img/bot/amc-sansebastian2009.jpg" width="199" height="29" border="0"></a></td>
+            </tr>			
+            <tr>
+              <td align="left" valign="top"><a href="relaciones_internacionales.php"><img src="img/bot/am-relacionesInternacionales.jpg" width="199" height="29" border="0"></a></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top"><a href="grupos.php"><img src="img/bot/amc-gruposInvestigacion.jpg" width="199" height="29" border="0"></a></td>
+            </tr>
+			<tr>
+              <td align="left" valign="top"><a href="doctorado.php"><img src="img/bot/amc-doctorado.jpg" width="199" height="29" border="0"></a></td>
+            </tr>
+			<tr>
+              <td align="left" valign="top"><a href="socios.php"><img src="img/bot/am-socios.jpg" width="199" height="29" border="0"></a></td>
+            </tr>
+			<tr>
+              <td align="left" valign="top"><a href="organizacion.php"><img src="img/bot/am-organizacion.jpg" width="199" height="29" border="0"></a></td>
+            </tr>
+			<tr>
+              <td align="left" valign="top"><a href="junta_directiva.php"><img src="img/bot/amc-juntaDirectiva.jpg" width="199" height="29" border="0"></a></td>
+            </tr>
+			<tr>
+              <td align="left" valign="top"><a href="comisionPermanente.php"><img src="img/bot/amc-comisionPermanente.jpg" width="199" height="29" border="0"></a></td>
+            </tr>
+          </table>
+  		  </td>
+		  
+          <td width="761" align="left" valign="top"><table width="100%" height="500" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="90%" align="left" valign="top" bgcolor="#FFFFFF"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="90%" align="left" valign="top" bgcolor="#FFFFFF">
+				    <table width="100%" border="0" cellspacing="15">
+                      <tr>
+                      <td align="left" valign="top" class="txt_grueso">
+<p align="justify">
+La Sociedad Espa&ntilde;ola para el Procesamiento del Lenguaje Natural (SEPLN) es una asociaci&oacute;n sin &aacute;nimo de lucro formada por socios numerarios e instituciones que se cre&oacute; en el a&ntilde;o 1984 con el objeto de promover y difundir todo tipo de actividades referentes a la ense&ntilde;anza, investigaci&oacute;n y desarrollo en el &aacute;mbito del procesamiento del lenguaje natural, tanto a nivel nacional como internacional. </p>
+<p align="justify">Los objetivos de la SEPLN son establecer canales de intercambio de informaci&oacute;n y materiales cient&iacute;ficos, la organizaci&oacute;n de seminarios, simposios y conferencias, la promoci&oacute;n de publicaciones y la colaboraci&oacute;n con otras instituciones relacionadas con su campo de actuaci&oacute;n.</p>
+<p align="justify"><SPAN lang="ES-TRAD">Entre las actividades m&aacute;s destacadas de la SEPLN figuran la celebraci&oacute;n de un Congreso anual que sirve de punto de encuentro para los distintos grupos de investigaci&oacute;n que trabajan en el &aacute;rea del procesamiento del lenguaje natural; la edici&oacute;n de una revista dotada de comit&eacute; de lectura y de redacci&oacute;n que garantiza unos criterios estables de calidad y periodicidad; un servidor en Internet con informaci&oacute;n sobre temas relacionados con el procesamiento del lenguaje natural y un servicio de correo electr&oacute;nico que informa sobre las cuestiones de actualidad y se utiliza como espacio de discusi&oacute;n para los socios</SPAN>.</p>
+</td>
+                      </tr>
+                    </table>
+					<table width="100%" border="0" cellspacing="15" cellpadding="0">
+  <tr>
+    <td colspan="4" align="center" valign="top"><hr></td>
+  </tr>
+  <tr>
+                          <td align="center" valign="top"><a href="http://www.erevistas.csic.es" target="_blank"><img src="img/logo_e-revistas.gif" width="111" height="50" border="0"></a></td>
+                          <td align="center" valign="top"><a href="http://www.daedalus.es/" target="_blank"><img src="img/logos/daedalus300.png" width="107" height="50" border="0"></a></td>
+                          <td align="center" valign="top"><a href="http://research.yahoo.com/" target="_blank"><img src="img/yahoo_research_stacked.jpg" width="90" height="38" border="0"></a></td>
+                          <td align="center" valign="top"><a href="http://www.cosce.org" target="_blank"><img src="img/logo_cosce.jpg" width="91" height="81" border="0"></a></td>
+  </tr>
+   <tr>
+        <td align="center" valign="top" colspan="3" align="center">
+			<a href="http://www.vocali.net/" target="_blank"><img src="img/logos/logo-sobre-blanco.jpg" width="111" height="50" border="0"></a></td>
+   </tr>
+</table>
+				</td>
+                    <link href="../css/contenido.css" rel="stylesheet" type="text/css" />
+<td width="10%" align="left" valign="top">
+
+
+<!-- Noticia 0 -->
+<br/>
+<table cellpadding="0" cellspacing="0" border="1" width="240">
+<tr>
+	<td align="center">
+		<table cellpadding="0" cellspacing="0" border="0">
+		<tr>
+			<td class="destacamos">
+				 PREMIOS NACIONALES DE INFORM&Aacute;TICA 2011
+						
+			</td>
+		</tr>
+		<tr>
+			<td height="10"></td>
+		</tr>
+		<tr>
+			<td class="txt_destacamos"><p align="justify">
+				 
+				M�s informaci�n  
+				<a href="http://www.sepln.org/impresos/BasesPremiosNacionalesInform�tica2011.pdf" target="_blank">aqu&iacute;</a>
+								</p>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+<!-- FIN Noticia 0 -->
+
+<!-- Noticia 1 -->
+<br/>
+<table cellpadding="0" cellspacing="0" border="1" width="240">
+<tr>
+	<td align="center">
+		<table cellpadding="0" cellspacing="0" border="0">
+		<tr>
+			<td class="destacamos">
+				 COSCE: INFORME DE URGENCIA SOBRE LOS PRESUPUESTOS DE I+D+i
+						
+			</td>
+		</tr>
+		<tr>
+			<td height="10"></td>
+		</tr>
+		<tr>
+			<td class="txt_destacamos"><p align="justify">
+				 
+				M�s informaci�n  
+				<a href="http://www.sepln.org/impresos/Informe_urgencia_PGE11.pdf" target="_blank">aqu&iacute;</a>
+								</p>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+<!-- FIN Noticia 1 -->
+
+<!-- Noticia 2 -->
+<br/>
+<table cellpadding="0" cellspacing="0" border="1" width="240">
+<tr>
+	<td align="center">
+		<table cellpadding="0" cellspacing="0" border="0">
+		<tr>
+			<td class="destacamos">
+				 XXVII Edici�n del Congreso SEPLN 2011 
+							</td>
+		</tr>
+		<tr>
+			<td height="10"></td>
+		</tr>
+		<tr>
+			<td class="txt_destacamos"><p align="justify">
+				 
+				La  XXVII edici�n del Congreso Anual de la Sociedad Espa�ola para el Procesamiento del Lenguaje Natural (SEPLN) se celebrar� en Huelva los d�as 5, 6 y 7 de septiembre de 2011.<br />
+				M�s informaci�n <a href="http://www.uhu.es/sepln2011/" target="_blank">aqu�</a>.
+								</p>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+<!-- FIN Noticia 2 -->
+
+<!-- Noticia 4 -->
+<!--
+<br/>
+<table cellpadding="0" cellspacing="0" border="1" width="240">
+<tr>
+	<td align="center">
+		<table cellpadding="0" cellspacing="0" border="0">
+		<tr>
+			<td class="destacamos">
+				 Premios Nacionales de Inform�tica 2010 
+							</td>
+		</tr>
+		<tr>
+			<td height="10"></td>
+		</tr>
+		<tr>
+			<td class="txt_destacamos"><p align="justify">
+				 
+				La Sociedad Cient�fica Inform�tica de Espa�a (SCIE) y el Congreso Nacional de Inform�tica (CEDI) convocan los Premios Nacionales de Inform�tica 2010.
+				<a href="http://www.sepln.org/impresos/PNI2010.pdf" target="_blank"> Aqu&iacute;</a>
+								</p>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+-->
+<!-- FIN Noticia 4 -->
+
+
+<!-- Noticia 5
+<br/>
+<table cellpadding="0" cellspacing="0" border="1" width="240">
+<tr>
+	<td align="center">
+		<table cellpadding="0" cellspacing="0" border="0">
+		<tr>
+			<td class="destacamos">
+				 Fallados los Premios Nacionales de Inform�tica 2009 
+							</td>
+		</tr>
+		<tr>
+			<td height="10"></td>
+		</tr>
+		<tr>
+			<td class="txt_destacamos"><p align="justify">
+				 
+				La Sociedad Cient�fica Inform�tica de Espa�a (SCIE), ha comunicado a los premiados la decisi�n del jurado de los Premios Nacionales de Inform�tica 2009
+				y les ha felicitado en nombre de SCIE.
+				<a href="http://www.sepln.org/impresos/Premios_SCIE.pdf" target="_blank"> Aqu&iacute;</a>
+								</p>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+FIN Noticia 5 -->
+
+<!-- Noticia 6 -->
+<!--
+<br/>
+<table cellpadding="0" cellspacing="0" border="1" width="240">
+<tr>
+	<td align="center">
+		<table cellpadding="0" cellspacing="0" border="0">
+		<tr>
+			<td class="destacamos">
+				 Bases de los Premios Nacionales de Inform�tica 2009 
+							</td>
+		</tr>
+		<tr>
+			<td height="10"></td>
+		</tr>
+		<tr>
+			<td class="txt_destacamos"><p align="justify">
+				 
+				Publicadas las bases de los premios. 
+				<a href="impresos/BasesPremiosNacionalesInformatica2009.pdf" target="_blank"> Aqu&iacute;</a>
+								</p>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+-->
+<!-- FIN Noticia 6 -->
+<!-- Noticia 7 -->
+<br/>
+<table cellpadding="0" cellspacing="0" border="1" width="240">
+<tr>
+	<td align="center">
+		<table cellpadding="0" cellspacing="0" border="0">
+		<tr>
+			<td class="destacamos">
+				 X Edici�n Premios SEPLN de investigaci�n en Procesamiento del Lenguaje Natural
+							</td>
+		</tr>
+		<tr>
+			<td height="10"></td>
+		</tr>
+		<tr>
+			<td class="txt_destacamos"><p align="justify">
+				 
+				Publicadas las bases de los premios. <a href="premios-SEPLN11.php" target="_self"> Aqu&iacute;</a>
+								</p>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+<!-- FIN Noticia 7 -->
+
+<br/>
+<table cellpadding="0" cellspacing="0" border="0" width="240">
+<tr>
+	<td align="center">
+    <!-- Inserto la imagen y enlace de Facebook y de Linkme -->
+    <a href="http://www.facebook.com/home.php?#!/group.php?gid=122477551136830&ref=ts" target="_blank" title="�nete a nosotros en Facebook"><img src="img/unete_facebook.jpg"  width="220"/></a>
+    <br />
+    <a href="http://www.linkedin.com/groupInvitation?groupID=3365881&sharedKey=75482E0F6801" target="_blank" title="�nete a nosotros en LinkedIn"><img  src="img/linkedin.png" width="100"/></a>
+    </td>    
+</tr>
+</table>    
+
+</td>                </tr>
+              </table></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table>
+      <table width="960" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td bgcolor="#040032"><img src="img/pie.jpg" width="960" height="20" border="0" usemap="#Map"></td>
+		  <map name="Map">
+              <area shape="rect" coords="895,2,961,18" href="contacto.php">
+          </map>
+        </tr>
+      </table>
+	        <p>&nbsp;</p></td>
+  </tr>
+</table>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5503868-5");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

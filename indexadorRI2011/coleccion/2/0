@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- 
+YAML for TemplaVoila - Version 2.1.0
+
+	This website is powered by TYPO3 - inspiring people to share!
+	TYPO3 is a free open source Content Management Framework initially created by Kasper Skaarhoj and licensed under GNU/GPL.
+	TYPO3 is copyright 1998-2009 of Kasper Skaarhoj. Extensions are copyright of their respective owners.
+	Information and contribution at http://typo3.com/ and http://typo3.org/
+-->
+
+	<base href="http://www.icoder.go.cr/" />
+	<link rel="shortcut icon" href="http://www.icoder.go.cr/" />
+	<link rel="icon" href="http://www.icoder.go.cr/" />
+	<link rel="stylesheet" type="text/css" href="typo3temp/stylesheet_02ac68eae7.css" />
+<link href="fileadmin/css/02_layouts_2col/css/layout_2col_left_13.css" rel="stylesheet" type="text/css" /><!--[if lte IE 7]><link href="fileadmin/css/patches/../02_layouts_2col/css/patches/patch_2col_left_13.css" rel="stylesheet" type="text/css" /><![endif]--><link rel="stylesheet" type="text/css" href="fileadmin/css/icoder.css" />	<link rel="stylesheet" type="text/css" href="typo3conf/ext/wsclicklightbox/res/css/lightbox.css" />
+	<script type="text/javascript" src="typo3conf/ext/wsclicklightbox/res/js/prototype.js"></script>
+	<script type="text/javascript" src="typo3conf/ext/wsclicklightbox/res/js/scriptaculous.js?load=effects"></script>
+	<script type="text/javascript" src="typo3conf/ext/wsclicklightbox/res/js/lightbox.js"></script>
+	<script type="text/javascript">/*<![CDATA[*/ var fileLoadingImage = "typo3conf/ext/wsclicklightbox/res/images/loading.gif";  var fileBottomNavCloseImage = "typo3conf/ext/wsclicklightbox/res/images/close.gif"; /*]]>*/</script>
+<link title="Noticias ICODER en formato RSS" href="centro-de-informacion/?type=100" type="application/rss+xml" rel="alternate" /><meta name="description" content="El Instituto Costarricense del Deporte y la Recreación (ICODER)" />
+<meta name="keywords" content="Deporte,Recreación,Instituto,Costa Rica" />
+<meta name="robots" content="index,follow" />
+<meta name="copyright" content="Derechos reservados 2008 BENDOO, Costa Rica" />
+<meta http-equiv="content-language" content="es" />
+<link rev="made" href="mailto:info@galileo.or.cr" />
+<meta http-equiv="reply-to" content="info@galileo.or.cr" />
+<meta name="author" content="Fundación GALILEO" />
+<meta name="revisit-after" content="7 days" />
+<meta name="DC.Description" content="El Instituto Costarricense del Deporte y la Recreación (ICODER)" />
+<meta name="DC.Subject" content="Deporte,Recreación,Instituto,Costa Rica" />
+<meta name="DC.Rights" content="Derechos reservados 2008 BENDOO, Costa Rica" />
+<meta name="DC.Language" scheme="NISOZ39.50" content="es" />
+<meta name="DC.Creator" content="Fundación GALILEO" />
+<link rel="schema.dc" href="http://purl.org/metadata/dublin_core_elements" />
+
+	<title>Nuevo Estadio Nacional: ICODER</title>
+	<meta name="generator" content="TYPO3 4.2 CMS" />
+	<script type="text/javascript" src="typo3temp/javascript_a708894199.js"></script>
+
+
+</head>
+<body>
+
+
+<div id="page_margins_top">
+	<div id="page">
+		<div id="header">
+		<!-- Output of lib.header [begin] -->
+			
+		<!-- Output of lib.header.20 [begin] -->
+			<div id="topnav"><a class="skip" href="icoder/nuevo-estadio-nacional/#navigation" title="Ir a la navigación"> Ir a la navigación </a><span class="hideme">.</span><a class="skip" href="icoder/nuevo-estadio-nacional/#content" title="Ir al contenido"> Ir al contenido n</a><span class="hideme">.</span><a href="servicios/mapa-del-sitio/" target="_self">Mapa del sitio</a><a href="servicios/derechos-reservados/" target="_self">Derechos reservados</a></div>
+		<!-- Output of lib.header.20 [end] -->
+				<div id="container-flash"><a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see this rotator.</div>
+<script type="text/javascript" src="fileadmin/scripts/swfobject.js"></script>
+	<script type="text/javascript">
+  var s1 = new SWFObject("fileadmin/swf/imagerotator2.swf","rotator","977","160","7");
+  s1.addParam("wmode", "opaque");	
+  s1.addVariable("file","fileadmin/swf/playlist.php?dir=ICODER");	
+  s1.addVariable("width","977");   
+  s1.addVariable("height","160");	
+  s1.addVariable("shownavigation","false");  
+  s1.addVariable("overstretch","true");	
+  s1.write("container-flash");
+	</script><div id="sitetitle-container" style="overflow: visible;">
+	<div id="sitelogo">&nbsp;</div>
+  <div id="sitetitle">
+   <h1>ICODER</h1>
+    <div id="pagetitle">Nuevo Estadio Nacional</div>
+   <h3>Instituto Costarricense del Deporte y la Recreación</h3>
+  </div>
+	</div>         </div>	
+	</div>
+	</div>
+	<div id="page_margins" style="margin-top: 32px;">
+	<!-- Graphic Border - Begin Part 1 -->
+        <div id="border-top" style="background-color:#fff;">
+  <div id="edge-tl"> </div>
+  <div id="edge-tr"> </div>
+	</div>
+	<!-- Graphic Border - End Part 1 -->
+	<div id="page" style="background-color:transparent;">
+	<div id="header2" style="height:15px; background-color:transparent;">
+		<!-- Output of lib.header [end] -->
+			</div>
+		<div id="nav">
+		<!-- Output of lib.nav.10 [begin] -->
+			<a id="navigation" name="navigation"></a>
+		<!-- Output of lib.nav.10 [end] -->
+			
+		<!-- Output of lib.nav.20 [begin] -->
+			<div id="nav_main"><ul><li id="current"><a href="icoder/" target="_self" title="Pagina del Instituto Costarricense del Deporte y la Recreación, ente oficial que se encarga de la supervisión y control de las actividades deportivas y recreativas en Costa Rica."><span>ICODER</span></a></li><li><a href="estadio-nacional/" target="_self" title="Aquí se podrán apreciar los avances en la construcción del Nuevo Estadio Nacional"><span>Estadio Nacional</span></a></li><li><a href="cidere/" target="_self" title="El Centro de Información Deportiva y Recreativa es un servicio virtual y presencial de búsqueda, almacenamiento y recuperación de información científica especializada en las temáticas del deporte, la actividad física y la recreación.
+
+Incluye un servicio de PODCAST, BLOGS deportivos y recreativos, la REVISTA DIGITAL &quot;ACTÍVATE&quot; y &quot;EXPERIENCIAS EXITOSAS&quot; en el campo deportivo y recreativo."><span>CIDERE</span></a></li><li><a href="capacitacion/" target="_self" title="Gestionar, investigar, desarrollar y publicar las posibilidades de comunicación formativa sincrónica y asincrónica de todos los actores interesados del deporte y la recreación en Costa Rica"><span>Capacitación</span></a></li><li><a href="servicios-en-linea/" target="_self" title="Productos y servicios de información que ofrece el ICODER a la comunidad deportiva y recreativa a nivel nacional."><span>Servicios en línea</span></a></li><li><a href="ent-deportivas/" target="_self" title="Informacion actualizada de las entidades deportivas y recreativas de Costa Rica tales como: Universidades, Comités Cantonales, Asociaciones, Federaciones y otras organizaciones que gestionan el deporte a nivel nacional e internacional."><span>Ent. Deportivas</span></a></li><li><a href="juegos-nacionales/" target="_self" title="Juegos Deportivos Nacionales"><span>Juegos Nacionales</span></a></li><li><a href="juegos-estudiantiles/" target="_self"><span>Juegos Estudiantiles</span></a></li><li><a href="instalaciones/" target="_self" title="Mapa sensible de instalaciones deportivas de Costa Rica."><span>Instalaciones</span></a></li></ul></div>
+		<!-- Output of lib.nav.20 [end] -->
+			</div>
+		<div id="main">
+			<div id="teaser" class="clearfix">
+		<!-- Output of lib.teaser.10 [begin] -->
+			<div class="rootline">
+		<!-- Output of lib.teaser.10.10 [begin] -->
+			Usted está aquí:
+		<!-- Output of lib.teaser.10.10 [end] -->
+			 
+		<!-- Output of lib.teaser.10.20 [begin] -->
+			ICODER
+		<!-- Output of lib.teaser.10.20 [end] -->
+			</div>
+		<!-- Output of lib.teaser.10 [end] -->
+			
+		<!-- Output of lib.teaser.20 [begin] -->
+			<div class="langMenu">
+
+
+	<!--
+
+		BEGIN: Content of extension "sr_language_menu", plugin "tx_srlanguagemenu_pi1"
+
+	-->
+	<div class="tx-srlanguagemenu-pi1">
+		
+		
+				<div class="CUR"><img src="typo3/gfx/content_client.gif" alt="" style="width:7px; height:10px;" /><img src="fileadmin/flags/es.gif" title="Español" alt="Español" class="tx-srlanguagemenu-pi1-flag" /></div> 
+			
+				  <div class="NO"><a href="en/crisr/new-national-stadium/"><img src="fileadmin/flags/en.gif" title="English" alt="English" class="tx-srlanguagemenu-pi1-flag" /></a></div> 
+			
+	
+	</div>
+	
+	<!-- END: Content of extension "sr_language_menu", plugin "tx_srlanguagemenu_pi1" -->
+
+	</div>
+		<!-- Output of lib.teaser.20 [end] -->
+			
+		<!-- Output of lib.teaser.40 [begin] -->
+			<div class="aktDatum">Friday, 27 May 2011</div>
+		<!-- Output of lib.teaser.40 [end] -->
+			</div>
+			<div id="col1">
+				<div id="col1_content" class="clearfix">
+					
+		<!-- Output of lib.submenu.10 [begin] -->
+			<ul id="submenu"><li id="title">
+		<!-- Output of lib.submenu.10.20 [begin] -->
+			ICODER
+		<!-- Output of lib.submenu.10.20 [end] -->
+			</li>
+		<!-- Output of lib.submenu.10.30 [begin] -->
+			<li><dfn>1: </dfn><a href="icoder/quienes-somos/" target="_self">¿Quiénes somos?</a><span class="hidden">.</span></li><li><dfn>2: </dfn><a href="icoder/consejo-nacional-deportes/" target="_self">Consejo Nacional Deportes</a><span class="hidden">.</span></li><li><dfn>3: </dfn><a href="icoder/auditoria/" target="_self">Auditoría</a><span class="hidden">.</span></li><li><dfn>4: </dfn><a href="icoder/direccion-nacional/" target="_self">Dirección Nacional</a><span class="hidden">.</span></li><li><dfn>5: </dfn><a href="icoder/direccion-de-deportes/" target="_self">Dirección de Deportes</a><span class="hidden">.</span></li><li><dfn>6: </dfn><a href="icoder/codicader-2010/" target="_self">CODICADER 2010</a><span class="hidden">.</span></li><li><dfn>7: </dfn><a href="icoder/gestion-de-instalaciones/" target="_self">Gestión de Instalaciones</a><span class="hidden">.</span></li><li><dfn>8: </dfn><a href="icoder/parques-recreativos/" target="_self">Parques Recreativos</a><span class="hidden">.</span></li><li><dfn>9: </dfn><a href="icoder/direccion-de-promocion-recreativa-regional/" target="_self" title="La Dirección de Promoción Recreativa Regional es el macroproceso encargado de la promoción del deporte y la recreación en las regiones, municipios y comunidades del país.">Dirección de Promoción Recreativa Regional</a><span class="hidden">.</span></li><li><dfn>10: </dfn><a href="icoder/direccion-administrativa/" target="_self">Dirección Administrativa</a><span class="hidden">.</span></li><li><dfn>11: </dfn><a href="icoder/proveeduria-institucional/" target="_self">Proveeduría Institucional</a><span class="hidden">.</span></li><li><dfn>12: </dfn><a href="icoder/cimad/" target="_self">CIMAD</a><span class="hidden">.</span></li><li><dfn>13: </dfn><a href="icoder/contraloria-de-servicios/" target="_self">Contraloría de Servicios</a><span class="hidden">.</span></li><li><dfn>14: </dfn><a href="icoder/paracodicader/" target="_self">PARACODICADER</a><span class="hidden">.</span></li><li><dfn>15: </dfn><a href="icoder/comision-de-alto-rendimiento/" target="_self" title="Comisión de Alto Rendimiento de Costa Rica.">Comisión de Alto Rendimiento</a><span class="hidden">.</span></li><li><dfn>16: </dfn><a href="icoder/gestion-ambiental/" target="_self">Gestión Ambiental</a><span class="hidden">.</span></li><li><dfn>17: </dfn><a href="icoder/red-iberoamericana-mujer-y-deporte/" target="_self" title="Red Latinoamericana de Mujer y Deporte">REDIMUDE</a><span class="hidden">.</span></li><li><dfn>18: </dfn><a href="icoder/dia-del-desafio-2010/" target="_self">Día del Desafío 2010</a><span class="hidden">.</span></li><li><dfn>19: </dfn><a href="icoder/aseicoder/" target="_self">ASEICODER</a><span class="hidden">.</span></li><li><dfn>20: </dfn><a href="icoder/salud-medicina-y-deporte/" target="_self">Salud, Medicina y Deporte</a><span class="hidden">.</span></li>
+		<!-- Output of lib.submenu.10.30 [end] -->
+			</ul>
+		<!-- Output of lib.submenu.10 [end] -->
+			
+					
+		<!-- Output of lib.selectorBox [begin] -->
+			
+		<!-- Output of lib.selectorBox [end] -->
+			
+					<div class="textBelowMenu"><!--TYPO3SEARCH_begin--><!--TYPO3SEARCH_end--></div>
+				</div>
+			</div>
+			<div id="col3">
+				<div id="col3_content" class="clearfix">
+					<div class="floatbox"><!--TYPO3SEARCH_begin-->
+	<!--  CONTENT ELEMENT, uid:603/textpic [begin] -->
+		<a id="c603"></a>
+		<!--  Header: [begin] -->
+			<h1 class="G" style="background:url(typo3temp/GB/6b48b92579.png) no-repeat;">Costa Rica tendrá un Estadio de primer mundo</h1>
+		<!--  Header: [end] -->
+			
+		<!--  Image block: [begin] -->
+			<div class="csc-textpic csc-textpic-intext-left csc-textpic-equalheight"><div class="csc-textpic-imagewrap" style="width:300px;"><div class="csc-textpic-imagerow" style="width:300px;"><dl class="csc-textpic-image csc-textpic-firstcol csc-textpic-lastcol" style="width:300px;"><dt><a href="uploads/pics/Original1.jpg" rel="lightbox[c603]"><img src="typo3temp/pics/c92f8af65c.jpg" width="300" height="117" border="0" alt="" /></a></dt><dd class="csc-textpic-caption">Vistas externas</dd></dl></div><div class="csc-textpic-imagerow csc-textpic-imagerow-last" style="width:300px;"><dl class="csc-textpic-image csc-textpic-firstcol csc-textpic-lastcol" style="width:212px;"><dt><a href="uploads/pics/Original2.jpg" rel="lightbox[c603]"><img src="typo3temp/pics/81053e31a7.jpg" width="212" height="150" border="0" alt="" /></a></dt></dl></div></div><div class="csc-textpic-text">
+		<!--  Text: [begin] -->
+			<p class="align-justify">El Nuevo Estadio Nacional será clase A, con cancha de fútbol y pista de atletismo de primer nivel, capacidad para 35 mil aficionados cómodamente sentados, lo último en tecnología y seguridad, y todas las facilidades propias de un escenario deportivo del primer mundo.   </p>
+<p class="align-justify">Pero no solo eso. Será un verdadero complejo deportivo ya que incluirá un Hotel Deportivo para 350 personas, oficinas para 32 federaciones y asociaciones, ocho salas de reuniones, y salones para competencias y prácticas en las disciplinas del tenis de mesa, ajedrez y esgrima.   </p>
+<p class="align-justify">Tendrá además otros salones exclusivos, uno para conservar la historia del Estadio Nacional, y otros para atender invitados especiales en ocasiones como los traspasos de poderes, conferencias de prensa y exposiciones artísticas y culturales.   Y por si fuera poco, dada su estratégica ubicación en el Parque Metropolitano La Sabana, será la sede para eventuales emergencias nacionales.   </p>
+<p><b>PRENSA ICODER <br />Franklin Solís Ortiz <br /><a href="javascript:linkTo_UnCryptMailto('ocknvq,htcpmnkp0uqnkuBkeqfgt0iq0et');">franklin.solis(at)icoder.go(dot)cr</a> </b></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+		<!--  Text: [end] -->
+			</div></div>
+		<!--  Image block: [end] -->
+			
+	<!--  CONTENT ELEMENT, uid:603/textpic [end] -->
+		<!--TYPO3SEARCH_end--></div>
+				</div>
+				<div id="ie_clearing">&nbsp;</div>
+			</div>
+		</div>
+		
+		<!-- Output of lib.footer [begin] -->
+			<div id="footer">
+		<!-- Output of lib.footer.100 [begin] -->
+			© ICODER 2008 - Derechos reservados. Desarrollado por <a href="http://www.bendoo.cr/" target="_blank">BENDOO, Costa Rica</a>
+		<!-- Output of lib.footer.100 [end] -->
+			</div>
+
+
+	<!--
+
+		BEGIN: Content of extension "asfk_usercounter", plugin "tx_asfkusercounter_pi1"
+
+	-->
+	<div class="tx-asfkusercounter-pi1">
+		<table align="center" border="0" cellpadding="0" cellspacing="0"><tr><td><img src="typo3conf/ext/asfk_usercounter/pi1/digits/1.gif" alt="13055731 visits" border="0"><img src="typo3conf/ext/asfk_usercounter/pi1/digits/3.gif" alt="13055731 visits" border="0"><img src="typo3conf/ext/asfk_usercounter/pi1/digits/0.gif" alt="13055731 visits" border="0"><img src="typo3conf/ext/asfk_usercounter/pi1/digits/5.gif" alt="13055731 visits" border="0"><img src="typo3conf/ext/asfk_usercounter/pi1/digits/5.gif" alt="13055731 visits" border="0"><img src="typo3conf/ext/asfk_usercounter/pi1/digits/7.gif" alt="13055731 visits" border="0"><img src="typo3conf/ext/asfk_usercounter/pi1/digits/3.gif" alt="13055731 visits" border="0"><img src="typo3conf/ext/asfk_usercounter/pi1/digits/1.gif" alt="13055731 visits" border="0"></td></tr></table>
+	</div>
+	
+	<!-- END: Content of extension "asfk_usercounter", plugin "tx_asfkusercounter_pi1" -->
+
+	
+		<!-- Output of lib.footer [end] -->
+			
+	</div>
+	<!-- Graphic Border - Begin Part 2 -->
+	<div id="border-bottom">
+		<div id="edge-bl"> </div>
+		<div id="edge-br"> </div>
+	</div>
+	<!-- Graphic Border - End Part 2 -->	
+</div>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		var pageTracker = _gat._getTracker("UA-4392504-1");
+		pageTracker._initData();
+		pageTracker._trackPageview();
+	</script>
+</body>
+</html>
