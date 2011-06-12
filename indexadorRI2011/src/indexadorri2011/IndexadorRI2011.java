@@ -59,6 +59,6 @@ public class IndexadorRI2011 {
                 numArchivoLocal++;                
             }while(!carpetaCompleta);
         }
-        //extractor.mostrarTerminos();
+        extractor.crearVocabulario(rutaNueva);
     }
 }

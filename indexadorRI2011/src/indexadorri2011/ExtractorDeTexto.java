@@ -85,17 +85,19 @@ public class ExtractorDeTexto {
         for (int i = 0; i < size; i++){
             termino = llaves.nextElement();
             escritor.guardarString(termino, nombreArchivo, true);
-            System.out.println(termino + " " + nombreArchivo);
+            //System.out.println(termino + " " + nombreArchivo);
         }
     }
     
-    public void mostrarTerminos(){
+    public void crearVocabulario(String ruta){
+        ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
         int size = terminos.size();
         Enumeration<String> llaves = terminos.keys();
         String termino;
         for (int i = 0; i < size; i++){
             termino = llaves.nextElement();
-            System.out.println("termino " + (i+1) + " " + termino + " frecuencia " + terminos.get(termino));
+            escritor.guardarString(termino + " " + terminos.get(termino), ruta + "vocabulario.txt", true);
+            //System.out.println("termino " + (i+1) + " " + termino + " frecuencia " + terminos.get(termino));
         }
     }
 
