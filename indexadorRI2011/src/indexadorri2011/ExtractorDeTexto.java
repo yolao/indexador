@@ -52,23 +52,40 @@ public class ExtractorDeTexto {
         texto = source.getTextExtractor().setIncludeAttributes(false).toString();
         
         
-        System.out.println(texto);
+        //System.out.println(texto);
     }
     
-    public void obtenerTerminos(){
+    public void obtenerTerminos(String nombreArchivo){
         String [] palabras = texto.split("\\s|\\?|¿|\\.|\\,|:|;|¡|!");
         Integer value = 0;
+        Hashtable <String,Integer> terminosLocales = new Hashtable<String, Integer>(500);
         for (String word : palabras){
             if (!word.isEmpty()){
                 value = terminos.get(word);
-                if (value == null)
+                
+                if (value == null){
                     terminos.put(word, 1);
+                    terminosLocales.put(word, terminosLocales.size() + 1);
+                }
                 else{
                     terminos.remove(word);
                     terminos.put(word, value + 1);
                 }
                 //System.out.println(word);
             }
+        }
+        guardarTerminos(terminosLocales, nombreArchivo);
+    }
+    
+    private void guardarTerminos(Hashtable <String,Integer> terminos, String nombreArchivo) {
+        ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
+        int size = terminos.size();
+        Enumeration<String> llaves = terminos.keys();
+        String termino;
+        for (int i = 0; i < size; i++){
+            termino = llaves.nextElement();
+            escritor.guardarString(termino, nombreArchivo, true);
+            System.out.println(termino + " " + nombreArchivo);
         }
     }
     
@@ -80,7 +97,7 @@ public class ExtractorDeTexto {
             termino = llaves.nextElement();
             System.out.println("termino " + (i+1) + " " + termino + " frecuencia " + terminos.get(termino));
         }
-}
+    }
 
     private String getTitle(Source source) {
         Element titleElement=source.getFirstElement(HTMLElementName.TITLE);
@@ -99,5 +116,5 @@ public class ExtractorDeTexto {
             pos = startTag.getEnd();
         }
         return null;
-    }
+    }    
 }

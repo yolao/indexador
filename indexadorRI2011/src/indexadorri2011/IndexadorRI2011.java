@@ -17,6 +17,7 @@ public class IndexadorRI2011 {
 
     /**
      * @param args the command line arguments
+     * D:\UCR\I-2011\RI\tareas\tarea7\indexadorRI2011\coleccion
      */
     public static void main(String[] args) {
         // TODO code application logic here
@@ -26,32 +27,38 @@ public class IndexadorRI2011 {
         }
         String rutaColeccion = args[0];
         String ruta;
+        String rutaNueva = "./coleccionCompleta/";
+        File dir = new File(rutaNueva);
+        if (!dir.exists())
+            dir.mkdir();
         ExtractorDeTexto extractor = new ExtractorDeTexto();
         //ManejadorArchivosTexto archivo;
         File archivo;
         int numArchivoLocal;
+        int numArchivoGlobal = 0;
         boolean carpetaCompleta;
         //Recorre las carpetas de la colección
         for (int carpeta = 1; carpeta < 3; carpeta++){
             numArchivoLocal = 0;
             carpetaCompleta = false;
-            do {                                
+            do {
                 ruta = rutaColeccion + "/" + carpeta + "/" + numArchivoLocal;
                 archivo = new File(ruta);
                 if (archivo.exists() && archivo.isFile()) {
                     try{
                         extractor.extraer(ruta);
-                        extractor.obtenerTerminos();
+                        extractor.obtenerTerminos(rutaNueva + numArchivoGlobal + ".txt");
+                        numArchivoGlobal++;
                     }
                     catch(Exception ex){
                         Logger.getLogger(ExtractorDeTexto.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    }                    
                 }
                 else
                     carpetaCompleta = true;
-                numArchivoLocal++;
+                numArchivoLocal++;                
             }while(!carpetaCompleta);
         }
-        extractor.mostrarTerminos();
+        //extractor.mostrarTerminos();
     }
 }
