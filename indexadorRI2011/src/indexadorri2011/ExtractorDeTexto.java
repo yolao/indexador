@@ -12,13 +12,14 @@ import net.htmlparser.jericho.*;
 import java.util.*;
 import java.io.*;
 import java.net.*;
+import java.lang.reflect.Array;
 
 public class ExtractorDeTexto {
     private String texto;
-    private Hashtable<String,Integer> terminos;
+    private Hashtable<String,Termino> terminos;
     
     public ExtractorDeTexto(){
-        terminos = new Hashtable<String, Integer> (3000);
+        terminos = new Hashtable<String, Termino> (3000);
     }
     
     public void extraer(String archivo) throws Exception {
@@ -66,16 +67,17 @@ public class ExtractorDeTexto {
         Integer valueLocal = 0;
         // tabla hash que contiene los terminos encontrados en el archivo actual, su capacidad inicial es 500
         Hashtable <String,Integer> terminosLocales = new Hashtable<String, Integer>(500);        
+        
         //se itera  sobre las palabras encontradas en el texto        
         for (String word : palabras){
             if (!word.isEmpty()){
                 word = word.toLowerCase();
                 //busco el término en la tablaHash Global
-                value = terminos.get(word);
+                Termino termino = terminos.get(word);
                 //si el término se encontró por primera vez
-                if (value == null){
+                if (termino == null){
                     //se agrega a la colección de términos Locales y Globales
-                    terminos.put(word, 1);
+                    terminos.put(word,new Termino(word, 1));
                     terminosLocales.put(word, terminosLocales.size() + 1);
                 }
                 //si el término ya existe
@@ -84,16 +86,34 @@ public class ExtractorDeTexto {
                     valueLocal = terminosLocales.get(word);
                     // Si se encontró en un archivo diferente al actual
                     if (valueLocal == null){
-                        terminosLocales.put(word, terminosLocales.size() + 1) ;
+                        terminosLocales.put(word, terminosLocales.size() + 1);
                         //se incrementa su frecuencia en la colección                        
-                        terminos.remove(word);
-                        terminos.put(word, value + 1);
+                        terminos.get(word).sumarAparicion();
+                        /*terminos.remove(word);
+                        terminos.put(word,new Termino(word, value + 1));*/
                     }
                 }
                 //System.out.println(word);
             }
         }
         guardarTerminos(terminosLocales, nombreArchivo);
+    }
+    
+    /**
+     * Método que retorna un arreglo con los terminos que se encuentren en la 
+     * tabla hash terminos, ordenados segun frecuencia
+     * @return Termino[] arreglo de terminos ordenados por frecuencia
+     */
+    public Termino[] ordenarTerminos(){
+        //contiene los terminos para ordenarlos desendentemente con respecto a las frecuencias        
+        Termino [] arregloTerminos;
+        arregloTerminos = (Termino[]) terminos.values().toArray();
+        ComparadorTerminos c = new ComparadorTerminos();
+        
+        Arrays.sort(arregloTerminos, c);
+        
+        return arregloTerminos;
+        
     }
     
     /**
@@ -123,11 +143,14 @@ public class ExtractorDeTexto {
     public void crearVocabulario(String ruta){
         ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
         int size = terminos.size();
-        Enumeration<String> llaves = terminos.keys();
+        Object [] vectorTerminos = terminos.values().toArray();
+        ComparadorTerminos c = new ComparadorTerminos();
+        Arrays.sort(vectorTerminos, c);
         String termino;
         for (int i = 0; i < size; i++){
-            termino = llaves.nextElement();
-            escritor.guardarString(termino + " " + terminos.get(termino), ruta + "vocabulario.txt", true);
+            //termino = llaves.nextElement();
+            //escritor.guardarString(termino + " " + terminos.get(termino), ruta + "vocabulario.txt", true);
+            escritor.guardarString(((Termino)vectorTerminos[i]).toString(), ruta + "vocabulario.txt", true);
             //System.out.println("termino " + (i+1) + " " + termino + " frecuencia " + terminos.get(termino));
         }
     }
