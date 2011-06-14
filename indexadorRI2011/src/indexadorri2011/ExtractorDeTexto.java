@@ -36,7 +36,7 @@ public class ExtractorDeTexto {
         // Call fullSequentialParse manually as most of the source will be parsed.
         source.fullSequentialParse();
 
-        System.out.println("Document title:");
+        /*System.out.println("Document title:");
         String title=getTitle(source);
         System.out.println(title == null ? "(none)" : title);
 
@@ -48,7 +48,7 @@ public class ExtractorDeTexto {
         String keywords=getMetaValue(source,"keywords");
         System.out.println(keywords == null ? "(none)" : keywords);
 
-        System.out.println("\nAll text from file (exluding content inside SCRIPT and STYLE elements):\n");
+        System.out.println("\nAll text from file (exluding content inside SCRIPT and STYLE elements):\n");*/
         texto = source.getTextExtractor().setIncludeAttributes(false).toString();
         
         
@@ -61,14 +61,15 @@ public class ExtractorDeTexto {
      * que contenga los términos indexables del archivo que se esta procesando. 
      */
     public void obtenerTerminos(String nombreArchivo){
-        String [] palabras = texto.split("\\s|\\?|¿|\\.|\\,|:|;|¡|!");
+        String [] palabras = texto.split("\\s|\\?|¿|\\.|\\,|:|;|¡|!|/");
         Integer value = 0;
         Integer valueLocal = 0;
         // tabla hash que contiene los terminos encontrados en el archivo actual, su capacidad inicial es 500
-        Hashtable <String,Integer> terminosLocales = new Hashtable<String, Integer>(500);
-        //se itera  sobre las palabras encontradas en el texto
+        Hashtable <String,Integer> terminosLocales = new Hashtable<String, Integer>(500);        
+        //se itera  sobre las palabras encontradas en el texto        
         for (String word : palabras){
             if (!word.isEmpty()){
+                word = word.toLowerCase();
                 //busco el término en la tablaHash Global
                 value = terminos.get(word);
                 //si el término se encontró por primera vez
