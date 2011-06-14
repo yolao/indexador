@@ -72,6 +72,35 @@ class ManejadorArchivosTexto {
     return linea;
   }
   
+  public String leerTodoArchivo(String elNombreArchivo){
+    String lasLineas = "";
+    archivo = elNombreArchivo;
+
+    if (elNombreArchivo == null) {
+      elNombreArchivo = this.obtenerNombreArchivo(MODO_LECTURA);
+    }
+    
+    if (elNombreArchivo!=null) {
+      try {
+        flujoEntrada = new BufferedReader(new FileReader(elNombreArchivo));
+        //System.out.println("en manejador");
+        String linea = flujoEntrada.readLine();
+        while (linea != null) {
+          lasLineas += linea + "\n";
+          linea = flujoEntrada.readLine();
+        }
+      } catch (IOException excepcion) {}
+      
+      try {  // Cierra el flujo de entrada y libera cualquier recurso del sistema asociado con �l
+        if (flujoEntrada != null) {
+          flujoEntrada.close();
+        } 
+      } catch (IOException excepcion) {}
+    }    
+    lasLineas = lasLineas.substring(0, lasLineas.length()-2);
+    return lasLineas;
+  }
+  
   public void setNumeroDeLinea(int numeroDeLinea){
       this.numeroDeLinea = numeroDeLinea;
       leerLinea(numeroDeLinea - 1);
@@ -124,8 +153,7 @@ class ManejadorArchivosTexto {
           flujoEntrada.close();
         } 
       } catch (IOException excepcion) {}
-    }
-    
+    }    
     return lasLineas;
   }
   
