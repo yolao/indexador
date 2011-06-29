@@ -38,7 +38,7 @@ public class IndexadorRI2011 {
         int numArchivoGlobal = 0;
         boolean carpetaCompleta;
         //Recorre las carpetas de la colección
-        for (int carpeta = 1; carpeta < 3; carpeta++){
+        for (int carpeta = 1; carpeta < 19; carpeta++){
             // La carpeta 8 esta mal hecha, hay q brincarsela.
             if(carpeta != 8){
                 numArchivoLocal = 0;
