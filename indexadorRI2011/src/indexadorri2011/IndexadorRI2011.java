@@ -25,45 +25,9 @@ public class IndexadorRI2011 {
             System.out.println("Debe proporcionar la ruta de la colección");
             System.exit(1);
         }
-        String rutaColeccion = args[0];
-        String ruta;
-        String rutaNueva = "./coleccionCompleta/";
-        File dir = new File(rutaNueva);
-        if (!dir.exists())
-            dir.mkdir();
-        ExtractorDeTexto extractor = new ExtractorDeTexto();
-        //ManejadorArchivosTexto archivo;
-        File archivo;
-        int numArchivoLocal;
-        int numArchivoGlobal = 0;
-        boolean carpetaCompleta;
-        //Recorre las carpetas de la colección
-        for (int carpeta = 1; carpeta < 19; carpeta++){
-            // La carpeta 8 esta mal hecha, hay q brincarsela.
-            if(carpeta != 8){
-                numArchivoLocal = 0;
-                carpetaCompleta = false;
-                copiarArchivoUrls(rutaColeccion, carpeta, rutaNueva);
-                do {
-                    ruta = rutaColeccion + "/" + carpeta + "/" + numArchivoLocal;
-                    archivo = new File(ruta);
-                    if (archivo.exists() && archivo.isFile()) {
-                        try{
-                            extractor.extraer(ruta);
-                            extractor.obtenerTerminos(rutaNueva + numArchivoGlobal + ".txt");
-                            numArchivoGlobal++;
-                        }
-                        catch(Exception ex){
-                            Logger.getLogger(ExtractorDeTexto.class.getName()).log(Level.SEVERE, null, ex);
-                        }                    
-                    }
-                    else
-                        carpetaCompleta = true;
-                    numArchivoLocal++;                
-                }while(!carpetaCompleta);
-            }
-        }
-        extractor.crearVocabulario(rutaNueva);
+        
+        crearArchivoTerminos(args);
+
     }
     
     public static void copiarArchivoUrls(String rutaColeccion, int carpeta, String rutaNueva){
@@ -104,5 +68,47 @@ public class IndexadorRI2011 {
             else
                 escritor.guardarString(urls, (rutaNueva + "urls.txt"), true);
         }
+    }
+
+    private static void crearArchivoTerminos(String[] args) {
+        String rutaColeccion = args[0];
+        String ruta;
+        String rutaNueva = "./coleccionCompleta/";
+        File dir = new File(rutaNueva);
+        if (!dir.exists())
+            dir.mkdir();
+        ExtractorDeTexto extractor = new ExtractorDeTexto();
+        //ManejadorArchivosTexto archivo;
+        File archivo;
+        int numArchivoLocal;
+        int numArchivoGlobal = 0;
+        boolean carpetaCompleta;
+        //Recorre las carpetas de la colección
+        for (int carpeta = 1; carpeta < 19; carpeta++){
+            // La carpeta 8 esta mal hecha, hay q brincarsela.
+            if(carpeta != 8){
+                numArchivoLocal = 0;
+                carpetaCompleta = false;
+                copiarArchivoUrls(rutaColeccion, carpeta, rutaNueva);
+                do {
+                    ruta = rutaColeccion + "/" + carpeta + "/" + numArchivoLocal;
+                    archivo = new File(ruta);
+                    if (archivo.exists() && archivo.isFile()) {
+                        try{
+                            extractor.extraer(ruta);
+                            extractor.obtenerTerminos(rutaNueva + numArchivoGlobal + ".txt");
+                            numArchivoGlobal++;
+                        }
+                        catch(Exception ex){
+                            Logger.getLogger(ExtractorDeTexto.class.getName()).log(Level.SEVERE, null, ex);
+                        }                    
+                    }
+                    else
+                        carpetaCompleta = true;
+                    numArchivoLocal++;                
+                }while(!carpetaCompleta);
+            }
+        }
+        extractor.crearVocabulario(rutaNueva);    
     }
 }

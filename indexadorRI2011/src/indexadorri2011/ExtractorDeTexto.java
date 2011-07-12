@@ -61,7 +61,7 @@ public class ExtractorDeTexto {
      * @param nombreArchivo Es el nombre del archivo que se asignará al archivo 
      * que contenga los términos indexables del archivo que se esta procesando. 
      */
-    public void obtenerTerminos(String nombreArchivo){
+    public Hashtable<String, Integer> obtenerTerminos(String nombreArchivo){
         String [] palabras = texto.split("\\s|\\?|¿|\\.|\\,|:|;|¡|!|/");
         Integer value = 0;
         Integer valueLocal = 0;
@@ -97,6 +97,7 @@ public class ExtractorDeTexto {
             }
         }
         guardarTerminos(terminosLocales, nombreArchivo);
+        return terminosLocales;
     }
     
     /**
