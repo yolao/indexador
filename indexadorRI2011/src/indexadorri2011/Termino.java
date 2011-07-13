@@ -10,8 +10,9 @@ package indexadorri2011;
  */
 public class Termino {
     /*Contiene el termino*/
-    private static long totalTerminos;
+//    private static long totalTerminos;
     private static long totalDocumentos;
+    /*Contiene los indices de los documentos que continen el termino, para crear el postings*/
     private String documentosContenedores;
     private String termino;
     /*contiene la cantidad de documentos en los que aparece el termino*/
@@ -25,7 +26,6 @@ public class Termino {
         this.termino=termino;
         this.documentosContenedores="";
         this.aparicionesEnColeccion=aparicionesEnDocumentos;
-        totalTerminos++;
     }
     
     public void agregarDocumentoContenedor(long indiceDocumento){
@@ -35,8 +35,22 @@ public class Termino {
     public String getDocumentosContenedores(){
         return this.documentosContenedores;
     }
+
+    public void fusionar(Termino terminoAFusionar){
+        //TODO
+    
+    }
+    
     
     public String toString(){
+        int tamano = termino.length();        
+        return (tamano > 30? termino.substring(0, 29) : termino)
+/*termino*/     + "                               ".substring(0,tamano>30? 0 : 29-termino.length())
+/*CantDocus*/   + aparicionesEnColeccion;       
+        
+    }
+    
+    public String impresionParaVocabulario(){
         int tamano = termino.length();
         long tempCont = contador;
         contador += aparicionesEnColeccion;
@@ -57,12 +71,9 @@ public class Termino {
     public String getTermino() {
         return termino;
     }
-
-    public static void reiniciarTotalTerminos(){
-        totalTerminos = 0;
-    }
-    public static void sumarTotalTerminos(){
-        totalTerminos++;
+    
+    public double idf(){
+        return Math.log(totalDocumentos/this.aparicionesEnColeccion);
     }
     /**
      * @param termino el término

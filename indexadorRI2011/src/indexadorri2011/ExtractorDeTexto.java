@@ -104,6 +104,21 @@ public class ExtractorDeTexto {
         return terminosLocales;
     }
     
+    /*Método que lematiza la colección y el vocabulario*/
+    public void lematizar(int cantidadArchivos){
+        /*Revisar que ya se hayan quitado las stopwords*/
+        /*Y guardarlos stopwords dentro de una hasta table*/
+        /*lematizar archivo vocabularioSote*/ 
+                /*lematizar el hasTable y verificar exista la palabra en la hastable y sumarla*/
+                /*Sumar cosas del termino Crear metodo en Termino llamado fusionar*/
+        /*lematizar archivitos*/
+            /*Crear hastable a base de words y apariciones intra documento*/
+            /*Guardar mayor aparicion*/
+            /*al terminar de lematizar todo recorro la hastable calculando frecuencia normalizada
+            la del termino entre la mayor*/
+        /*sumando coicidencias*/    
+        /*Se llama guardarTerminos del extractor */
+    }
     /**
      * Método que retorna un arreglo con los terminos que se encuentren en la 
      * tabla hash terminos, ordenados segun frecuencia

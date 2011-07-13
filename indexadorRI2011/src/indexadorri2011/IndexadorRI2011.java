@@ -78,7 +78,6 @@ public class IndexadorRI2011 {
         //ManejadorArchivosTexto archivo;
         File archivo;
         Termino.reiniciarContador();
-        Termino.reiniciarTotalTerminos();
         int numArchivoLocal;
         int numArchivoGlobal = 0;
         boolean carpetaCompleta;
@@ -114,6 +113,9 @@ public class IndexadorRI2011 {
         /*sacar stopwords
          vocabulario y en archivitos*/
         
-        /*Lematizar sumando las posibles repeticiones */
+        /*Lematizar(extractor) sumando las posibles repeticiones */
+        /*Crear el vocabulario con todos los campos que pide casa usando el método imprimirParaVocabulario*/
+        /*Crear el posting y norma dentro de extractor*/
+        
     }
 }
