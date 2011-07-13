@@ -61,11 +61,12 @@ public class ExtractorDeTexto {
      * @param nombreArchivo Es el nombre del archivo que se asignará al archivo 
      * que contenga los términos indexables del archivo que se esta procesando. 
      */
-    public Hashtable<String, Integer> obtenerTerminos(String nombreArchivo){
+    public Hashtable<String, Integer> obtenerTerminos(String nombreArchivo, long indiceDocumento){
         String [] palabras = texto.split("\\s|\\?|¿|\\.|\\,|:|;|¡|!|/");
         Integer value = 0;
         Integer valueLocal = 0;
         // tabla hash que contiene los terminos encontrados en el archivo actual, su capacidad inicial es 500
+        // y el Integer es la frecuencia en el documento
         Hashtable <String,Integer> terminosLocales = new Hashtable<String, Integer>(500);        
         
         //se itera  sobre las palabras encontradas en el texto        
@@ -74,11 +75,11 @@ public class ExtractorDeTexto {
                 word = word.toLowerCase();
                 //busco el término en la tablaHash Global
                 Termino termino = terminos.get(word);
-                //si el término se encontró por primera vez
+                //si el término se encontró por primera vez--------------->Agregar los documentos en los que aparece el termino en la instancia del término.,......
                 if (termino == null){
                     //se agrega a la colección de términos Locales y Globales
                     terminos.put(word,new Termino(word, 1));
-                    terminosLocales.put(word, terminosLocales.size() + 1);
+                    terminosLocales.put(word, 1);
                 }
                 //si el término ya existe
                 else{       
@@ -86,13 +87,16 @@ public class ExtractorDeTexto {
                     valueLocal = terminosLocales.get(word);
                     // Si se encontró en un archivo diferente al actual
                     if (valueLocal == null){
-                        terminosLocales.put(word, terminosLocales.size() + 1);
+                        terminosLocales.put(word, 1);
                         //se incrementa su frecuencia en la colección                        
                         terminos.get(word).sumarAparicion();
-                        /*terminos.remove(word);
-                        terminos.put(word,new Termino(word, value + 1));*/
+                        
+                    }else{ //Ya fue encontrado dentro de este documento y se suma una aparicion mas
+                        terminosLocales.remove(word);
+                        terminosLocales.put(word,valueLocal+1);
                     }
                 }
+                terminos.get(word).agregarDocumentoContenedor(indiceDocumento); 
                 //System.out.println(word);
             }
         }
@@ -127,12 +131,11 @@ public class ExtractorDeTexto {
     private void guardarTerminos(Hashtable <String,Integer> terminos, String nombreArchivo) {
         ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
         int size = terminos.size();
-        Enumeration<String> llaves = terminos.keys();
         String termino;
-        for (int i = 0; i < size; i++){
-            termino = llaves.nextElement();
-            escritor.guardarString(termino, nombreArchivo, true);
-            //System.out.println(termino + " " + nombreArchivo);
+        String [] terminosOrdenados = (String[])terminos.keySet().toArray();
+        for (int i = 0; i < size; i++){            
+            /*Se almacena el termino " " la frecuencia*/
+            escritor.guardarString(terminosOrdenados[i]+" "+terminos.get(terminosOrdenados[i]), nombreArchivo, true);
         }
     }
     
@@ -146,7 +149,7 @@ public class ExtractorDeTexto {
         int size = terminos.size();
         Object [] vectorTerminos = terminos.values().toArray();
         ComparadorTerminos c = new ComparadorTerminos();
-        Arrays.sort(vectorTerminos, c);
+        Arrays.sort(vectorTerminos, c);        
         String termino;
         for (int i = 0; i < size; i++){
             //termino = llaves.nextElement();

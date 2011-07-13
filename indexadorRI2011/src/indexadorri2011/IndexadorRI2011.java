@@ -20,17 +20,14 @@ public class IndexadorRI2011 {
      * D:\UCR\I-2011\RI\tareas\tarea7\indexadorRI2011\coleccion
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         if (args.length == 0){
             System.out.println("Debe proporcionar la ruta de la colección");
             System.exit(1);
         }
-        
         crearArchivoTerminos(args);
-
     }
     
-    public static void copiarArchivoUrls(String rutaColeccion, int carpeta, String rutaNueva){
+    public static void procesarTerminos(String rutaColeccion, int carpeta, String rutaNueva){
         ManejadorArchivosTexto lector; 
         String urls = "";
         File archivo;
@@ -80,6 +77,8 @@ public class IndexadorRI2011 {
         ExtractorDeTexto extractor = new ExtractorDeTexto();
         //ManejadorArchivosTexto archivo;
         File archivo;
+        Termino.reiniciarContador();
+        Termino.reiniciarTotalTerminos();
         int numArchivoLocal;
         int numArchivoGlobal = 0;
         boolean carpetaCompleta;
@@ -89,15 +88,15 @@ public class IndexadorRI2011 {
             if(carpeta != 8){
                 numArchivoLocal = 0;
                 carpetaCompleta = false;
-                copiarArchivoUrls(rutaColeccion, carpeta, rutaNueva);
+                procesarTerminos(rutaColeccion, carpeta, rutaNueva);
                 do {
                     ruta = rutaColeccion + "/" + carpeta + "/" + numArchivoLocal;
                     archivo = new File(ruta);
                     if (archivo.exists() && archivo.isFile()) {
                         try{
                             extractor.extraer(ruta);
-                            extractor.obtenerTerminos(rutaNueva + numArchivoGlobal + ".txt");
-                            numArchivoGlobal++;
+                            extractor.obtenerTerminos(rutaNueva + numArchivoGlobal + ".txt",numArchivoGlobal);
+                            numArchivoGlobal++;                       
                         }
                         catch(Exception ex){
                             Logger.getLogger(ExtractorDeTexto.class.getName()).log(Level.SEVERE, null, ex);
@@ -109,6 +108,12 @@ public class IndexadorRI2011 {
                 }while(!carpetaCompleta);
             }
         }
+        
         extractor.crearVocabulario(rutaNueva);    
+        
+        /*sacar stopwords
+         vocabulario y en archivitos*/
+        
+        /*Lematizar sumando las posibles repeticiones */
     }
 }

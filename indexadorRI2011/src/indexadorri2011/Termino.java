@@ -12,27 +12,43 @@ public class Termino {
     /*Contiene el termino*/
     private static long totalTerminos;
     private static long totalDocumentos;
+    private String documentosContenedores;
     private String termino;
     /*contiene la cantidad de documentos en los que aparece el termino*/
-    private int aparicionesEnDocumentos;
+    private int aparicionesEnColeccion;
+    /*Lleva la cuenta de cual es la posición del primer documento en el que 
+     aparece el termino en el documento de postings... el control se lleva en 
+     el método toString*/
     private static long contador;
 
     public Termino(String termino, int aparicionesEnDocumentos){
         this.termino=termino;
-        this.aparicionesEnDocumentos=aparicionesEnDocumentos;
+        this.documentosContenedores="";
+        this.aparicionesEnColeccion=aparicionesEnDocumentos;
+        totalTerminos++;
+    }
+    
+    public void agregarDocumentoContenedor(long indiceDocumento){
+        documentosContenedores += "\n"+indiceDocumento;
+    }
+    
+    public String getDocumentosContenedores(){
+        return this.documentosContenedores;
     }
     
     public String toString(){
         int tamano = termino.length();
         long tempCont = contador;
-        contador += aparicionesEnDocumentos;
+        contador += aparicionesEnColeccion;
+        String idf = Math.log(totalDocumentos/this.aparicionesEnColeccion)+"";
+        String apariciones = aparicionesEnColeccion+"";
         return (tamano > 30? termino.substring(0, 29) : termino)
 /*termino*/     + "                               ".substring(0,tamano>30? 0 : 29-termino.length())
-/*idf*/         + Math.log(totalDocumentos/this.aparicionesEnDocumentos) 
-                + "                               ".substring(0,tamano>10? 0 : 9-termino.length())
-/*CantDocus*/   + this.aparicionesEnDocumentos
-                + "                               ".substring(0,tamano>10? 0 : 9-termino.length())
-/*posInicial*/  + tempCont;
+/*idf*/         + idf
+                + "                               ".substring(0,tamano>10? 0 : 9-idf.length())
+/*CantDocus*/   + apariciones
+                + "                               ".substring(0,tamano>10? 0 : 9-apariciones.length())
+/*posInicial*/  + tempCont;       
         
     }
     /**
@@ -42,10 +58,10 @@ public class Termino {
         return termino;
     }
 
-    public void restablecerTotalTerminos(){
+    public static void reiniciarTotalTerminos(){
         totalTerminos = 0;
     }
-    public void sumarTotalTerminos(){
+    public static void sumarTotalTerminos(){
         totalTerminos++;
     }
     /**
@@ -62,19 +78,20 @@ public class Termino {
      * @return las cantidad de documentos en la que aparecio el término
      */
     public int getAparicionesEnDocumentos() {
-        return aparicionesEnDocumentos;
-    }
-    public void int reiniciarContador(){
+        return aparicionesEnColeccion;
+    }////////////////////////////////////////////////////////---------------------------------buscar donde poner los contadores de termino....
+    
+    public static void reiniciarContador(){
         contador = 0;
     }
     /**
-     * @param aparicionesEnDocumentos la cantidad de documentos en las que aparece el término en la coleccion
+     * @param aparicionesEnColeccion la cantidad de documentos en las que aparece el término en la coleccion
      */
     public void setAparicionesEnDocumentos(int aparicionesEnDocumentos) {
-        this.aparicionesEnDocumentos = aparicionesEnDocumentos;
+        this.aparicionesEnColeccion = aparicionesEnDocumentos;
     }  
     
     public void sumarAparicion(){
-        aparicionesEnDocumentos++;
+        aparicionesEnColeccion++;
     }
 }
