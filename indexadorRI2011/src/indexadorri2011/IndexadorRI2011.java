@@ -7,6 +7,7 @@ package indexadorri2011;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.File;
+import java.lang.Double;
 
 
 /**
@@ -14,7 +15,9 @@ import java.io.File;
  * @author Aaron
  */
 public class IndexadorRI2011 {
-
+    
+    
+    private static String rutaNueva = "./coleccionCompleta/";
     /**
      * @param args the command line arguments
      * D:\UCR\I-2011\RI\tareas\tarea7\indexadorRI2011\coleccion
@@ -70,7 +73,7 @@ public class IndexadorRI2011 {
     private static void crearArchivoTerminos(String[] args) {
         String rutaColeccion = args[0];
         String ruta;
-        String rutaNueva = "./coleccionCompleta/";
+
         File dir = new File(rutaNueva);
         if (!dir.exists())
             dir.mkdir();
@@ -109,11 +112,13 @@ public class IndexadorRI2011 {
         }
         
         extractor.crearVocabulario(rutaNueva);    
-        
-        /*sacar stopwords
+        Termino.reiniciarContador();
+                /*sacar stopwords
          vocabulario y en archivitos*/
         
         /*Lematizar(extractor) sumando las posibles repeticiones */
+        extractor.eliminarStopWordsYLematizar(rutaColeccion, numArchivoGlobal, 5);
+        extractor.crearVocabularioCompleto(rutaNueva);
         /*Crear el vocabulario con todos los campos que pide casa usando el método imprimirParaVocabulario*/
         /*Crear el posting y norma dentro de extractor*/
         

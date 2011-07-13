@@ -196,7 +196,7 @@ class ManejadorArchivosTexto {
   }
   
   public long getTamanno(String name){
-      File file = new File(name);
+      File file = new File(name);      
       if (!file.exists() || !file.isFile()) {
           return 0;
       }
