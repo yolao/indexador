@@ -252,6 +252,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
      * con su frecuencia en la colección
      */
     public void crearVocabulario(String ruta){
+        Termino.reiniciarContador();
         ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
         int size = terminos.size();
         Object [] vectorTerminos = terminos.values().toArray();
@@ -272,10 +273,11 @@ public class ExtractorDeTexto <tipoFrecuencia>{
      * con su frecuencia en la colección
      */
     public void crearVocabularioCompleto(String ruta){
+        Termino.reiniciarContador();
         ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
         int size = terminos.size();
         Object [] vectorTerminos = terminos.values().toArray();
-        ComparadorTerminos c = new ComparadorTerminos();
+        ComparadorTerminosAlfabetico c = new ComparadorTerminosAlfabetico();
         Arrays.sort(vectorTerminos, c);        
         String termino;
         for (int i = 0; i < size; i++){
@@ -303,5 +305,45 @@ public class ExtractorDeTexto <tipoFrecuencia>{
             pos = startTag.getEnd();
         }
         return null;
-    }    
+    }
+
+    void crearPosingsYNorma(String rutaColeccion) {
+        long cantTerminos = terminos.size();
+        
+        ManejadorArchivosTexto lector = new ManejadorArchivosTexto();
+        ManejadorArchivosTexto escritorPostings = new ManejadorArchivosTexto();
+        ManejadorArchivosTexto escritorNorma = new ManejadorArchivosTexto();
+        String[] vectTerminos = (String [])terminos.keySet().toArray();
+        String[] vectDocumentos;
+        String archivo;
+        int inicioPalabra;
+        int inicioFrecuencia;
+        Double frecuencia;
+        Double [] ws;
+        Double [] norma = new Double [terminos.size()];
+        /*Se recorren todos los terminos de la colección*/
+        for(int numTermino=0;numTermino<cantTerminos;numTermino++){
+            /*Se sacan los documentos donde aparece este termino*/
+            vectDocumentos = vectTerminos[numTermino].split("\n");
+            /*Guarda los ws de un termino*/
+            ws = new Double [vectDocumentos.length];
+            
+            /*Se recorren los documentos donde aparece el termino*/
+            for(int numDoc=0;numDoc<vectDocumentos.length;numDoc++){
+                archivo = lector.leerTodoArchivo(rutaColeccion+numDoc+".txt");////////////**************se puede mejorar
+                inicioPalabra = archivo.indexOf(vectTerminos[numTermino]);
+                /*donde inicia la palabra, se salta la palabra y se salta un espacio en blanco*/
+                inicioFrecuencia =inicioPalabra+vectTerminos[numTermino].length()+1;
+                frecuencia = Double.parseDouble(archivo.substring(inicioFrecuencia, archivo.indexOf("\n",inicioFrecuencia)).trim());
+                
+                ws[numDoc] = frecuencia * terminos.get(vectTerminos[numTermino]).idf();                         
+                norma[numDoc] += ws[numDoc]*ws[numDoc];                
+            }
+            
+            /*Guarda los ids de los doc donde aparece el termino junto con el w en el doc*/          
+            
+        }
+        /*se termina de calcular la norma y se guarda*/
+            
+    }
 }

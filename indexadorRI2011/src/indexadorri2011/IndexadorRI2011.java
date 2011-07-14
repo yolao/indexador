@@ -27,7 +27,7 @@ public class IndexadorRI2011 {
             System.out.println("Debe proporcionar la ruta de la colección");
             System.exit(1);
         }
-        crearArchivoTerminos(args);
+        crearIndiceInvertido(args);
     }
     
     public static void procesarTerminos(String rutaColeccion, int carpeta, String rutaNueva){
@@ -70,7 +70,7 @@ public class IndexadorRI2011 {
         }
     }
 
-    private static void crearArchivoTerminos(String[] args) {
+    private static void crearIndiceInvertido(String[] args) {
         String rutaColeccion = args[0];
         String ruta;
 
@@ -112,15 +112,16 @@ public class IndexadorRI2011 {
         }
         
         extractor.crearVocabulario(rutaNueva);    
-        Termino.reiniciarContador();
+
                 /*sacar stopwords
          vocabulario y en archivitos*/
         
         /*Lematizar(extractor) sumando las posibles repeticiones */
         extractor.eliminarStopWordsYLematizar(rutaColeccion, numArchivoGlobal, 5);
-        extractor.crearVocabularioCompleto(rutaNueva);
         /*Crear el vocabulario con todos los campos que pide casa usando el método imprimirParaVocabulario*/
+        extractor.crearVocabularioCompleto(rutaNueva);
         /*Crear el posting y norma dentro de extractor*/
+        extractor.crearPosingsYNorma(rutaNueva);
         
     }
 }
