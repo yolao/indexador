@@ -1,662 +1,1576 @@
-"king0.60205 1      0         
-"los 0.60205 1      1         
-"new 0.60205 1      2         
-"sexy0.60205 1      3         
-"up  0.60205 1      4         
-#1   0.60205 1      5         
-$70  0.60205 1      6         
-&    0.60205 1      7         
-'''  0.60205 1      8         
-'01  0.60205 1      9         
-(    0.60205 1      10         
-(20  0.60205 1      11         
-(26  0.60205 1      12         
-(born0.60205 1      13         
-(his 0.60205 1      14         
-)    0.60205 1      15         
--    0.12493 3      16         
---   0.60205 1      19         
-0-0  0.60205 1      20         
-0-2  0.60205 1      21         
-00   0.60205 1      22         
-000  0.60205 1      23         
-01   0.60205 1      24         
-02   0.60205 1      25         
-03   0.60205 1      26         
-04   0.60205 1      27         
-05   0.60205 1      28         
-06   0.60205 1      29         
-064  0.60205 1      30         
-07   0.60205 1      31         
-08   0.60205 1      32         
-09   0.60205 1      33         
-093  0.60205 1      34         
-1    0.12493 3      35         
-1-0  0.60205 1      38         
-10   0.30102 2      39         
-105  0.60205 1      41         
-11   0.30102 2      42         
-12   0.30102 2      44         
-13   0.30102 2      46         
-14   0.30102 2      48         
-15   0.30102 2      50         
-16   0.30102 2      52         
-17   0.60205 1      54         
-18   0.30102 2      55         
-19   0.30102 2      57         
-1924 0.60205 1      59         
-1940)0.60205 1      60         
-1978 0.60205 1      61         
-1978)0.60205 1      62         
-1984 0.60205 1      63         
-1985 0.60205 1      64         
-1986 0.60205 1      65         
-1987 0.60205 1      66         
-1990 0.60205 1      67         
-2    0.12493 3      68         
-2-0  0.60205 1      71         
-2-1  0.60205 1      72         
-20   0.30102 2      73         
-2000)0.60205 1      75         
-2000s0.60205 1      76         
-2001 0.60205 1      77         
-2003 0.60205 1      78         
-2004 0.60205 1      79         
-2005 0.60205 1      80         
-2006 0.60205 1      81         
-2007 0.60205 1      82         
-2008 0.30102 2      83         
-2009 0.60205 1      85         
-200m 0.60205 1      86         
-2010 0.30102 2      87         
-2010s0.60205 1      89         
-2011 0.12493 3      90         
-2011)0.60205 1      93         
-22   0.60205 1      94         
-23   0.60205 1      95         
-24   0.60205 1      96         
-25   0.60205 1      97         
-26   0.60205 1      98         
-27   0.30102 2      99         
-28   0.60205 1      101         
-29   0.60205 1      102         
-3    0.12493 3      103         
-30   0.60205 1      106         
-31   0.60205 1      107         
-32   0.60205 1      108         
-342000.60205 1      109         
-35   0.30102 2      110         
-350  0.60205 1      112         
-39   0.60205 1      113         
-4    0.12493 3      114         
-43   0.60205 1      117         
-48   0.60205 1      118         
-5    0.0     4      119         
-50   0.60205 1      123         
-500  0.60205 1      124         
-51   0.60205 1      125         
-57   0.60205 1      126         
-58   0.60205 1      127         
-6    0.12493 3      128         
-7    0.0     4      131         
-74   0.60205 1      135         
-8    0.12493 3      136         
-9    0.30102 2      139         
-90   0.60205 1      141         
-@    0.60205 1      142         
-[cd  0.60205 1      143         
-_20110.60205 1      144         
-a    0.0     4      145         
-abajo0.60205 1      149         
-able 0.60205 1      150         
-acto 0.60205 1      151         
-actor0.60205 1      152         
-add  0.60205 1      153         
-after0.60205 1      154         
-again0.60205 1      155         
-age  0.60205 1      156         
-ahora0.60205 1      157         
-al   0.30102 2      158         
-album0.60205 1      160         
-all  0.60205 1      161         
-also 0.60205 1      162         
-alto 0.60205 1      163         
-an   0.60205 1      164         
-and  0.60205 1      165         
-angel0.60205 1      166         
-anotó0.60205 1      167         
-ante 0.60205 1      168         
-anual0.60205 1      169         
-any  0.60205 1      170         
-apr  0.60205 1      171         
-april0.60205 1      172         
-aquí 0.30102 2      173         
-aquï 0.60205 1      175         
-arab 0.60205 1      176         
-are  0.60205 1      177         
-area 0.60205 1      178         
-arias0.60205 1      179         
-as   0.60205 1      180         
-asian0.60205 1      181         
-aspx 0.60205 1      182         
-at   0.60205 1      183         
-auto 0.60205 1      184         
-award0.60205 1      185         
-away 0.60205 1      186         
-ayer 0.60205 1      187         
-año  0.60205 1      188         
-años 0.60205 1      189         
-back 0.60205 1      190         
-bases0.60205 1      191         
-be   0.60205 1      192         
-beat 0.60205 1      193         
-been 0.60205 1      194         
-began0.60205 1      195         
-being0.60205 1      196         
-best 0.60205 1      197         
-birth0.60205 1      198         
-blank0.60205 1      199         
-blip 0.60205 1      200         
-born 0.60205 1      201         
-both 0.60205 1      202         
-boxeo0.60205 1      203         
-broke0.60205 1      204         
-built0.60205 1      205         
-but  0.60205 1      206         
-by   0.60205 1      207         
-bï   0.60205 1      208         
-c    0.60205 1      209         
-campo0.60205 1      210         
-canal0.30102 2      211         
-cara 0.60205 1      213         
-casa 0.60205 1      214         
-ceo  0.60205 1      215         
-chaco0.60205 1      216         
-chart0.60205 1      217         
-china0.60205 1      218         
-cimad0.60205 1      219         
-city 0.60205 1      220         
-civil0.60205 1      221         
-clase0.60205 1      222         
-clash0.60205 1      223         
-clear0.60205 1      224         
-close0.60205 1      225         
-club 0.60205 1      226         
-cnn  0.60205 1      227         
-coach0.60205 1      228         
-cold 0.60205 1      229         
-com  0.60205 1      230         
-como 0.12493 3      231         
-con  0.0     4      234         
-copa 0.60205 1      238         
-cosce0.60205 1      239         
-cost 0.60205 1      240         
-costa0.30102 2      241         
-costo0.60205 1      243         
-could0.60205 1      244         
-cr   0.60205 1      245         
-creó 0.60205 1      246         
-cruz 0.60205 1      247         
-cual 0.60205 1      248         
-cup  0.60205 1      249         
-d    0.60205 1      250         
-d'or 0.60205 1      251         
-da   0.30102 2      252         
-dada 0.60205 1      254         
-daddy0.60205 1      255         
-dale”0.60205 1      256         
-dando0.60205 1      257         
-danza0.60205 1      258         
-date 0.60205 1      259         
-datos0.60205 1      260         
-days 0.60205 1      261         
-de   0.0     4      262         
-debut0.60205 1      266         
-dec  0.60205 1      267         
-del  0.12493 3      268         
-dela 0.60205 1      271         
-depto0.60205 1      272         
-diseï0.60205 1      273         
-diva 0.60205 1      274         
-diva"0.60205 1      275         
-dj   0.60205 1      276         
-dj's 0.60205 1      277         
-dna  0.60205 1      278         
-don  0.60205 1      279         
-don't0.60205 1      280         
-donde0.60205 1      281         
-done 0.60205 1      282         
-dozen0.60205 1      283         
-draw 0.60205 1      284         
-due  0.60205 1      285         
-duo  0.60205 1      286         
-dvd] 0.60205 1      287         
-día  0.30102 2      288         
-dï   0.60205 1      290         
-e    0.60205 1      291         
-early0.60205 1      292         
-edit 0.60205 1      293         
-el   0.0     4      294         
-eliel0.60205 1      298         
-email0.60205 1      299         
-en   0.0     4      300         
-end  0.60205 1      304         
-ended0.60205 1      305         
-enero0.60205 1      306         
-ent  0.60205 1      307         
-entre0.30102 2      308         
-entry0.60205 1      310         
-eric 0.60205 1      311         
-es   0.12493 3      312         
-eso  0.60205 1      315         
-espaï0.60205 1      316         
-este 0.60205 1      317         
-está 0.60205 1      318         
-even 0.60205 1      319         
-event0.30102 2      320         
-fa   0.60205 1      322         
-fails0.60205 1      323         
-fans 0.60205 1      324         
-fase 0.60205 1      325         
-fc   0.60205 1      326         
-feb  0.60205 1      327         
-few  0.60205 1      328         
-fifa 0.60205 1      329         
-film 0.60205 1      330         
-fin  0.60205 1      331         
-final0.60205 1      332         
-fino 0.60205 1      333         
-first0.60205 1      334         
-flash0.60205 1      335         
-flujo0.60205 1      336         
-focal0.60205 1      337         
-for  0.60205 1      338         
-forms0.60205 1      339         
-four 0.60205 1      340         
-from 0.60205 1      341         
-fue  0.60205 1      342         
-fuera0.60205 1      343         
-fury 0.60205 1      344         
-fué  0.60205 1      345         
-g8   0.60205 1      346         
-game 0.60205 1      347         
-games0.60205 1      348         
-genre0.60205 1      349         
-genus0.60205 1      350         
-get  0.60205 1      351         
-goal 0.60205 1      352         
-goran0.60205 1      353         
-grand0.60205 1      354         
-grass0.60205 1      355         
-groin0.60205 1      356         
-group0.60205 1      357         
-hacia0.60205 1      358         
-had  0.60205 1      359         
-han  0.60205 1      360         
-hanna0.60205 1      361         
-has  0.60205 1      362         
-hasta0.60205 1      363         
-have 0.60205 1      364         
-hd   0.60205 1      365         
-he   0.60205 1      366         
-hecho0.60205 1      367         
-held 0.60205 1      368         
-here 0.60205 1      369         
-him  0.60205 1      370         
-hips 0.60205 1      371         
-his  0.60205 1      372         
-home 0.60205 1      373         
-hotel0.60205 1      374         
-http 0.30102 2      375         
-hu   0.60205 1      377         
-hub  0.60205 1      378         
-i    0.60205 1      379         
-i've 0.60205 1      380         
-i+d+i0.60205 1      381         
-idon 0.60205 1      382         
-if   0.60205 1      383         
-imf  0.60205 1      384         
-in   0.60205 1      385         
-into 0.60205 1      386         
-ir   0.60205 1      387         
-is   0.60205 1      388         
-issue0.60205 1      389         
-it   0.60205 1      390         
-its  0.60205 1      391         
-iv   0.60205 1      392         
-j-tv 0.60205 1      393         
-jan  0.60205 1      394         
-jesús0.60205 1      395         
-jose 0.60205 1      396         
-josé 0.60205 1      397         
-juan 0.60205 1      398         
-judge0.60205 1      399         
-juego0.30102 2      400         
-jul  0.60205 1      402         
-july 0.60205 1      403         
-jun  0.60205 1      404         
-june 0.60205 1      405         
-jury 0.60205 1      406         
-just 0.60205 1      407         
-keep 0.60205 1      408         
-kids 0.60205 1      409         
-king 0.60205 1      410         
-kings0.60205 1      411         
-known0.60205 1      412         
-ko   0.60205 1      413         
-la   0.0     4      414         
-label0.60205 1      418         
-lack 0.60205 1      419         
-las  0.0     4      420         
-last 0.60205 1      424         
-late 0.60205 1      425         
-later0.60205 1      426         
-latin0.60205 1      427         
-le   0.60205 1      428         
-leave0.60205 1      429         
-left 0.60205 1      430         
-less)0.60205 1      431         
-level0.60205 1      432         
-lie  0.60205 1      433         
-life 0.60205 1      434         
-like 0.60205 1      435         
-lind 0.60205 1      436         
-links0.60205 1      437         
-list 0.60205 1      438         
-live 0.60205 1      439         
-lo   0.30102 2      440         
-loca 0.60205 1      442         
-local0.60205 1      443         
-login0.60205 1      444         
-looks0.60205 1      445         
-looms0.60205 1      446         
-los  0.12493 3      447         
-lp   0.60205 1      450         
-luces0.60205 1      451         
-lucro0.60205 1      452         
-luego0.60205 1      453         
-lugar0.60205 1      454         
-luny 0.60205 1      455         
-luz  0.60205 1      456         
-línea0.60205 1      457         
-m    0.60205 1      458         
-made 0.60205 1      459         
-major0.60205 1      460         
-make 0.60205 1      461         
-mala 0.60205 1      462         
-male 0.60205 1      463         
-mapa 0.60205 1      464         
-mar  0.60205 1      465         
-march0.60205 1      466         
-maria0.60205 1      467         
-marzo0.60205 1      468         
-match0.60205 1      469         
-may  0.30102 2      470         
-mc   0.60205 1      472         
-me   0.60205 1      473         
-meet 0.60205 1      474         
-menos0.60205 1      475         
-mesa 0.60205 1      476         
-messi0.60205 1      477         
-met  0.60205 1      478         
-miami0.60205 1      479         
-mil  0.60205 1      480         
-mismo0.60205 1      481         
-mix  0.60205 1      482         
-modo 0.60205 1      483         
-month0.60205 1      484         
-more 0.60205 1      485         
-most 0.60205 1      486         
-movie0.60205 1      487         
-mp4  0.60205 1      488         
-mtv's0.60205 1      489         
-mucho0.60205 1      490         
-mundo0.30102 2      491         
-music0.60205 1      493         
-más  0.30102 2      494         
-mï   0.60205 1      496         
-n    0.60205 1      497         
-name 0.60205 1      498         
-nery 0.60205 1      499         
-net  0.60205 1      500         
-never0.60205 1      501         
-new  0.60205 1      502         
-news 0.60205 1      503         
-next 0.60205 1      504         
-night0.60205 1      505         
-nivel0.30102 2      506         
-no   0.12493 3      508         
-nobel0.60205 1      511         
-not  0.60205 1      512         
-now  0.60205 1      513         
-nuevo0.30102 2      514         
-nyc  0.60205 1      516         
-o    0.60205 1      517         
-ocho 0.60205 1      518         
-oeste0.60205 1      519         
-of   0.60205 1      520         
-off  0.60205 1      521         
-omar 0.60205 1      522         
-on   0.60205 1      523         
-once 0.60205 1      524         
-one  0.60205 1      525         
-only 0.60205 1      526         
-or   0.60205 1      527         
-order0.60205 1      528         
-oro  0.60205 1      529         
-ortiz0.60205 1      530         
-other0.60205 1      531         
-otras0.60205 1      532         
-otros0.60205 1      533         
-out  0.60205 1      534         
-over 0.60205 1      535         
-owner0.60205 1      536         
-page 0.60205 1      537         
-pages0.60205 1      538         
-para 0.12493 3      539         
-part 0.60205 1      542         
-parte0.60205 1      543         
-pasar0.60205 1      544         
-paz  0.60205 1      545         
-país 0.60205 1      546         
-pdf  0.60205 1      547         
-peace0.60205 1      548         
-pelea0.60205 1      549         
-perez0.60205 1      550         
-pero 0.30102 2      551         
-photo0.60205 1      553         
-pie  0.60205 1      554         
-pista0.60205 1      555         
-place0.60205 1      556         
-plant0.60205 1      557         
-play 0.60205 1      558         
-plays0.60205 1      559         
-poco 0.60205 1      560         
-point0.60205 1      561         
-pop  0.60205 1      562         
-por  0.0     4      563         
-pose 0.60205 1      567         
-price0.60205 1      568         
-prize0.60205 1      569         
-pulga0.60205 1      570         
-punto0.60205 1      571         
-pura 0.60205 1      572         
-pérez0.60205 1      573         
-que  0.12493 3      574         
-racha0.60205 1      577         
-radio0.60205 1      578         
-rap  0.60205 1      579         
-read 0.60205 1      580         
-redes0.60205 1      581         
-rica 0.30102 2      582         
-rica)0.60205 1      584         
-rican0.60205 1      585         
-rico 0.60205 1      586         
-risk 0.60205 1      587         
-round0.60205 1      588         
-row  0.60205 1      589         
-rowdy0.60205 1      590         
-s    0.60205 1      591         
-sabia0.60205 1      592         
-salas0.60205 1      593         
-sales0.60205 1      594         
-salud0.60205 1      595         
-san  0.60205 1      596         
-santa0.60205 1      597         
-santo0.60205 1      598         
-save 0.60205 1      599         
-se   0.30102 2      600         
-seat 0.60205 1      602         
-sede 0.60205 1      603         
-see  0.30102 2      604         
-sepln0.60205 1      606         
-será 0.30102 2      607         
-set  0.60205 1      609         
-share0.60205 1      610         
-show 0.60205 1      611         
-si   0.60205 1      612         
-side 0.60205 1      613         
-sido 0.60205 1      614         
-sign 0.60205 1      615         
-sin  0.60205 1      616         
-sirve0.60205 1      617         
-sites0.60205 1      618         
-sleep0.60205 1      619         
-sms  0.60205 1      620         
-sobre0.12493 3      621         
-sol" 0.60205 1      624         
-sold 0.60205 1      625         
-solo 0.30102 2      626         
-solís0.60205 1      628         
-somos0.60205 1      629         
-son  0.30102 2      630         
-song 0.60205 1      632         
-songs0.60205 1      633         
-sort 0.60205 1      634         
-south0.60205 1      635         
-spot 0.60205 1      636         
-star 0.60205 1      637         
-start0.60205 1      638         
-store0.60205 1      639         
-story0.60205 1      640         
-su   0.12493 3      641         
-sueco0.60205 1      644         
-sued 0.60205 1      645         
-sus  0.60205 1      646         
-sven 0.60205 1      647         
-taboo0.60205 1      648         
-take 0.60205 1      649         
-tanto0.30102 2      650         
-tarea0.60205 1      652         
-team 0.60205 1      653         
-temas0.60205 1      654         
-tener0.60205 1      655         
-tenis0.60205 1      656         
-test 0.30102 2      657         
-tests0.60205 1      659         
-text 0.60205 1      660         
-th   0.60205 1      661         
-than 0.60205 1      662         
-that 0.60205 1      663         
-the  0.30102 2      664         
-theft0.60205 1      666         
-their0.60205 1      667         
-then 0.60205 1      668         
-there0.60205 1      669         
-these0.60205 1      670         
-they 0.60205 1      671         
-third0.60205 1      672         
-this 0.30102 2      673         
-three0.60205 1      675         
-tic  0.60205 1      676         
-tico 0.60205 1      677         
-ticos0.60205 1      678         
-tiene0.60205 1      679         
-tipo 0.60205 1      680         
-tipos0.60205 1      681         
-tito 0.60205 1      682         
-to   0.30102 2      683         
-toda 0.60205 1      685         
-todas0.60205 1      686         
-today0.60205 1      687         
-todo 0.30102 2      688         
-toma 0.60205 1      690         
-tomó 0.60205 1      691         
-top  0.60205 1      692         
-total0.60205 1      693         
-tour 0.60205 1      694         
-tr3s 0.60205 1      695         
-tunes0.60205 1      696         
-tv   0.60205 1      697         
-two  0.60205 1      698         
-u    0.60205 1      699         
-ucr  0.60205 1      700         
-udc  0.60205 1      701         
-un   0.12493 3      702         
-una  0.30102 2      705         
-under0.60205 1      707         
-unete0.60205 1      708         
-uno  0.60205 1      709         
-unos 0.60205 1      710         
-until0.60205 1      711         
-up   0.60205 1      712         
-urban0.60205 1      713         
-url  0.60205 1      714         
-us   0.60205 1      715         
-used 0.60205 1      716         
-usted0.60205 1      717         
-ver  0.60205 1      718         
-vi   0.60205 1      719         
-viaje0.60205 1      720         
-vico 0.60205 1      721         
-vida 0.60205 1      722         
-video0.60205 1      723         
-villa0.60205 1      724         
-vimeo0.60205 1      725         
-visit0.60205 1      726         
-vista0.30102 2      727         
-voz  0.60205 1      729         
-vs   0.60205 1      730         
-war  0.60205 1      731         
-wars 0.60205 1      732         
-was  0.60205 1      733         
-week 0.60205 1      734         
-went 0.60205 1      735         
-were 0.60205 1      736         
-when 0.60205 1      737         
-where0.60205 1      738         
-which0.60205 1      739         
-who  0.60205 1      740         
-will 0.60205 1      741         
-with 0.60205 1      742         
-wn   0.60205 1      743         
-won  0.60205 1      744         
-world0.60205 1      745         
-would0.60205 1      746         
-www  0.60205 1      747         
-x    0.60205 1      748         
-xxvii0.60205 1      749         
-y    0.0     4      750         
-ya   0.60205 1      754         
-yahoo0.60205 1      755         
-year 0.60205 1      756         
-year"0.60205 1      757         
-years0.60205 1      758         
-year”0.60205 1      759         
-yemen0.60205 1      760         
-your 0.60205 1      761         
-youth0.60205 1      762         
-|    0.60205 1      763         
-©    0.30102 2      764         
-½    0.60205 1      766         
-½as  0.60205 1      767         
-½n   0.30102 2      768         
-½o   0.60205 1      770         
-½ola 0.60205 1      771         
-½s   0.60205 1      772         
-ánimo0.60205 1      773         
-área 0.60205 1      774         
-ï    0.60205 1      775         
-óscar0.60205 1      776         
-único0.60205 1      777         
-“dale0.60205 1      778         
+con                          4
+las                          4
+la                           4
+en                           4
+el                           4
+de                           4
+por                          4
+y                            4
+a                            4
+7                            4
+5                            4
+nacional                     3
+como                         3
+los                          3
+sobre                        3
+para                         3
+que                          3
+2011                         3
+un                           3
+su                           3
+no                           3
+del                          3
+es                           3
+8                            3
+6                            3
+4                            3
+3                            3
+2                            3
+1                            3
+-                            3
+½n                           2
+may                          2
+see                          2
+juegos                       2
+nuevo                        2
+nacionales                   2
+problemas                    2
+sabana                       2
+friday                       2
+pero                         2
+parque                       2
+mundo                        2
+rica                         2
+aquí                         2
+solo                         2
+información                  2
+una                          2
+artificiales                 2
+será                         2
+todo                         2
+35                           2
+27                           2
+20                           2
+costa                        2
+19                           2
+18                           2
+16                           2
+15                           2
+14                           2
+13                           2
+12                           2
+11                           2
+10                           2
+día                          2
+test                         2
+2010                         2
+personas                     2
+último                       2
+2008                         2
+this                         2
+informaciï                   2
+promoción                    2
+estadio                      2
+más                          2
+the                          2
+to                           2
+se                           2
+tanto                        2
+costarricense                2
+lo                           2
+http                         2
+conferencias                 2
+da                           2
+©                            2
+al                           2
+son                          2
+9                            2
+desarrollo                   2
+nivel                        2
+active                       1
+met                          1
+wars                         1
+raging                       1
+winner                       1
+pie                          1
+jan                          1
+cancellation                 1
+despachó                     1
+bayamón                      1
+built                        1
+½s                           1
+versiï                       1
+especiales                   1
+½o                           1
+solís                        1
+lyrics                       1
+concentración                1
+voz                          1
+093                          1
+menos                        1
+84°6′28″w                    1
+request                      1
+mesa                         1
+keep                         1
+avanzó                       1
+major                        1
+don't                        1
+derrotar                     1
+egutro                       1
+medicina                     1
+guerrido                     1
+icoder                       1
+city                         1
+pose                         1
+benítez                      1
+famous                       1
+afterwards                   1
+prensa                       1
+canceled                     1
+political                    1
+½sicos                       1
+next                         1
+government                   1
+raised                       1
+currently                    1
+oaq2011                      1
+genre                        1
+vidrio                       1
+year                         1
+clash                        1
+estratégica                  1
+clase                        1
+both                         1
+fué                          1
+public                       1
+sin                          1
+cup                          1
+actor                        1
+economic                     1
+video                        1
+news                         1
+autorepeat                   1
+auto                         1
+mar                          1
+upcoming                     1
+"barrio                      1
+plays                        1
+celebración                  1
+eriksson                     1
+sergio                       1
+overtake                     1
+"new                         1
+064                          1
+asuntos                      1
+dirigida                     1
+urgencia                     1
+stations                     1
+gutisensei                   1
+remove                       1
+pdf                          1
+born                         1
+variety                      1
+composer                     1
+because                      1
+óscar                        1
+total                        1
+breach                       1
+club                         1
+kings                        1
+científicos                  1
+internet                     1
+prosecution's                1
+opposing                     1
+until                        1
+técnico                      1
+successful                   1
+world                        1
+cidere                       1
+dailymotion                  1
+years                        1
+tecnologías                  1
+neuronas                     1
+2005's                       1
+article                      1
+according                    1
+asociación                   1
+married                      1
+compilation                  1
+angel                        1
+"king                        1
+left                         1
+people                       1
+attend                       1
+set                          1
+paz                          1
+diva                         1
+church                       1
+sporting                     1
+restore                      1
+área                         1
+credits                      1
+devoting                     1
+risk                         1
+fue                          1
+october                      1
+results                      1
+worldwide                    1
+vista                        1
+selección                    1
+grass                        1
+agreements                   1
+'''                          1
+nery                         1
+gracias                      1
+year"                        1
+nation                       1
+2010s                        1
+(2011)                       1
+idon                         1
+continuar                    1
+sueco                        1
+respectively                 1
+350                          1
+hotel                        1
+otros                        1
+consejo                      1
+surface                      1
+dvd]                         1
+members                      1
+com                          1
+activity                     1
+disciplinas                  1
+would                        1
+inauguración_nuevo_estadio_na1
+advance                      1
+seconds)                     1
+septiembre                   1
+imagenes                     1
+blip                         1
+copyright                    1
+machete                      1
+abajo                        1
+appearance                   1
+2011)                        1
+terminó                      1
+000                          1
+collaborative                1
+spring                       1
+killed                       1
+cost                         1
+pura                         1
+cnn                          1
+½pocas                       1
+americanos                   1
+world's                      1
+largest                      1
+congreso                     1
+ver                          1
+shakira__la_tortura_@_estadio1
+san                          1
+redes                        1
+doblegó                      1
+concacaf                     1
+teletica                     1
+brings                       1
+its                          1
+pista                        1
+cruz                         1
+massive                      1
+planned                      1
+absent                       1
+however                      1
+sven                         1
+price                        1
+costa_rica                   1
+videos                       1
+state-of-the-art             1
+artísticas                   1
+racha                        1
+servidor                     1
+segunda                      1
+for                          1
+periodicidad                 1
+0-2                          1
+iglesia                      1
+0-0                          1
+oficial                      1
+produce                      1
+grand                        1
+sample                       1
+capacidad                    1
+cuenta                       1
+copa                         1
+august                       1
+estadio_nacional_de_costa_ric1
+azteca                       1
+start                        1
+aprueba                      1
+luz                          1
+construction                 1
+excuse                       1
+even                         1
+meet                         1
+brewley                      1
+caminar                      1
+vimeo                        1
+presidents                   1
+plant                        1
+metropolitano                1
+comunicaciones               1
+semifinales                  1
+batista                      1
+website                      1
+2000-2005                    1
+national                     1
+equipo                       1
+inauguración_estadio_nacional1
+area                         1
+play                         1
+celebrarï                    1
+several                      1
+esgrima                      1
+disfruten                    1
+ceremony                     1
+started                      1
+awards                       1
+municipality                 1
+cimad                        1
+fútbol                       1
+three                        1
+venues                       1
+joseph"                      1
+related                      1
+shakira__loca_@_estadio_nacio1
+colegio                      1
+completo                     1
+eduardo                      1
+links                        1
+today                        1
+espaï                        1
+taking                       1
+don_omar__hasta_abajo_|_danza1
+todas                        1
+ballon                       1
+inaguration                  1
+dirección                    1
+reciente                     1
+poco                         1
+regularly                    1
+license                      1
+stardom                      1
+mexico                       1
+register                     1
+himself                      1
+celebrate                    1
+("saint                      1
+cold                         1
+million                      1
+inauguracion                 1
+these                        1
+urban                        1
+“latin                       1
+inauguracion_del_estadio_naci1
+visit                        1
+después                      1
+danza                        1
+nuevo_estadio_nacional__costa1
+out                          1
+antonio                      1
+aciagos                      1
+tenis                        1
+flujo                        1
+natural                      1
+general                      1
+nuevo_estadio_nacional_de_cos1
+antonia                      1
+there                        1
+civil                        1
+lectura                      1
+ediciï                       1
+revalido                     1
+evento                       1
+fin                          1
+imf                          1
+arab                         1
+nasralla                     1
+games                        1
+ceo                          1
+calidad                      1
+latino                       1
+puerto                       1
+early                        1
+tito                         1
+birth                        1
+hostilidades                 1
+utiliza                      1
+bolivia                      1
+able                         1
+funciï                       1
+townhouse                    1
+decidimos                    1
+chinese                      1
+titled                       1
+movie                        1
+late                         1
+enero                        1
+last                         1
+local                        1
+oro                          1
+under                        1
+cancha                       1
+ubicación                    1
+delgado                      1
+president                    1
+gabriel                      1
+mgestal@udc                  1
+video_oficial_inauguración_nu1
+used                         1
+showed                       1
+instalaciones                1
+34200                        1
+restauración                 1
+sort                         1
+occupation                   1
+done                         1
+tener                        1
+photos                       1
+reserved                     1
+less)                        1
+few                          1
+rendimiento                  1
+país                         1
+libertadores                 1
+arias'                       1
+orfanato                     1
+mtv's                        1
+~mgestal                     1
+seguridad                    1
+pentágono                    1
+billboard                    1
+otras                        1
+best                         1
+rico                         1
+pelea                        1
+approaching                  1
+i+d+i                        1
+comunes                      1
+china                        1
+accounts                     1
+duration                     1
+feb                          1
+tipo                         1
+fails                        1
+creó                         1
+looms                        1
+deportivo                    1
+preoccupy                    1
+titulo                       1
+nery_brenes                  1
+tortura                      1
+invitados                    1
+inagurated                   1
+william                      1
+jotabequtv                   1
+author                       1
+méxico                       1
+actuación                    1
+materiales                   1
+codicader                    1
+focal                        1
+evangélica                   1
+capacity                     1
+acerca                       1
+"reggaeton                   1
+aquï                         1
+enseñanza                    1
+parcial                      1
+cambiar                      1
+one                          1
+hexagonal                    1
+contenido                    1
+valley                       1
+sign                         1
+looks                        1
+commons                      1
+tour                         1
+advertise                    1
+place                        1
+label)                       1
+scheduled                    1
+guardian                     1
+connected                    1
+filmography                  1
+complejo                     1
+salud                        1
+song                         1
+lie                          1
+daniel                       1
+round                        1
+fuegos                       1
+served                       1
+lineales                     1
+politician                   1
+uruguay                      1
+d'or                         1
+ante                         1
+canal                        1
+their                        1
+pasión")                     1
+abajo"                       1
+recount                      1
+selected                     1
+rica's                       1
+hasta                        1
+eondraco                     1
+introducciï                  1
+row                          1
+fino                         1
+report                       1
+universalmusica              1
+four                         1
+redacción                    1
+comité                       1
+disney                       1
+sold                         1
+sido                         1
+url                          1
+brujas                       1
+promover                     1
+side                         1
+derrota                      1
+hondureño                    1
+tiene                        1
+cuestiones                   1
+anotó                        1
+distintos                    1
+publicaciones                1
+perez                        1
+tomó                         1
+film                         1
+finish                       1
+diseï                        1
+theft                        1
+competencias                 1
+share                        1
+attended                     1
+version                      1
+batista's                    1
+final                        1
+village                      1
+demand                       1
+sol"                         1
+estudiantes                  1
+garantiza                    1
+bandoleros                   1
+bandoleros"                  1
+mapa                         1
+(marzo                       1
+importantes                  1
+prosecutor's                 1
+photo                        1
+forms                        1
+aseicoder                    1
+only                         1
+youth                        1
+pulga                        1
+cristo                       1
+helped                       1
+noting                       1
+dale”                        1
+marzo                        1
+knockout                     1
+cortesía                     1
+uno                          1
+dedicate                     1
+(his                         1
+multi-purpose                1
+yosoyluisk                   1
+internacional                1
+hu_jintao                    1
+after                        1
+tunes                        1
+organización                 1
+albiceleste                  1
+off                          1
+edition                      1
+(universidad                 1
+parques                      1
+yemen                        1
+but                          1
+considering                  1
+canales                      1
+lugar                        1
+salvador                     1
+debut                        1
+electrónico                  1
+introducción                 1
+strain                       1
+year”                        1
+cortar                       1
+toma                         1
+bradford                     1
+estimated                    1
+sepln                        1
+highlights                   1
+released                     1
+insuperables                 1
+(since                       1
+male                         1
+años                         1
+mala                         1
+album                        1
+through                      1
+inauguration                 1
+2011_evento_de_inauguración_d1
+estables                     1
+espacio                      1
+messi                        1
+single                       1
+cual                         1
+datos                        1
+ortiz                        1
+inconsistencies              1
+reggaetón                    1
+make                         1
+south                        1
+fifa                         1
+shakira__hips_don't_lie_parti1
+births                       1
+tico                         1
+inauguración_del_estadio_naci1
+activaciï                    1
+highest                      1
+second                       1
+administrativa               1
+briefly                      1
+release                      1
+sarapiqui                    1
+lack                         1
+been                         1
+90                           1
+"conteo"                     1
+donde                        1
+partie                       1
+desarrollado                 1
+record                       1
+eric                         1
+año                          1
+level                        1
+search                       1
+héctor                       1
+from                         1
+player                       1
+evening                      1
+oficinas                     1
+replaces                     1
+draw                         1
+recorded                     1
+other                        1
+fury                         1
+aficionado                   1
+played                       1
+coach                        1
+inauguracion_del_estadio_naci1
+villa                        1
+tribunal                     1
+entry                        1
+fussballtempel               1
+before                       1
+star's                       1
+74                           1
+hips                         1
+rebuilt                      1
+½as                          1
+faquires                     1
+2000s                        1
+pueblo                       1
+gestión                      1
+dando                        1
+received                     1
+referentes                   1
+entre                        1
+eso                          1
+artist                       1
+with                         1
+recreación                   1
+originally                   1
+tuesday                      1
+video_inauguracion_estadio_na1
+albums                       1
+hannah_gabriel_vs_melisenda_e1
+orphans                      1
+name                         1
+tornadoes                    1
+sánchez                      1
+palmeras                     1
+threatening                  1
+yourself                     1
+instituciones                1
+beat                         1
+industry                     1
+58                           1
+57                           1
+51                           1
+sites                        1
+unthinkable                  1
+50                           1
+changes                      1
+once                         1
+american                     1
+sales                        1
+2000)                        1
+cárdenas                     1
+emergencias                  1
+rap                          1
+transmision                  1
+(born                        1
+línea                        1
+construido                   1
+hub                          1
+48                           1
+informática                  1
+details                      1
+noriega                      1
+43                           1
+singer                       1
+(while                       1
+history's                    1
+children                     1
+relocates                    1
+text                         1
+kuduro                       1
+uploaded                     1
+cc-by-sa                     1
+sleep                        1
+_juego_de_polvora_26-marzo-201
+places                       1
+prácticas                    1
+biography                    1
+iniciar                      1
+playlist                     1
+recreativos                  1
+39                           1
+campo                        1
+made                         1
+udc                          1
+album"                       1
+sued                         1
+32                           1
+31                           1
+30                           1
+usted                        1
+(costa                       1
+toda                         1
+inaugural                    1
+ucr                          1
+estudiantiles                1
+½ola                         1
+lolamk1                      1
+rodriguez                    1
+29                           1
+sentados                     1
+dela                         1
+28                           1
+colaboración                 1
+26                           1
+25                           1
+costo                        1
+24                           1
+23                           1
+22                           1
+lucro                        1
+african                      1
+diva"                        1
+conservar                    1
+again                        1
+ent                          1
+myspace                      1
+musicians                    1
+17                           1
+institucional                1
+end                          1
+localizado                   1
+february                     1
+presents                     1
+"urban                       1
+nyc                          1
+tests                        1
+salas                        1
+bases                        1
+miami                        1
+09                           1
+08                           1
+07                           1
+presenta                     1
+06                           1
+05                           1
+04                           1
+03                           1
+02                           1
+01                           1
+delante                      1
+earlier                      1
+00                           1
+repasamos                    1
+efforts                      1
+validaciï                    1
+revista                      1
+international                1
+mundial                      1
+award                        1
+herald                       1
+virtual                      1
+synonym                      1
+externas                     1
+edwards                      1
+(soccer)                     1
+omar's                       1
+external                     1
+colmadas                     1
+jesús                        1
+entrenamiento                1
+2-1                          1
+2-0                          1
+will                         1
+followed                     1
+charts                       1
+honduras                     1
+licensed                     1
+500                          1
+show                         1
+months                       1
+pérez                        1
+part                         1
+española                     1
+flash                        1
+dotada                       1
+directo"                     1
+extend                       1
+huelva                       1
+personnel                    1
+vida                         1
+--                           1
+vistas                       1
+también                      1
+custody                      1
+bendoo                       1
+ending                       1
+servicio                     1
+prosecution                  1
+cigarette                    1
+hannah                       1
+vico                         1
+maria                        1
+olvidaron                    1
+email                        1
+navigación                   1
+alimentadas                  1
+cómodamente                  1
+home                         1
+label                        1
+victoria                     1
+hacia                        1
+rights                       1
+virgin                       1
+beijing                      1
+jackie                       1
+popular                      1
+dozen                        1
+hitman                       1
+supporters                   1
+weather                      1
+dozens                       1
+exclusivos                   1
+finance                      1
+poderes                      1
+city's                       1
+featured                     1
+_costa_rica_2011             1
+tendrá                       1
+stadium                      1
+puntillas                    1
+1990                         1
+order                        1
+walked                       1
+close                        1
+varios                       1
+read                         1
+aiming                       1
+which                        1
+dienteguapo                  1
+figuras                      1
+gallery                      1
+marijuana                    1
+figuran                      1
+destacadas                   1
+grabado                      1
+índice                       1
+1987                         1
+1986                         1
+1985                         1
+1984                         1
+investigaciï                 1
+ricans                       1
+argentinian                  1
+transportation               1
+punto                        1
+josé                         1
+ambiental                    1
+his                          1
+submit                       1
+musical                      1
+coruña                       1
+him                          1
+pages                        1
+rivera                       1
+heredia                      1
+1978                         1
+i've                         1
+dj's                         1
+team's                       1
+between                      1
+gigante                      1
+community                    1
+semana                       1
+sitioderechos                1
+two                          1
+grammy                       1
+200m                         1
+instituto                    1
+now                          1
+singing                      1
+not                          1
+mexicana                     1
+yahoo                        1
+solo_singer                  1
+goal                         1
+september                    1
+bastiones                    1
+"hasta                       1
+1978)                        1
+group                        1
+robotica"                    1
+march                        1
+rafael                       1
+occasionally                 1
+"los                         1
+stadiums                     1
+objetivos                    1
+sede                         1
+personal                     1
+companions                   1
+2009                         1
+2007                         1
+2006                         1
+2005                         1
+nominated                    1
+2004                         1
+2003                         1
+establecer                   1
+certified                    1
+2001                         1
+away                         1
+qualifying                   1
+inició                       1
+revistapuromotor             1
+music                        1
+luces                        1
+xxvii                        1
+temas                        1
+sudáfrica                    1
+walroca1                     1
+encontraba                   1
+verdadero                    1
+central                      1
+casa                         1
+inagurado                    1
+jose                         1
+days                         1
+construcción                 1
+equipos                      1
+confirmed                    1
+seating                      1
+sabia                        1
+jotabequ                     1
+aficionados                  1
+www                          1
+supervisado                  1
+studio                       1
+minutos                      1
+appeared                     1
+stadium)                     1
+argentina                    1
+cara                         1
+redimude                     1
+seat                         1
+daddy                        1
+sociedad                     1
+alexandria                   1
+idon's                       1
+espectacular                 1
+1924                         1
+juego                        1
+goran                        1
+#1                           1
+furious                      1
+your                         1
+paracodicader                1
+living                       1
+uruguayo                     1
+protestant                   1
+1940)                        1
+lionel                       1
+conceptos                    1
+page                         1
+estados                      1
+anual                        1
+música                       1
+opening                      1
+prepare                      1
+"inconclusive"               1
+live                         1
+players                      1
+gestal                       1
+durante                      1
+sprinter                     1
+recognized                   1
+member                       1
+has                          1
+cosce                        1
+creative                     1
+"salió                       1
+rica-2011                    1
+discography                  1
+han                          1
+santo                        1
+king                         1
+had                          1
+extract                      1
+spirit                       1
+began                        1
+april                        1
+santa                        1
+(26                          1
+spanish-language             1
+unidos                       1
+culturales                   1
+(20                          1
+pregnancy                    1
+us$100                       1
+defensor                     1
+top                          1
+shuffle                      1
+list                         1
+date                         1
+centroamérica                1
+continuo                     1
+investigación                1
+siguiente                    1
+matches                      1
+association                  1
+during                       1
+month                        1
+witnesses                    1
+story                        1
+escenario                    1
+seminarios                   1
+stolen                       1
+9°56′11″n                    1
+atender                      1
+detained                     1
+store                        1
+friedly                      1
+incluirá                     1
+friendly                     1
+in-store                     1
+just                         1
+documento                    1
+actually                     1
+ended                        1
+26-marzo-2011                1
+here                         1
+new                          1
+where                        1
+net                          1
+juliocr86                    1
+jackson                      1
+they                         1
+rincondeunescritor           1
+images                       1
+ámbito                       1
+imagen                       1
+descent                      1
+tarea                        1
+“angelito”                   1
+save                         1
+san_josé_costa_rica          1
+then                         1
+jury                         1
+requested                    1
+oeste                        1
+team                         1
+northern                     1
+federico                     1
+jersey                       1
+expected                     1
+owner                        1
+issue                        1
+back                         1
+origin                       1
+won                          1
+football                     1
+exposiciones                 1
+tecnología                   1
+official                     1
+taboo                        1
+trabajan                     1
+relacionados                 1
+guadalupe                    1
+salones                      1
+faiyez                       1
+arquitectura                 1
+copies                       1
+another                      1
+singer-songwriter            1
+groin                        1
+óscar_arias                  1
+previously                   1
+elected                      1
+discusión                    1
+jugadores                    1
+catapulted                   1
+charting                     1
+are                          1
+working                      1
+mismo                        1
+capital                      1
+ya                           1
+charges                      1
+never                        1
+actualidad                   1
+lind                         1
+difundir                     1
+producers                    1
+examen                       1
+duo                          1
+inauguracion_estadio_nacional1
+latin                        1
+signed                       1
+languages                    1
+argentina's                  1
+aspx                         1
+rappers                      1
+tic                          1
+además                       1
+due                          1
+spears                       1
+were                         1
+that                         1
+than                         1
+america                      1
+fundamentos                  1
+unos                         1
+mucho                        1
+kings"                       1
+j-tv                         1
+apr                          1
+decade                       1
+presupuestos                 1
+wn                           1
+june                         1
+original                     1
+asociaciones                 1
+recurrentes                  1
+oxígeno                      1
+objeto                       1
+barrio                       1
+account                      1
+songwriters                  1
+became                       1
+rowdy                        1
+held                         1
+vs                           1
+facilidades                  1
+reggaeton                    1
+vi                           1
+ciudad                       1
+suffered                     1
+kids                         1
+july                         1
+like                         1
+osorio                       1
+any                          1
+universal                    1
+federaciones                 1
+us                           1
+_2011                        1
+up                           1
+specifically                 1
+arias                        1
+besides                      1
+financing                    1
+songs                        1
+weighty                      1
+and                          1
+traspasos                    1
+unete                        1
+deberán                      1
+alfombras                    1
+aprendizaje                  1
+went                         1
+later                        1
+pasar                        1
+tv                           1
+chart                        1
+primer                       1
+rican                        1
+th                           1
+who                          1
+reloaded                     1
+night                        1
+unable                       1
+capacitación                 1
+witness                      1
+tipos                        1
+all                          1
+performed                    1
+omar                         1
+si                           1
+pulled                       1
+jintao                       1
+archives                     1
+franklin                     1
+publicadas                   1
+atletismo                    1
+don                          1
+simposios                    1
+background                   1
+landrón                      1
+entered                      1
+criterios                    1
+location                     1
+rica)                        1
+105                          1
+peace                        1
+ánimo                        1
+definitely                   1
+luxury                       1
+donomar                      1
+shakira                      1
+[cd                          1
+developed                    1
+mï                           1
+cuartos                      1
+butacas                      1
+hip-hop                      1
+coordinates                  1
+dna                          1
+negative                     1
+jun                          1
+interest                     1
+jul                          1
+police                       1
+life                         1
+costa_rica_nuevo_estadio_naci1
+should                       1
+radio                        1
+point                        1
+mainly                       1
+"sexy                        1
+informe                      1
+edición                      1
+bibliografía                 1
+upload                       1
+informa                      1
+fanhouse                     1
+acto                         1
+derechos                     1
+most                         1
+sicyos                       1
+deportes                     1
+stronghold                   1
+hanna_gabriels_vs_melisenda_p1
+fase                         1
+backup                       1
+star                         1
+impresionante                1
+deportivas                   1
+singers                      1
+inauguracion_del_estadio_naci1
+limón)                       1
+or                           1
+on                           1
+hecho                        1
+event                        1
+contraloría                  1
+of                           1
+ranking                      1
+deporte                      1
+intercambio                  1
+1-0                          1
+nobel                        1
+more                         1
+platinum                     1
+asian                        1
+inauguración                 1
+located                      1
+dada                         1
+ocasiones                    1
+age                          1
+besting                      1
+domingo                      1
+universidade                 1
+demolition                   1
+(featuring                   1
+vuelta                       1
+polvora                      1
+rotator                      1
+was                          1
+war                          1
+me                           1
+propias                      1
+quiénes                      1
+reservados                   1
+mc                           1
+into                         1
+don_omar__inauguracion_estadi1
+lp                           1
+relacionadas                 1
+reportaje                    1
+injury                       1
+le                           1
+over                         1
+“dale                        1
+hearings                     1
+visita                       1
+first                        1
+discjockey                   1
+ko                           1
+week                         1
+fans                         1
+2006-2008                    1
+boxeo                        1
+artists                      1
+barcelona                    1
+add                          1
+login                        1
+mrfarellano                  1
+"up                          1
+"virtual                     1
+references                   1
+youtube                      1
+partidos                     1
+juan                         1
+go(dot)cr                    1
+creaciï                      1
+luny                         1
+twitter                      1
+(sepln)                      1
+disputará                    1
+take                         1
+brenes                       1
+seleccionados                1
+formada                      1
+dropped                      1
+fuera                        1
+eventuales                   1
+actividades                  1
+regional                     1
+iv                           1
+it                           1
+is                           1
+ir                           1
+being                        1
+in                           1
+edit                         1
+if                           1
+offered                      1
+$70                          1
+único                        1
+hu                           1
+entran                       1
+strauss-kahn                 1
+dï                           1
+leaders                      1
+retroalimentaciï             1
+gabriels                     1
+premios                      1
+accompanied                  1
+dec                          1
+parte                        1
+depto                        1
+he                           1
+hd                           1
+broke                        1
+costarica                    1
+career                       1
+socios                       1
+when                         1
+prize                        1
+antiguo                      1
+miranda                      1
+lavozdelpueblo               1
+opened                       1
+concert                      1
+photograph                   1
+organization                 1
+rivals                       1
+cuerpo                       1
+recreativa                   1
+leandro                      1
+sirve                        1
+anytime                      1
+previous                     1
+rating                       1
+bï                           1
+ocho                         1
+mp4                          1
+sermons                      1
+rhythm                       1
+solis(at)icoder              1
+proveeduría                  1
+could                        1
+loca                         1
+fc                           1
+historia                     1
+fa                           1
+training                     1
+sus                          1
+desafío                      1
+2011_mp4                     1
+province                     1
+earned                       1
+pirotécnico                  1
+ayer                         1
+estudiante                   1
+g8                           1
+contra                       1
+better                       1
+soccer                       1
+ramírez                      1
+have                         1
+chaco                        1
+third                        1
+ï                            1
+father                       1
+network                      1
+get                          1
+known                        1
+está                         1
+estadio_nacional_de_costa_ric1
+oldest                       1
+alto                         1
+blank                        1
+denied                       1
+marcos                       1
+feedback                     1
+dollars                      1
+dj                           1
+relevance                    1
+futbol                       1
+eliel                        1
+also                         1
+clear                        1
+½                            1
+2010-present                 1
+ticos                        1
+molido                       1
+la_sabana                    1
+auditoría                    1
+pop                          1
+cr                           1
+facebook                     1
+yankee)                      1
+luego                        1
+game                         1
+millones                     1
+judge                        1
+realizaron                   1
+match                        1
+history                      1
+rotated                      1
+britney                      1
+by                           1
+procesamiento                1
+melisenda                    1
+spot                         1
+yankee's                     1
+posponed                     1
+lenguaje                     1
+exterior                     1
+be                           1
+viaje                        1
+comisión                     1
+leave                        1
+servicios                    1
+reorder                      1
+presentation                 1
+estimado                     1
+hanna                        1
+myspanishsite                1
+internos                     1
+mix                          1
+intentará                    1
+|                            1
+at                           1
+as                           1
+reuniones                    1
+pólvora                      1
+justin                       1
+comenzaron                   1
+x                            1
+u                            1
+an                           1
+"fuerza                      1
+encuentro                    1
+s                            1
+shocked                      1
+mil                          1
+o                            1
+n                            1
+m                            1
+countries                    1
+thoughts                     1
+i                            1
+ahora                        1
+este                         1
+category                     1
+correo                       1
+e                            1
+modo                         1
+d                            1
+c                            1
+company                      1
+claimed                      1
+autoplay                     1
+medical                      1
+dólares                      1
+santurce                     1
+@                            1
+country                      1
+reinierocks                  1
+numerarios                   1
+wikipedia                    1
+carolina                     1
+close"                       1
+ground                       1
+roughest                     1
+)                            1
+(                            1
+&                            1
+grupos                       1
+against                      1
+ajedrez                      1
+hd_juego_de_polvora_inaugurac1
+somos                        1
+wearing                      1
+'01                          1
+published                    1
+completed                    1
+sms                          1
+tr3s                         1
+2000–present                 1
+genus                        1
+decision                     1
+recording                    1

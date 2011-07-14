@@ -293,11 +293,11 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         ComparadorTerminosAlfabetico c = new ComparadorTerminosAlfabetico();
         Arrays.sort(vectorTerminos, c);        
         String termino;
-        escritor.guardarStringLn(((Termino)vectorTerminos[0]).impresionParaVocabulario(), ruta + "vocabulario.txt", false);
+        escritor.guardarStringLn(((Termino)vectorTerminos[0]).impresionParaVocabulario(), ruta + "vocabulario.schema", false);
         for (int i = 1; i < size; i++){
             //termino = llaves.nextElement();
             //escritor.guardarStringLn(termino + " " + terminos.get(termino), ruta + "vocabulario.txt", true);
-            escritor.guardarStringLn(((Termino)vectorTerminos[i]).impresionParaVocabulario(), ruta + "vocabulario.txt", true);
+            escritor.guardarStringLn(((Termino)vectorTerminos[i]).impresionParaVocabulario(), ruta + "vocabulario.schema", true);
             //System.out.println("termino " + (i+1) + " " + termino + " frecuencia " + terminos.get(termino));
         }
     }
@@ -333,8 +333,8 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         int inicioFrecuencia;
         Double frecuencia;
         Double [] ws;
-        Double [] norma = new Double [terminos.size()];
-        for(int i = 0;i<terminos.size();i++) 
+        Double [] norma = new Double [(int)Termino.getTotalDocumentos()];
+        for(int i = 0;i<norma.length;i++) 
             norma[i]=0.0;
         Double w;
         String cadena;
@@ -359,19 +359,23 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                                                 archivo.indexOf("\n",inicioFrecuencia)==-1?archivo.length():archivo.indexOf("\n",inicioFrecuencia)).trim());
                 
                 //ws[numDoc] = frecuencia * terminos.get(vectTerminos[numTermino]).idf();                         
+                
                 w = frecuencia * terminos.get(vectTerminos[numTermino].toString()).idf();
-                cadena += vectDocumentos[numDoc] + "       ".substring(0,vectDocumentos[numDoc].toString().length()>7?7:7-vectDocumentos[numDoc].toString().length())
-                        + w + "       ".substring(0,w.toString().length()>7?7:7-w.toString().length())+ "\n";
-                norma[numDoc] += w*w;            
+                String wString = w.toString().length()>7?w.toString().substring(0,7):w.toString();
+                cadena += vectDocumentos[numDoc] + "       ".substring(0,vectDocumentos[numDoc].toString().length()>7?0:7-vectDocumentos[numDoc].length())
+                        + wString + "       ".substring(0,w.toString().length()>7?0:7-w.toString().length())+ "\n";
+                norma[Integer.parseInt(vectDocumentos[numDoc])] += w*w;            
             } 
             
             /*Guarda los ids de los doc donde aparece el termino junto con el w en el doc*/          
             escritor.guardarString(cadena, ruta+"Postings.schema", true);            
         }
         /*se termina de calcular la norma y se guarda*/
-        cadena = "";        
-        for(int i=0;i<terminos.size();i++){
-            cadena += Math.sqrt(norma[i])+"\n"; 
+        cadena = "";
+        String normaDocu;
+        for(int i=0;i<norma.length;i++){
+            normaDocu = Math.sqrt(norma[i]) + "";
+            cadena += (normaDocu.length()>7? normaDocu.substring(0,7):normaDocu + "       ".substring(0,7-normaDocu.toString().length()))+"\n"; 
         }
         escritor.guardarStringLn(cadena, ruta+"Norma.schema", false);
             

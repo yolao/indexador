@@ -12,6 +12,13 @@ public class Termino {
     /*Contiene el termino*/
 //    private static long totalTerminos;
     private static long totalDocumentos;
+
+    /**
+     * @return the totalDocumentos
+     */
+    public static long getTotalDocumentos() {
+        return totalDocumentos;
+    }
     /*Contiene los indices de los documentos que continen el termino, para crear el postings*/
     private String documentosContenedores;
     private String termino;
@@ -77,23 +84,23 @@ public class Termino {
     }   
     
     public String toString(){
-        int tamano = termino.length();        
-        return (tamano > 30? termino.substring(0, 29) : termino)
-/*termino*/     + "                               ".substring(0,tamano>30? 0 : 29-termino.length())
+        int tamano = getTermino().length();        
+        return (tamano > 30? getTermino().substring(0, 29) : getTermino())
+/*termino*/     + "                               ".substring(0,tamano>30? 0 : 29-getTermino().length())
 /*CantDocus*/   + aparicionesEnColeccion;       
         
     }
     
     public String impresionParaVocabulario(){
-        int tamano = termino.length();
+        int tamano = getTermino().length();
         long tempCont = contador;
         contador += aparicionesEnColeccion;
-        String idf = Math.log10(Double.parseDouble(totalDocumentos+"")/Double.parseDouble(this.aparicionesEnColeccion+""))+"";
+        String idf = Math.log10(Double.parseDouble(getTotalDocumentos()+"")/Double.parseDouble(this.aparicionesEnColeccion+""))+"";
         if(idf.length()>7)
             idf = idf.substring(0,7);
         String apariciones = aparicionesEnColeccion+"";
-        return  termino
-/*termino 0-4*/ + "                               ".substring(0,5-termino.length())/**/
+        return  getTermino()
+/*termino 0-4*/ + "                               ".substring(0,5-getTermino().length())/**/
 /*idf 6-12*/    + idf
                 + "                               ".substring(0,8-idf.length())
 /*CantDocu14-19*/+ apariciones
@@ -110,7 +117,7 @@ public class Termino {
     }
     
     public double idf(){
-        return Math.log10(totalDocumentos/this.aparicionesEnColeccion);
+        return Math.log10(getTotalDocumentos()/this.aparicionesEnColeccion);
     }
     /**
      * @param termino el término
