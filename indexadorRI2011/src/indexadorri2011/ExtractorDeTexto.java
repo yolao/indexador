@@ -307,7 +307,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         return null;
     }
 
-    void crearPosingsYNorma(String rutaColeccion) {
+    void crearPostingsYNorma(String rutaColeccion) {
         long cantTerminos = terminos.size();
         
         ManejadorArchivosTexto lector = new ManejadorArchivosTexto();
@@ -321,13 +321,15 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         Double frecuencia;
         Double [] ws;
         Double [] norma = new Double [terminos.size()];
+        Double w;
+        String cadena;
         /*Se recorren todos los terminos de la colección*/
         for(int numTermino=0;numTermino<cantTerminos;numTermino++){
             /*Se sacan los documentos donde aparece este termino*/
             vectDocumentos = vectTerminos[numTermino].split("\n");
             /*Guarda los ws de un termino*/
             ws = new Double [vectDocumentos.length];
-            
+            cadena = "";
             /*Se recorren los documentos donde aparece el termino*/
             for(int numDoc=0;numDoc<vectDocumentos.length;numDoc++){
                 archivo = lector.leerTodoArchivo(rutaColeccion+numDoc+".txt");////////////**************se puede mejorar
@@ -336,14 +338,21 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                 inicioFrecuencia =inicioPalabra+vectTerminos[numTermino].length()+1;
                 frecuencia = Double.parseDouble(archivo.substring(inicioFrecuencia, archivo.indexOf("\n",inicioFrecuencia)).trim());
                 
-                ws[numDoc] = frecuencia * terminos.get(vectTerminos[numTermino]).idf();                         
-                norma[numDoc] += ws[numDoc]*ws[numDoc];                
-            }
-            
+                //ws[numDoc] = frecuencia * terminos.get(vectTerminos[numTermino]).idf();                         
+                w = frecuencia * terminos.get(vectTerminos[numTermino]).idf();
+                cadena += vectDocumentos[numDoc] + "       ".substring(0,7-vectDocumentos[numDoc].length())
+                        + w + "\n";
+                norma[numDoc] += w*w;            
+            }            
             /*Guarda los ids de los doc donde aparece el termino junto con el w en el doc*/          
-            
+            escritorPostings.guardarString(cadena, rutaColeccion+"Postings.schema", true);            
         }
         /*se termina de calcular la norma y se guarda*/
+        cadena = "";        
+        for(int i=0;i<terminos.size();i++){
+            cadena += Math.sqrt(norma[i])+"\n"; 
+        }
+        escritorPostings.guardarString(cadena, rutaColeccion+"Norma.schema", true);
             
     }
 }

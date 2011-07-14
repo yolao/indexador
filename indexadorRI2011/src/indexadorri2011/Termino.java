@@ -86,14 +86,17 @@ public class Termino {
         long tempCont = contador;
         contador += aparicionesEnColeccion;
         String idf = Math.log(totalDocumentos/this.aparicionesEnColeccion)+"";
+        if(idf.length()>7)
+            idf = idf.substring(0,7);
         String apariciones = aparicionesEnColeccion+"";
-        return (tamano > 30? termino.substring(0, 29) : termino)
-/*termino*/     + "                               ".substring(0,tamano>30? 0 : 29-termino.length())
-/*idf*/         + idf
-                + "                               ".substring(0,tamano>10? 0 : 9-idf.length())
-/*CantDocus*/   + apariciones
-                + "                               ".substring(0,tamano>10? 0 : 9-apariciones.length())
-/*posInicial*/  + tempCont;       
+        return  termino
+/*termino 0-4*/ + "                               ".substring(0,5-termino.length())/**/
+/*idf 6-12*/    + idf
+                + "                               ".substring(0,8-idf.length())
+/*CantDocu14-19*/+ apariciones
+                + "                               ".substring(0,7-apariciones.length())
+/*posInicial*/  + tempCont
+                + "                               ".substring(0,10-apariciones.length());       
         
     }
     /**

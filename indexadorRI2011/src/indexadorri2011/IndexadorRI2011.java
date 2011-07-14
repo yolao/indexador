@@ -121,7 +121,7 @@ public class IndexadorRI2011 {
         /*Crear el vocabulario con todos los campos que pide casa usando el método imprimirParaVocabulario*/
         extractor.crearVocabularioCompleto(rutaNueva);
         /*Crear el posting y norma dentro de extractor*/
-        extractor.crearPosingsYNorma(rutaNueva);
+        extractor.crearPostingsYNorma(rutaNueva);
         
     }
 }

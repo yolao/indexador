@@ -63,8 +63,9 @@ class ManejadorArchivosTexto {
     String linea=null;
     if(archivo!=null){
             try {
-                for(int i=0;i<=numLinea;i++)
-                    linea = flujoEntrada.readLine();
+                for(int i=0;i<numLinea;i++)
+                    flujoEntrada.readLine();
+                linea = flujoEntrada.readLine();
             } catch (IOException ex) {
                 Logger.getLogger(ManejadorArchivosTexto.class.getName()).log(Level.SEVERE, null, ex);
             }
