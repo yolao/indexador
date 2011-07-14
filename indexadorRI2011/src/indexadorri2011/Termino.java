@@ -24,7 +24,7 @@ public class Termino {
 
     public void fusionar(Termino termino){
         contador = 0;
-        this.aparicionesEnColeccion += termino.aparicionesEnColeccion;
+        //this.aparicionesEnColeccion += termino.aparicionesEnColeccion;
         String [] contenedoresLocal = documentosContenedores.split("\n");
         String [] contenedoresFusionar = termino.documentosContenedores.split("\n");
         int indiceLocal =0;
@@ -60,6 +60,7 @@ public class Termino {
             }
         }
         this.documentosContenedores = contenedoresFusionados;
+        this.aparicionesEnColeccion=this.documentosContenedores.split("\n").length;
     }
     public Termino(String termino, int aparicionesEnDocumentos){
         this.termino=termino;
@@ -87,7 +88,7 @@ public class Termino {
         int tamano = termino.length();
         long tempCont = contador;
         contador += aparicionesEnColeccion;
-        String idf = Math.log(totalDocumentos/this.aparicionesEnColeccion)+"";
+        String idf = Math.log10(Double.parseDouble(totalDocumentos+"")/Double.parseDouble(this.aparicionesEnColeccion+""))+"";
         if(idf.length()>7)
             idf = idf.substring(0,7);
         String apariciones = aparicionesEnColeccion+"";

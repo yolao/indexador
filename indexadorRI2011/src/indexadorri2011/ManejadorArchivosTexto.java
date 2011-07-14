@@ -205,7 +205,7 @@ class ManejadorArchivosTexto {
   }
 
     // Guarda en archivo un grupo de líneas de texto
-  public boolean guardarString(String texto, String elNombreArchivo, boolean append) {
+  public boolean guardarStringLn(String texto, String elNombreArchivo, boolean append) {
     boolean guardoExitoso=true;
 
     if ((elNombreArchivo == null)&&(texto!=null)) {
@@ -217,6 +217,32 @@ class ManejadorArchivosTexto {
         flujoSalida = new PrintWriter(new FileWriter(elNombreArchivo, append));
 
         flujoSalida.println(texto);
+
+      } catch(IOException e) {
+        guardoExitoso = false;
+      }
+
+      if (flujoSalida!=null) { // Cierra el flujo de salida y libera cualquier recurso del sistema asociado con �l
+        flujoSalida.close();
+      }
+    }else {
+      guardoExitoso = false;
+    }
+    return guardoExitoso;
+  }
+    // Guarda en archivo un grupo de líneas de texto
+  public boolean guardarString(String texto, String elNombreArchivo, boolean append) {
+    boolean guardoExitoso=true;
+
+    if ((elNombreArchivo == null)&&(texto!=null)) {
+      elNombreArchivo = this.obtenerNombreArchivo(MODO_ESCRITURA);
+    }
+
+    if ((elNombreArchivo!=null) && (texto!=null)) {
+      try {
+        flujoSalida = new PrintWriter(new FileWriter(elNombreArchivo, append));
+
+        flujoSalida.print(texto);
 
       } catch(IOException e) {
         guardoExitoso = false;

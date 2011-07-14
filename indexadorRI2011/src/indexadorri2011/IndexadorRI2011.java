@@ -63,10 +63,10 @@ public class IndexadorRI2011 {
             ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
             // La primera vez crea el archivo, desp solo agrega.
             if(carpeta == 1){
-                escritor.guardarString(urls, (rutaNueva + "urls.txt"), false);
+                escritor.guardarStringLn(urls, (rutaNueva + "urls.txt"), false);
             }
             else
-                escritor.guardarString(urls, (rutaNueva + "urls.txt"), true);
+                escritor.guardarStringLn(urls, (rutaNueva + "urls.txt"), true);
         }
     }
 
