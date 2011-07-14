@@ -17,7 +17,7 @@ import java.lang.Double;
 public class IndexadorRI2011 {
     
     
-    private static String rutaNueva = "./coleccionCompleta/";
+    private static String rutaNueva = "./indice/";
     /**
      * @param args the command line arguments
      * D:\UCR\I-2011\RI\tareas\tarea7\indexadorRI2011\coleccion
@@ -111,17 +111,17 @@ public class IndexadorRI2011 {
             }
         }
         
-        extractor.crearVocabulario(rutaNueva);    
+        extractor.crearVocabulario("./indice/");    
 
                 /*sacar stopwords
          vocabulario y en archivitos*/
         
         /*Lematizar(extractor) sumando las posibles repeticiones */
-        extractor.eliminarStopWordsYLematizar(rutaColeccion, numArchivoGlobal, 5);
+        extractor.eliminarStopWordsYLematizar("./indice/", numArchivoGlobal, 5);
         /*Crear el vocabulario con todos los campos que pide casa usando el método imprimirParaVocabulario*/
-        extractor.crearVocabularioCompleto(rutaNueva);
+        extractor.crearVocabularioCompleto("./indice/");
         /*Crear el posting y norma dentro de extractor*/
-        extractor.crearPostingsYNorma(rutaNueva);
+        extractor.crearPostingsYNorma("./indice/");
         
     }
 }

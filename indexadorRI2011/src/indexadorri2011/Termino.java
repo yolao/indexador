@@ -34,27 +34,29 @@ public class Termino {
         String contenedoresFusionados = new String();
         valorTempLocal = Integer.parseInt(contenedoresLocal[indiceLocal]);
         valorTempFusionar = Integer.parseInt(contenedoresFusionar[indiceFusionar]);
-        while(indiceLocal < contenedoresLocal.length || indiceFusionar < contenedoresFusionar.length){
+        while(indiceLocal < contenedoresLocal.length || indiceFusionar < contenedoresFusionar.length-1){
             /*if(indiceLocal<contenedoresLocal.length)
                 valorTempLocal = Integer.parseInt(contenedoresLocal[indiceLocal]);
             //if(indiceFusionar<contenedoresFusionar.length)
                 valorTempFusionar = Integer.parseInt(contenedoresFusionar[indiceFusionar]);*/
-            if(indiceLocal < contenedoresLocal.length && valorTempLocal < valorTempFusionar){
+            if(indiceLocal < contenedoresLocal.length  && valorTempLocal < valorTempFusionar){
                 contenedoresFusionados += contenedoresLocal[indiceLocal] +"\n";
                 indiceLocal++;         
                 if(indiceLocal<contenedoresLocal.length)
                     valorTempLocal = Integer.parseInt(contenedoresLocal[indiceLocal]);
-            }else if(indiceFusionar<contenedoresFusionar.length && valorTempLocal > valorTempFusionar){
-                contenedoresFusionados += contenedoresFusionar[indiceLocal] +"\n";                
+            }else if(indiceFusionar<contenedoresFusionar.length&& valorTempLocal > valorTempFusionar){
+                contenedoresFusionados += contenedoresFusionar[indiceFusionar] +"\n";                
                 indiceFusionar++;
                 if(indiceFusionar<contenedoresFusionar.length)
-                    valorTempFusionar = Integer.parseInt(contenedoresFusionar[indiceLocal]);
+                    valorTempFusionar = Integer.parseInt(contenedoresFusionar[indiceFusionar]);
             }else{
                 contenedoresFusionados += contenedoresLocal[indiceLocal] +"\n";
                 indiceFusionar++;
                 indiceLocal++;             
                 if(indiceLocal<contenedoresLocal.length)
                     valorTempLocal = Integer.parseInt(contenedoresLocal[indiceLocal]);
+                if(indiceFusionar<contenedoresFusionar.length)
+                    valorTempFusionar = Integer.parseInt(contenedoresFusionar[indiceFusionar]);
             }
         }
         this.documentosContenedores = contenedoresFusionados;
@@ -66,7 +68,7 @@ public class Termino {
     }
     
     public void agregarDocumentoContenedor(long indiceDocumento){
-        documentosContenedores += "\n"+indiceDocumento;
+        documentosContenedores += indiceDocumento+"\n";
     }
     
     public String getDocumentosContenedores(){

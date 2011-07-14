@@ -81,6 +81,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                     //se agrega a la colección de términos Locales y Globales
                     terminos.put(word,new Termino(word, 1));
                     terminosLocales.put(word, 1.0);
+                    terminos.get(word).agregarDocumentoContenedor(indiceDocumento); 
                 }
                 //si el término ya existe
                 else{
@@ -90,14 +91,15 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                     if (valueLocal == null){
                         terminosLocales.put(word, 1.0);
                         //se incrementa su frecuencia en la colección                        
-                        terminos.get(word).sumarAparicion();
+                        terminos.get(word).sumarAparicion();                        
+                        terminos.get(word).agregarDocumentoContenedor(indiceDocumento); 
                         
                     }else{ //Ya fue encontrado dentro de este documento y se suma una aparicion mas
                         terminosLocales.remove(word);
                         terminosLocales.put(word,valueLocal+1);
                     }
                 }
-                terminos.get(word).agregarDocumentoContenedor(indiceDocumento); 
+
                 //System.out.println(word);
             }
         }
@@ -105,9 +107,9 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         return terminosLocales;
     }
     
-    private void eliminarStopWordsVocabulario () {
-        ManejadorArchivosTexto lector = new ManejadorArchivosTexto("vocabulario.txt");
-        String [] lineas = new String [(int)lector.getTamanno("vocabulario")];
+    private void eliminarStopWordsVocabulario (String ruta) {
+        ManejadorArchivosTexto lector = new ManejadorArchivosTexto(ruta+"vocabulario.txt");
+        String [] lineas = new String [terminos.size()/*int lector.getTamanno(ruta+"vocabulario.txt")*/];
         String linea = lector.leerLinea(0);   
         String [] termino;
         stopWords= new Hashtable<String,Integer>(150);
@@ -120,27 +122,27 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                     bandera=true;
                 stopWords.put(termino[0],0);
                 terminos.remove(termino[0]);
-                linea = lector.leerSiguienteLinea();
+                
             }
             else{
                 lineas[i] = linea;
                 i++;
             }
-
+            linea = lector.leerSiguienteLinea();
         }while(linea != null);
         ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
-        escritor.guardarLineasTexto(lineas,"vocabulario.txt",true);
+        escritor.guardarLineasTexto(lineas,ruta+"vocabulario.txt",false);
     }
         
     private void lematizar(Hashtable<String, Termino> tabla, int puntoCorte) {
-        String [] listaTerminos = (String [])tabla.keySet().toArray();
-        String terminoTemp = listaTerminos[0];
+        Object [] listaTerminos = tabla.keySet().toArray();
+        String terminoTemp = listaTerminos[0].toString();
         Termino termino;
         String lematizado;
         int cantTerminos = listaTerminos.length;
         for(int indice=0; indice < cantTerminos; indice++){//se recorren todos los términos
-            if(listaTerminos[indice].length()>puntoCorte){//si el termino necesita lematización
-                lematizado = listaTerminos[indice].substring(0,puntoCorte);
+            if(listaTerminos[indice].toString().length()>puntoCorte){//si el termino necesita lematización
+                lematizado = listaTerminos[indice].toString().substring(0,puntoCorte);
                 if(tabla.containsKey(lematizado)){//si la palabra lematizada concuerda con otra se deben fusionar
                     termino = tabla.get(lematizado);
                     termino.fusionar(tabla.get(listaTerminos[indice]));
@@ -156,10 +158,10 @@ public class ExtractorDeTexto <tipoFrecuencia>{
     }
     
     /*Método que lematiza la colección y el vocabulario*/
-    public void eliminarStopWordsYLematizar(String rutaColeccion, int cantidadArchivos,int puntoCorte){
+    public void eliminarStopWordsYLematizar(String ruta, int cantidadArchivos,int puntoCorte){
         /*Revisar que ya se hayan quitado las stopwords*/
         /*Y guardarlos stopwords dentro de una hasta table*/
-        this.eliminarStopWordsVocabulario();
+        this.eliminarStopWordsVocabulario(ruta);
         
         /*lematizar archivo vocabularioSote*/ 
         /*lematizar el hasTable y verificar exista la palabra en la hastable y sumarla*/
@@ -172,42 +174,48 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         String [] archivo;
         Double frecuenciaTemp;
         Double maxFrec = 0.0; 
+
         /*Itera en todos los archivos*/
         /*lematizar archivitos*/
         /*Crear hashtable a base de words y apariciones intra documento*/
         /*Guardar mayor frecuencia*/
         
-        for(int numDocumento=0;numDocumento<cantidadArchivos;numDocumento++){
-            archivo = lector.leerLineasTexto(rutaColeccion+numDocumento+".txt");
-            if(this.stopWords.get(archivo[numDocumento])!=null){//Si no es un stopWord
-                terminoTemp = archivo[numDocumento].split(" ");        
-                if(terminoTemp[0].length() > 5){//si el término ocupa lematizarse
-                    terminoTemp[0]=terminoTemp[0].substring(0,puntoCorte);
+        for(int numDocumento=0;numDocumento<cantidadArchivos;numDocumento++){//itera sobre los documentos
+            archivo = lector.leerLineasTexto(ruta+"/"+numDocumento+".txt");
+
+            for(int numTermino=0;numTermino<archivo.length;numTermino++){//iterar sobre los terminos del documento
+                terminoTemp = archivo[numTermino].split(" ");        
+                if(this.stopWords.get(terminoTemp[0])==null){//Si el término no es un stopWord                    
+                    
+                    if(terminoTemp[0].length() > puntoCorte){//si el término ocupa lematizarse                        
+                        terminoTemp[0]=terminoTemp[0].substring(0,puntoCorte);
+                    }
+
+                    if(documento.get(terminoTemp[0])!=null){//si el termino lematizado ya está en el documento
+                        //Sumar frecuencias
+                        frecuenciaTemp = Double.parseDouble(terminoTemp[terminoTemp.length-1])+documento.get(terminoTemp[0]);
+                        //Se reemplaza el termino en el documento
+                        documento.remove(terminoTemp[0]);
+                        documento.put(terminoTemp[0], frecuenciaTemp);                    
+                    }else{//si el termino no estaba en el documento
+                        frecuenciaTemp = Double.parseDouble(terminoTemp[terminoTemp.length-1]);
+                        documento.put(terminoTemp[0], frecuenciaTemp);
+                    } 
+                    if(frecuenciaTemp>maxFrec)
+                        maxFrec = frecuenciaTemp;
                 }
-                
-                if(documento.get(terminoTemp[0])!=null){//si el termino lematizado ya está en el documento
-                    //Sumar frecuencias
-                    frecuenciaTemp = Double.parseDouble(terminoTemp[terminoTemp.length-1])+documento.get(terminoTemp[0]);
-                    //Se reemplaza el termino en el documento
-                    documento.remove(terminoTemp[0]);
-                    documento.put(terminoTemp[0], frecuenciaTemp);                    
-                }else{//si el termino no estaba en el documento
-                    frecuenciaTemp = Double.parseDouble(terminoTemp[terminoTemp.length-1]);
-                    documento.put(terminoTemp[0], frecuenciaTemp);
-                } 
-                if(frecuenciaTemp>maxFrec)
-                    maxFrec = frecuenciaTemp;
             }
-            /*al terminar de lematizar todo recorro la hastable calculando frecuencia normalizada
+            /*al terminar de lematizar todo recorro la hashtable calculando frecuencia normalizada
              la del termino entre la mayor*/
-            for(int indice=0; indice < cantidadArchivos;indice++){
-                terminoTemp = (String []) documento.keySet().toArray();
-                frecuenciaTemp = documento.get(terminoTemp[indice]) / maxFrec ;                
-                documento.remove(terminoTemp[indice]);
-                documento.put(terminoTemp[indice], frecuenciaTemp);
+            Object [] arregloTerminosObj;
+            for(int indice=0; indice < documento.size();indice++){
+                arregloTerminosObj = documento.keySet().toArray();
+                frecuenciaTemp = documento.get(arregloTerminosObj[indice].toString()) / maxFrec ;                
+                documento.remove(arregloTerminosObj[indice].toString());
+                documento.put(arregloTerminosObj[indice].toString(), frecuenciaTemp);
             }
             /*Se llama guardarTerminos del extractor */
-            this.guardarTerminos(documento, rutaColeccion+numDocumento+".txt");
+            this.guardarTerminos(documento, ruta+numDocumento+".txt");
         }
 
     }
@@ -237,12 +245,13 @@ public class ExtractorDeTexto <tipoFrecuencia>{
      */
     private void guardarTerminos(Hashtable <String,Double> terminos, String nombreArchivo) {
         ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
-        int size = terminos.size();
+        int size = terminos.size();    
         String termino;
-        String [] terminosOrdenados = (String[])terminos.keySet().toArray();
-        for (int i = 0; i < size; i++){            
+        Object [] terminosOrdenados = terminos.keySet().toArray();
+        escritor.guardarString(terminosOrdenados[0].toString()+" "+terminos.get(terminosOrdenados[0]), nombreArchivo, false);
+        for (int i = 1; i < size; i++){            
             /*Se almacena el termino " " la frecuencia*/
-            escritor.guardarString(terminosOrdenados[i]+" "+terminos.get(terminosOrdenados[i]), nombreArchivo, true);
+            escritor.guardarString(terminosOrdenados[i].toString()+" "+terminos.get(terminosOrdenados[i]), nombreArchivo, true);
         }
     }
     
@@ -259,7 +268,9 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         ComparadorTerminos c = new ComparadorTerminos();
         Arrays.sort(vectorTerminos, c);        
         String termino;
-        for (int i = 0; i < size; i++){
+        escritor.guardarString(((Termino)vectorTerminos[0]).toString(), ruta + "vocabulario.txt", false);
+        
+        for (int i = 1; i < size; i++){
             //termino = llaves.nextElement();
             //escritor.guardarString(termino + " " + terminos.get(termino), ruta + "vocabulario.txt", true);
             escritor.guardarString(((Termino)vectorTerminos[i]).toString(), ruta + "vocabulario.txt", true);
@@ -280,7 +291,8 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         ComparadorTerminosAlfabetico c = new ComparadorTerminosAlfabetico();
         Arrays.sort(vectorTerminos, c);        
         String termino;
-        for (int i = 0; i < size; i++){
+        escritor.guardarString(((Termino)vectorTerminos[0]).impresionParaVocabulario(), ruta + "vocabulario.txt", false);
+        for (int i = 1; i < size; i++){
             //termino = llaves.nextElement();
             //escritor.guardarString(termino + " " + terminos.get(termino), ruta + "vocabulario.txt", true);
             escritor.guardarString(((Termino)vectorTerminos[i]).impresionParaVocabulario(), ruta + "vocabulario.txt", true);
@@ -307,13 +319,12 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         return null;
     }
 
-    void crearPostingsYNorma(String rutaColeccion) {
+    void crearPostingsYNorma(String ruta) {
         long cantTerminos = terminos.size();
         
         ManejadorArchivosTexto lector = new ManejadorArchivosTexto();
-        ManejadorArchivosTexto escritorPostings = new ManejadorArchivosTexto();
-        ManejadorArchivosTexto escritorNorma = new ManejadorArchivosTexto();
-        String[] vectTerminos = (String [])terminos.keySet().toArray();
+        ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
+        Object[] vectTerminos = terminos.keySet().toArray();
         String[] vectDocumentos;
         String archivo;
         int inicioPalabra;
@@ -321,38 +332,41 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         Double frecuencia;
         Double [] ws;
         Double [] norma = new Double [terminos.size()];
+        for(int i = 0;i<terminos.size();i++) 
+            norma[i]=0.0;
         Double w;
         String cadena;
+        escritor.guardarString("", ruta+"Postings.schema", false); 
         /*Se recorren todos los terminos de la colección*/
         for(int numTermino=0;numTermino<cantTerminos;numTermino++){
             /*Se sacan los documentos donde aparece este termino*/
-            vectDocumentos = vectTerminos[numTermino].split("\n");
+            vectDocumentos = terminos.get(vectTerminos[numTermino].toString()).getDocumentosContenedores().split("\n");
             /*Guarda los ws de un termino*/
             ws = new Double [vectDocumentos.length];
             cadena = "";
             /*Se recorren los documentos donde aparece el termino*/
             for(int numDoc=0;numDoc<vectDocumentos.length;numDoc++){
-                archivo = lector.leerTodoArchivo(rutaColeccion+numDoc+".txt");////////////**************se puede mejorar
-                inicioPalabra = archivo.indexOf(vectTerminos[numTermino]);
+                archivo = lector.leerTodoArchivo(ruta+vectDocumentos[numDoc]+".txt");////////////**************se puede mejorar
+                inicioPalabra = archivo.indexOf(vectTerminos[numTermino].toString()+" ");
                 /*donde inicia la palabra, se salta la palabra y se salta un espacio en blanco*/
-                inicioFrecuencia =inicioPalabra+vectTerminos[numTermino].length()+1;
+                inicioFrecuencia =inicioPalabra+vectTerminos[numTermino].toString().length()+1;
                 frecuencia = Double.parseDouble(archivo.substring(inicioFrecuencia, archivo.indexOf("\n",inicioFrecuencia)).trim());
                 
                 //ws[numDoc] = frecuencia * terminos.get(vectTerminos[numTermino]).idf();                         
-                w = frecuencia * terminos.get(vectTerminos[numTermino]).idf();
-                cadena += vectDocumentos[numDoc] + "       ".substring(0,7-vectDocumentos[numDoc].length())
-                        + w + "\n";
+                w = frecuencia * terminos.get(vectTerminos[numTermino].toString()).idf();
+                cadena += vectDocumentos[numDoc] + "       ".substring(0,vectDocumentos[numDoc].length()>7?7:7-vectDocumentos[numDoc].length())
+                        + w + "       ".substring(0,w.toString().length()>7?7:7-w.toString().length())+ "\n";
                 norma[numDoc] += w*w;            
             }            
             /*Guarda los ids de los doc donde aparece el termino junto con el w en el doc*/          
-            escritorPostings.guardarString(cadena, rutaColeccion+"Postings.schema", true);            
+            escritor.guardarString(cadena, ruta+"Postings.schema", true);            
         }
         /*se termina de calcular la norma y se guarda*/
         cadena = "";        
         for(int i=0;i<terminos.size();i++){
             cadena += Math.sqrt(norma[i])+"\n"; 
         }
-        escritorPostings.guardarString(cadena, rutaColeccion+"Norma.schema", true);
+        escritor.guardarString(cadena, ruta+"Norma.schema", false);
             
     }
 }
