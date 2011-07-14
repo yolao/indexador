@@ -338,7 +338,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
             norma[i]=0.0;
         Double w;
         String cadena;
-        escritor.guardarStringLn("", ruta+"Postings.schema", false); 
+        escritor.guardarString("", ruta+"Postings.schema", false); 
         /*Se recorren todos los terminos de la colección*/
         for(int numTermino=0;numTermino<cantTerminos;numTermino++){
             /*Se sacan los documentos donde aparece este termino*/
