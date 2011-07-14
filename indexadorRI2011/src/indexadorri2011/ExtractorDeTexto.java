@@ -350,7 +350,11 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                 inicioPalabra = archivo.indexOf(vectTerminos[numTermino].toString()+" ");
                 /*donde inicia la palabra, se salta la palabra y se salta un espacio en blanco*/
                 inicioFrecuencia =inicioPalabra+vectTerminos[numTermino].toString().length()+1;
-                frecuencia = Double.parseDouble(archivo.substring(inicioFrecuencia, archivo.indexOf("\n",inicioFrecuencia)).trim());
+                long finalFrecuencia = archivo.indexOf("\n",inicioFrecuencia);
+                finalFrecuencia = finalFrecuencia == -1? archivo.length():finalFrecuencia;
+                                
+                frecuencia = Double.parseDouble(archivo.substring(inicioFrecuencia, 
+                                                archivo.indexOf("\n",inicioFrecuencia)==-1?archivo.length():archivo.indexOf("\n",inicioFrecuencia)).trim());
                 
                 //ws[numDoc] = frecuencia * terminos.get(vectTerminos[numTermino]).idf();                         
                 w = frecuencia * terminos.get(vectTerminos[numTermino].toString()).idf();

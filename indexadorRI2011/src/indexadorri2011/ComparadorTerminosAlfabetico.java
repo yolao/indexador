@@ -14,7 +14,7 @@ public class ComparadorTerminosAlfabetico implements Comparator{
 
     @Override
     public int compare(Object o1, Object o2) {
-        return ((Termino)o2).getTermino().compareToIgnoreCase(((Termino)o1).getTermino());
+        return ((Termino)o1).getTermino().compareToIgnoreCase(((Termino)o2).getTermino());
     }
  
 }

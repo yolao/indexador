@@ -111,12 +111,14 @@ public class IndexadorRI2011 {
             }
         }
         
+        Termino.setTotalDocumentos(numArchivoGlobal);
         extractor.crearVocabulario("./indice/");    
 
                 /*sacar stopwords
          vocabulario y en archivitos*/
         
         /*Lematizar(extractor) sumando las posibles repeticiones */
+
         extractor.eliminarStopWordsYLematizar("./indice/", numArchivoGlobal, 5);
         /*Crear el vocabulario con todos los campos que pide casa usando el método imprimirParaVocabulario*/
         extractor.crearVocabularioCompleto("./indice/");

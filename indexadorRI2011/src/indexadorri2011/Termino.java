@@ -109,7 +109,7 @@ public class Termino {
     }
     
     public double idf(){
-        return Math.log(totalDocumentos/this.aparicionesEnColeccion);
+        return Math.log10(totalDocumentos/this.aparicionesEnColeccion);
     }
     /**
      * @param termino el término
@@ -118,7 +118,7 @@ public class Termino {
         this.termino = termino;
     }
 
-    public void setTotalDocumentos(long total){
+    public static void setTotalDocumentos(long total){
         totalDocumentos = total;
     }
     /**
