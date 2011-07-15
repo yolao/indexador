@@ -248,7 +248,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
     private void guardarTerminos(Hashtable <String,Double> terminos, String nombreArchivo) {
         ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
         int size = terminos.size();
-        String termino;
+        //String termino;
         Object [] terminosOrdenados = terminos.keySet().toArray();
         escritor.guardarStringLn(terminosOrdenados[0].toString()+" "+terminos.get(terminosOrdenados[0]), nombreArchivo, false);
         for (int i = 1; i < size; i++){
@@ -269,7 +269,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         Object [] vectorTerminos = terminos.values().toArray();
         ComparadorTerminos c = new ComparadorTerminos();
         Arrays.sort(vectorTerminos, c);        
-        String termino;
+        //String termino;
         escritor.guardarStringLn(((Termino)vectorTerminos[0]).toString(), ruta + "vocabulario.txt", false);
         
         for (int i = 1; i < size; i++){
@@ -292,7 +292,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         Object [] vectorTerminos = terminos.values().toArray();
         //ComparadorTerminosAlfabetico c = new ComparadorTerminosAlfabetico();
         //Arrays.sort(vectorTerminos, c);
-        String termino;
+        //String termino;
         escritor.guardarStringLn(((Termino)vectorTerminos[0]).impresionParaVocabulario(), ruta + "vocabulario.schema", false);
         for (int i = 1; i < size; i++){
             //termino = llaves.nextElement();
@@ -332,8 +332,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         String archivo;
         int inicioPalabra;
         int inicioFrecuencia;
-        Double frecuencia;
-        Double [] ws;
+        Double frecuencia;        
         Double [] norma = new Double [(int)Termino.getTotalDocumentos()];
         for(int i = 0;i<norma.length;i++) 
             norma[i]=0.0;
@@ -344,8 +343,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         for(int numTermino=0;numTermino<cantTerminos;numTermino++){
             /*Se sacan los documentos donde aparece este termino*/
             vectDocumentos = terminos.get(vectTerminos[numTermino].toString()).getDocumentosContenedores().split("\n");
-            /*Guarda los ws de un termino*/
-            ws = new Double [vectDocumentos.length];
+            /*Guarda los ws de un termino*/           
             cadena = "";
             /*Se recorren los documentos donde aparece el termino*/
             for(int numDoc=0;numDoc<vectDocumentos.length;numDoc++){

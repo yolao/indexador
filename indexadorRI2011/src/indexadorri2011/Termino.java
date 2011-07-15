@@ -106,7 +106,7 @@ public class Termino {
 /*CantDocu14-19*/+ apariciones
                 + "                               ".substring(0,7-apariciones.length())
 /*posInicial*/  + tempCont
-                + "                               ".substring(0,10-apariciones.length());       
+                + "                               ".substring(0,10-(tempCont+"").toString().length());       
         
     }
     /**
