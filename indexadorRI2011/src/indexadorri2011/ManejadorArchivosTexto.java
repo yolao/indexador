@@ -98,7 +98,7 @@ class ManejadorArchivosTexto {
         } 
       } catch (IOException excepcion) {}
     }    
-    lasLineas = lasLineas.substring(0, lasLineas.length()-2);
+    lasLineas = lasLineas.substring(0, lasLineas.length()-1);
     return lasLineas;
   }
   

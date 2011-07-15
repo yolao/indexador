@@ -117,7 +117,7 @@ public class Termino {
     }
     
     public double idf(){
-        return Math.log10(getTotalDocumentos()/this.aparicionesEnColeccion);
+        return Math.log10(Double.parseDouble(getTotalDocumentos()+"")/Double.parseDouble(this.aparicionesEnColeccion+""));
     }
     /**
      * @param termino el término

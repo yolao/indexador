@@ -31,7 +31,7 @@ public class IndexadorRI2011 {
     }
     
     public static void procesarTerminos(String rutaColeccion, int carpeta, String rutaNueva){
-        ManejadorArchivosTexto lector; 
+        ManejadorArchivosTexto lector;
         String urls = "";
         File archivo;
         String ruta = rutaColeccion + "/" + carpeta + "/" + "urls";
@@ -112,7 +112,7 @@ public class IndexadorRI2011 {
         }
         
         Termino.setTotalDocumentos(numArchivoGlobal);
-        extractor.crearVocabulario("./indice/");    
+        extractor.crearVocabulario("./indice/");
 
                 /*sacar stopwords
          vocabulario y en archivitos*/
