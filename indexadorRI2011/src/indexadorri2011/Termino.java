@@ -100,13 +100,14 @@ public class Termino {
             idf = idf.substring(0,7);
         String apariciones = aparicionesEnColeccion+"";
         return  getTermino()
-/*termino 0-4*/ + "                               ".substring(0,5-getTermino().length())/**/
+/*termino 0-4*/ + "                               ".substring(0,6-getTermino().length())/**/
 /*idf 6-12*/    + idf
                 + "                               ".substring(0,8-idf.length())
 /*CantDocu14-19*/+ apariciones
                 + "                               ".substring(0,7-apariciones.length())
 /*posInicial*/  + tempCont
-                + "                               ".substring(0,10-(tempCont+"").toString().length());       
+                + "                               ".substring(0,10-(tempCont+"").length());       
+
         
     }
     /**

@@ -182,9 +182,9 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         /*Guardar mayor frecuencia*/
         
         for(int numDocumento=0;numDocumento<cantidadArchivos;numDocumento++){//itera sobre los documentos
-            archivo = lector.leerLineasTexto(ruta+"/"+numDocumento+".txt");
             documento = new Hashtable<String, Double>(500);
-            maxFrec = 0.0;
+            archivo = lector.leerLineasTexto(ruta+"/"+numDocumento+".txt");
+            maxFrec = 0.0; 
             for(int numTermino=0;numTermino<archivo.length;numTermino++){//iterar sobre los terminos del documento
                 terminoTemp = archivo[numTermino].split(" ");        
                 if(this.stopWords.get(terminoTemp[0])==null){//Si el término no es un stopWord                    

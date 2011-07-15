@@ -111,6 +111,7 @@ public class IndexadorRI2011 {
             }
         }
         
+
         Termino.setTotalDocumentos(numArchivoGlobal);
         extractor.crearVocabulario("./indice/");
 

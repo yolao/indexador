@@ -139,7 +139,7 @@ class ManejadorArchivosTexto {
     if (elNombreArchivo!=null) {
       try {
         flujoEntrada = new BufferedReader(new FileReader(elNombreArchivo));
-        System.out.println("en manejador");
+        //System.out.println("en manejador");
         lasLineas = new String[0];
         String linea = flujoEntrada.readLine();
         while (linea != null) {
