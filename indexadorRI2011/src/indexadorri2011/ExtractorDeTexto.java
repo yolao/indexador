@@ -251,7 +251,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         String termino;
         Object [] terminosOrdenados = terminos.keySet().toArray();
         escritor.guardarStringLn(terminosOrdenados[0].toString()+" "+terminos.get(terminosOrdenados[0]), nombreArchivo, false);
-        for (int i = 1; i < size; i++){            
+        for (int i = 1; i < size; i++){
             /*Se almacena el termino " " la frecuencia*/
             escritor.guardarStringLn(terminosOrdenados[i].toString()+" "+terminos.get(terminosOrdenados[i]), nombreArchivo, true);
         }

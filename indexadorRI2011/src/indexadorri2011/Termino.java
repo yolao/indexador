@@ -86,7 +86,7 @@ public class Termino {
     public String toString(){
         int tamano = getTermino().length();        
         return (tamano > 30? getTermino().substring(0, 29) : getTermino())
-/*termino*/     + "                               ".substring(0,tamano>30? 0 : 29-getTermino().length())
+/*termino*/     + "                               ".substring(0,tamano>30? 0 : 30-getTermino().length())
 /*CantDocus*/   + aparicionesEnColeccion;       
         
     }
