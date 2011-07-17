@@ -41,7 +41,7 @@ public class Termino {
         String contenedoresFusionados = new String();
         valorTempLocal = Integer.parseInt(contenedoresLocal[indiceLocal]);
         valorTempFusionar = Integer.parseInt(contenedoresFusionar[indiceFusionar]);
-        while(indiceLocal < contenedoresLocal.length || indiceFusionar < contenedoresFusionar.length-1){
+        while(indiceLocal < contenedoresLocal.length || indiceFusionar < contenedoresFusionar.length){
             /*if(indiceLocal<contenedoresLocal.length)
                 valorTempLocal = Integer.parseInt(contenedoresLocal[indiceLocal]);
             //if(indiceFusionar<contenedoresFusionar.length)
@@ -51,19 +51,28 @@ public class Termino {
                 indiceLocal++;         
                 if(indiceLocal<contenedoresLocal.length)
                     valorTempLocal = Integer.parseInt(contenedoresLocal[indiceLocal]);
+                else 
+                    valorTempLocal = Integer.MAX_VALUE;
             }else if(indiceFusionar<contenedoresFusionar.length&& valorTempLocal > valorTempFusionar){
                 contenedoresFusionados += contenedoresFusionar[indiceFusionar] +"\n";                
                 indiceFusionar++;
                 if(indiceFusionar<contenedoresFusionar.length)
                     valorTempFusionar = Integer.parseInt(contenedoresFusionar[indiceFusionar]);
+                else 
+                    valorTempFusionar = Integer.MAX_VALUE;
             }else{
                 contenedoresFusionados += contenedoresLocal[indiceLocal] +"\n";
                 indiceFusionar++;
                 indiceLocal++;             
                 if(indiceLocal<contenedoresLocal.length)
                     valorTempLocal = Integer.parseInt(contenedoresLocal[indiceLocal]);
+                else 
+                    valorTempLocal = Integer.MAX_VALUE;
                 if(indiceFusionar<contenedoresFusionar.length)
                     valorTempFusionar = Integer.parseInt(contenedoresFusionar[indiceFusionar]);
+                else 
+                    valorTempFusionar = Integer.MAX_VALUE;
+                
             }
         }
         this.documentosContenedores = contenedoresFusionados;

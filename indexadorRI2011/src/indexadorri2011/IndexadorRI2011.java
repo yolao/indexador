@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.File;
 import java.lang.Double;
+import java.lang.management.GarbageCollectorMXBean;
 
 
 /**
@@ -46,7 +47,7 @@ public class IndexadorRI2011 {
             }                    
         }
         else{
-            ruta = rutaColeccion + "/" + carpeta + "/" + "urls.txt";
+            ruta = rutaColeccion + "/" + carpeta + "/" + "urls.schema";
             archivo = new File(ruta);
             if (archivo.exists() && archivo.isFile()) {
                 try{
@@ -119,10 +120,12 @@ public class IndexadorRI2011 {
          vocabulario y en archivitos*/
         
         /*Lematizar(extractor) sumando las posibles repeticiones */
-
+        System.gc();
         extractor.eliminarStopWordsYLematizar("./indice/", numArchivoGlobal, 5);
-        /*Crear el vocabulario con todos los campos que pide casa usando el método imprimirParaVocabulario*/
+        System.gc();
+        /*Crear el vocabulario con todos los campos que pide casa usando el método imprimirParaVocabulario*/        
         extractor.crearVocabularioCompleto("./indice/");
+        System.gc();
         /*Crear el posting y norma dentro de extractor*/
         extractor.crearPostingsYNorma("./indice/");
         

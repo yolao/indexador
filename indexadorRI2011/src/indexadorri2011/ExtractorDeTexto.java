@@ -64,7 +64,6 @@ public class ExtractorDeTexto <tipoFrecuencia>{
      */
     public Hashtable<String, Double> obtenerTerminos(String nombreArchivo, long indiceDocumento){
         String [] palabras = texto.split("\\s|\\?|¿|\\.|\\,|:|;|¡|!|/");
-        Double value = 0.0;
         Double valueLocal = 0.0;
         // tabla hash que contiene los terminos encontrados en el archivo actual, su capacidad inicial es 500
         // y el Integer es la frecuencia en el documento
@@ -110,7 +109,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
     private void eliminarStopWordsVocabulario (String ruta) {
         ManejadorArchivosTexto lector = new ManejadorArchivosTexto(ruta+"vocabulario.txt");
         String [] lineas = new String [terminos.size()/*int lector.getTamanno(ruta+"vocabulario.txt")*/];
-        String linea = lector.leerLinea(0);   
+        String linea = lector.leerLinea(0);
         String [] termino;
         stopWords= new Hashtable<String,Integer>(150);
         int i=0;
@@ -121,8 +120,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                 if(termino[0].equals("top"))
                     bandera=true;
                 stopWords.put(termino[0],0);
-                terminos.remove(termino[0]);
-                
+                terminos.remove(termino[0]);                
             }
             else{
                 lineas[i] = linea;
@@ -136,7 +134,6 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         
     private void lematizar(Hashtable<String, Termino> tabla, int puntoCorte) {
         Object [] listaTerminos = tabla.keySet().toArray();
-        String terminoTemp = listaTerminos[0].toString();
         Termino termino;
         String lematizado;
         int cantTerminos = listaTerminos.length;
@@ -180,9 +177,9 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         /*lematizar archivitos*/
         /*Crear hashtable a base de words y apariciones intra documento*/
         /*Guardar mayor frecuencia*/
-        
+        documento = new Hashtable<String, Double>(500);
         for(int numDocumento=0;numDocumento<cantidadArchivos;numDocumento++){//itera sobre los documentos
-            documento = new Hashtable<String, Double>(500);
+            documento.clear();
             archivo = lector.leerLineasTexto(ruta+"/"+numDocumento+".txt");
             maxFrec = 0.0; 
             for(int numTermino=0;numTermino<archivo.length;numTermino++){//iterar sobre los terminos del documento
@@ -290,8 +287,8 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
         int size = terminos.size();
         Object [] vectorTerminos = terminos.values().toArray();
-        //ComparadorTerminosAlfabetico c = new ComparadorTerminosAlfabetico();
-        //Arrays.sort(vectorTerminos, c);
+        ComparadorTerminosAlfabetico c = new ComparadorTerminosAlfabetico();
+        Arrays.sort(vectorTerminos, c);
         //String termino;
         escritor.guardarStringLn(((Termino)vectorTerminos[0]).impresionParaVocabulario(), ruta + "vocabulario.schema", false);
         for (int i = 1; i < size; i++){
@@ -302,25 +299,6 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         }
     }
 
-    private String getTitle(Source source) {
-        Element titleElement=source.getFirstElement(HTMLElementName.TITLE);
-        if (titleElement == null) 
-            return null;
-        // TITLE element never contains other tags so just decode it collapsing whitespace:
-        return CharacterReference.decodeCollapseWhiteSpace(titleElement.getContent());
-    }
-
-    private String getMetaValue(Source source, String key) {
-        for (int pos=0; pos<source.length();) {
-            StartTag startTag=source.getNextStartTag(pos,"name",key,false);
-            if (startTag == null) return null;
-            if (startTag.getName().equals(HTMLElementName.META))
-                    return startTag.getAttributeValue("content"); // Attribute values are automatically decoded
-            pos = startTag.getEnd();
-        }
-        return null;
-    }
-
     void crearPostingsYNorma(String ruta) {
         long cantTerminos = terminos.size();
         
@@ -328,6 +306,8 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
         Object[] vectTerminos = terminos.keySet().toArray();
         //Se debe ordenar si se ordeno en el vocabulario.
+        ComparadorString c = new ComparadorString();
+        Arrays.sort(vectTerminos, c);
         String[] vectDocumentos;
         String archivo;
         int inicioPalabra;
@@ -345,13 +325,15 @@ public class ExtractorDeTexto <tipoFrecuencia>{
             vectDocumentos = terminos.get(vectTerminos[numTermino].toString()).getDocumentosContenedores().split("\n");
             /*Guarda los ws de un termino*/           
             cadena = "";
+            int finalFrecuencia;
+            String wString;
             /*Se recorren los documentos donde aparece el termino*/
             for(int numDoc=0;numDoc<vectDocumentos.length;numDoc++){
                 archivo = lector.leerTodoArchivo(ruta+vectDocumentos[numDoc]+".txt");////////////**************se puede mejorar
                 inicioPalabra = archivo.indexOf(vectTerminos[numTermino].toString()+" ");
                 /*donde inicia la palabra, se salta la palabra y se salta un espacio en blanco*/
                 inicioFrecuencia =inicioPalabra+vectTerminos[numTermino].toString().length()+1;
-                int finalFrecuencia = archivo.indexOf("\n",inicioFrecuencia);
+                finalFrecuencia = archivo.indexOf("\n",inicioFrecuencia);
                 finalFrecuencia = finalFrecuencia == -1? archivo.length():finalFrecuencia;
                                 
                 frecuencia = Double.parseDouble(archivo.substring(inicioFrecuencia, finalFrecuencia).trim());
@@ -359,7 +341,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                 //ws[numDoc] = frecuencia * terminos.get(vectTerminos[numTermino]).idf();                         
                 
                 w = frecuencia * terminos.get(vectTerminos[numTermino].toString()).idf();
-                String wString = w.toString().length()>7?w.toString().substring(0,7):w.toString();
+                wString = w.toString().length()>7?w.toString().substring(0,7):w.toString();
                 cadena += vectDocumentos[numDoc] + "       ".substring(0,vectDocumentos[numDoc].toString().length()>7?0:7-vectDocumentos[numDoc].length())
                         + wString + "       ".substring(0,7-wString.length())+ "\n";
                 norma[Integer.parseInt(vectDocumentos[numDoc])] += w*w;            
