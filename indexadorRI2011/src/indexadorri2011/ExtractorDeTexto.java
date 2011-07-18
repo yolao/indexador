@@ -130,10 +130,11 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         }while(linea != null);
         ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
         escritor.guardarLineasTexto(lineas,ruta+"vocabulario.txt",false);
+        guardarStopWords(stopWords, ruta+"stopwords");
     }
         
-    private void lematizar(Hashtable<String, Termino> tabla, int puntoCorte) {
-        Object [] listaTerminos = tabla.keySet().toArray();
+    private void lematizar(Hashtable<String, Termino> terminos, int puntoCorte) {
+        Object [] listaTerminos = terminos.keySet().toArray();
         Termino termino;
         String lematizado;
         int cantTerminos = listaTerminos.length;
@@ -141,16 +142,16 @@ public class ExtractorDeTexto <tipoFrecuencia>{
             
             if(listaTerminos[indice].toString().length()>puntoCorte){//si el termino necesita lematización
                 lematizado = listaTerminos[indice].toString().substring(0,puntoCorte);
-                if(tabla.containsKey(lematizado)){//si la palabra lematizada concuerda con otra se deben fusionar
-                    termino = tabla.get(lematizado);
-                    termino.fusionar(tabla.get(listaTerminos[indice]));
-                    tabla.remove(termino.getTermino());
-                    tabla.put(termino.getTermino(),termino);
+                if(terminos.containsKey(lematizado)){//si la palabra lematizada concuerda con otra se deben fusionar
+                    termino = terminos.get(lematizado);
+                    termino.fusionar(terminos.get(listaTerminos[indice]));
+                    terminos.remove(termino.getTermino());
+                    terminos.put(termino.getTermino(),termino);
                 }else{//si no hay concordancia con otro termino ya lematizado
-                    termino = tabla.get(listaTerminos[indice]);
+                    termino = terminos.get(listaTerminos[indice]);
                     termino.setTermino(lematizado);
                 }
-                tabla.remove(listaTerminos[indice]);                
+                terminos.remove(listaTerminos[indice]);                
             }
         }
     }
@@ -164,7 +165,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         /*lematizar archivo vocabularioSote*/ 
         /*lematizar el hasTable y verificar exista la palabra en la hastable y sumarla*/
         /*Sumar cosas del termino Crear metodo en Termino llamado fusionar*/
-        lematizar(this.terminos,puntoCorte);
+        lematizar(puntoCorte);
         /*Quitar StopWords de los documentos*/
         Hashtable <String, Double > documento;
         ManejadorArchivosTexto lector = new ManejadorArchivosTexto();
@@ -233,6 +234,18 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         
         return arregloTerminos;
         
+    }
+    
+    private void guardarStopWords(Hashtable <String,Integer> terminos, String nombreArchivo) {
+        ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
+        int size = terminos.size();
+        //String termino;
+        Object [] terminosOrdenados = terminos.keySet().toArray();
+        escritor.guardarStringLn(terminosOrdenados[0].toString()+" "+terminos.get(terminosOrdenados[0]), nombreArchivo, false);
+        for (int i = 1; i < size; i++){
+            /*Se almacena el termino " " la frecuencia*/
+            escritor.guardarStringLn(terminosOrdenados[i].toString(), nombreArchivo, true);
+        }
     }
     
     /**
