@@ -24,6 +24,9 @@ public class IndexadorRI2011 {
      * D:\UCR\I-2011\RI\tareas\tarea7\indexadorRI2011\coleccion
      */
     public static void main(String[] args) {
+       // System.out.close();
+        System.err.close();
+        
         if (args.length == 0){
             System.out.println("Debe proporcionar la ruta de la colección");
             System.exit(1);
@@ -43,7 +46,7 @@ public class IndexadorRI2011 {
                 urls = lector.leerTodoArchivo(ruta);
             }
             catch(Exception ex){
-                Logger.getLogger(ExtractorDeTexto.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(ExtractorDeTexto.class.getName()).log(Level.SEVERE, null, ex);
             }                    
         }
         else{
@@ -92,11 +95,19 @@ public class IndexadorRI2011 {
                 numArchivoLocal = 0;
                 carpetaCompleta = false;
                 procesarTerminos(rutaColeccion, carpeta, rutaNueva);
+                
                 do {
                     ruta = rutaColeccion + "/" + carpeta + "/" + numArchivoLocal;
+                    if(carpeta==11||carpeta==14||carpeta==15){
+                        ruta+=".html";         
+                        archivo = new File(ruta);
+                        if (!archivo.exists() || !archivo.isFile()) { 
+                            ruta=ruta.substring(0, ruta.length()-5);                     
+                        }          
+                    }
                     archivo = new File(ruta);
                     if (archivo.exists() && archivo.isFile()) {
-                        try{
+                        try{                            
                             extractor.extraer(ruta);
                             extractor.obtenerTerminos(rutaNueva + numArchivoGlobal + ".txt",numArchivoGlobal);
                             numArchivoGlobal++;                       

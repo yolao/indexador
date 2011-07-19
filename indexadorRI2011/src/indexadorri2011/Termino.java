@@ -94,17 +94,16 @@ public class Termino {
     
     public String toString(){
         int tamano = getTermino().length();        
-        return (tamano > 30? getTermino().substring(0, 29) : getTermino())
+        return (tamano > 30? getTermino().substring(0, 30) : getTermino())
 /*termino*/     + "                               ".substring(0,tamano>30? 0 : 30-getTermino().length())
 /*CantDocus*/   + aparicionesEnColeccion;       
         
     }
     
     public String impresionParaVocabulario(){
-        int tamano = getTermino().length();
         long tempCont = contador;
         contador += aparicionesEnColeccion;
-        String idf = Math.log10(Double.parseDouble(getTotalDocumentos()+"")/Double.parseDouble(this.aparicionesEnColeccion+""))+"";
+        String idf = Math.log10((double)getTotalDocumentos()/(double)(this.aparicionesEnColeccion))+"";
         if(idf.length()>7)
             idf = idf.substring(0,7);
         String apariciones = aparicionesEnColeccion+"";
@@ -127,7 +126,7 @@ public class Termino {
     }
     
     public double idf(){
-        return Math.log10(Double.parseDouble(getTotalDocumentos()+"")/Double.parseDouble(this.aparicionesEnColeccion+""));
+        return Math.log10((double)getTotalDocumentos()/(double)this.aparicionesEnColeccion);
     }
     /**
      * @param termino el término

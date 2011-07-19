@@ -63,7 +63,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
      * que contenga los términos indexables del archivo que se esta procesando. 
      */
     public Hashtable<String, Double> obtenerTerminos(String nombreArchivo, long indiceDocumento){
-        String [] palabras = texto.split("\\s|\\?|¿|\\.|\\,|:|;|¡|!|/");
+        String [] palabras = texto.split("([^a-zA-ZáéíóúÁÉÍÓÚ])");//viejo ---->>split("\\s|\\?|¿|\\.|\\,|:|;|¡|!|/");áéíóúÁÉÍÓÚ
         Double valueLocal = 0.0;
         // tabla hash que contiene los terminos encontrados en el archivo actual, su capacidad inicial es 500
         // y el Integer es la frecuencia en el documento
@@ -72,7 +72,36 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         //se itera  sobre las palabras encontradas en el texto        
         for (String word : palabras){
             if (!word.isEmpty()){
-                word = word.toLowerCase();
+
+                try{
+                    word = word.toLowerCase();                
+                    char [] palabra = word.toCharArray();
+                    for(int i=0;i<word.length();i++){
+                        switch(palabra[i]){
+                            case 'á':
+                                palabra[i]='a';
+                                break;
+                            case 'é':
+                                palabra[i]='e';
+                                break;
+                            case 'í':
+                                palabra[i]='i';
+                                break;
+                            case 'ó':
+                                palabra[i]='o';
+                                break;
+                            case 'ú':
+                                palabra[i]='u';
+                                break;
+                            case 'ñ':
+                                palabra[i]='n';
+                                break;
+                        }
+                    }
+                    word=new String (palabra);
+                }catch(Exception e){
+                    System.out.print("callose!!!!");
+                }
                 //busco el término en la tablaHash Global
                 Termino termino = terminos.get(word);
                 //si el término se encontró por primera vez--------------->Agregar los documentos en los que aparece el termino en la instancia del término.,......
@@ -102,7 +131,8 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                 //System.out.println(word);
             }
         }
-        guardarTerminos(terminosLocales, nombreArchivo);
+        /*se guardan los documentos sin normalizar*/
+        guardarTerminos(terminosLocales, nombreArchivo,false);
         return terminosLocales;
     }
     
@@ -113,12 +143,12 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         String [] termino;
         stopWords= new Hashtable<String,Integer>(150);
         int i=0;
-        boolean bandera=false;
+        boolean stopWord=true;
         do {
             termino = linea.split(" ");
-            if (bandera) {
+            if (stopWord) {
                 if(termino[0].equals("top"))
-                    bandera=true;
+                    stopWord=false;
                 stopWords.put(termino[0],0);
                 terminos.remove(termino[0]);                
             }
@@ -133,7 +163,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         guardarStopWords(stopWords, ruta+"stopwords");
     }
         
-    private void lematizar(Hashtable<String, Termino> terminos, int puntoCorte) {
+    private void lematizar(int puntoCorte) {
         Object [] listaTerminos = terminos.keySet().toArray();
         Termino termino;
         String lematizado;
@@ -181,17 +211,18 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         documento = new Hashtable<String, Double>(500);
         for(int numDocumento=0;numDocumento<cantidadArchivos;numDocumento++){//itera sobre los documentos
             documento.clear();
+          
             archivo = lector.leerLineasTexto(ruta+"/"+numDocumento+".txt");
             maxFrec = 0.0; 
             for(int numTermino=0;numTermino<archivo.length;numTermino++){//iterar sobre los terminos del documento
                 terminoTemp = archivo[numTermino].split(" ");        
-                if(this.stopWords.get(terminoTemp[0])==null){//Si el término no es un stopWord                    
+                if( !terminoTemp[0].equals("") && !this.stopWords.containsKey(terminoTemp[0]) ){//Si el término no es un stopWord                    
                     
                     if(terminoTemp[0].length() > puntoCorte){//si el término ocupa lematizarse                        
                         terminoTemp[0]=terminoTemp[0].substring(0,puntoCorte);
                     }
 
-                    if(documento.get(terminoTemp[0])!=null){//si el termino lematizado ya está en el documento
+                    if(documento.containsKey(terminoTemp[0])){//si el termino lematizado ya está en el documento
                         //Sumar frecuencias
                         frecuenciaTemp = Double.parseDouble(terminoTemp[terminoTemp.length-1])+documento.get(terminoTemp[0]);
                         //Se reemplaza el termino en el documento
@@ -214,10 +245,10 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                 documento.remove(arregloTerminosObj[indice].toString());
                 documento.put(arregloTerminosObj[indice].toString(), frecuenciaTemp);
             }
-            /*Se llama guardarTerminos del extractor */
-            this.guardarTerminos(documento, ruta+numDocumento+".txt");
+            /*Se llama guardarTerminos del extractor con los terminos normalizados*/
+            this.guardarTerminos(documento, ruta+numDocumento+".txt",true);
         }
-
+        this.stopWords=null;
     }
     /**
      * Método que retorna un arreglo con los terminos que se encuentren en la 
@@ -255,16 +286,46 @@ public class ExtractorDeTexto <tipoFrecuencia>{
      * @param nombreArchivo Es el nombre que se asignará al archivo que almacenará
      * los términos indexables para el archivo procesado.
      */
-    private void guardarTerminos(Hashtable <String,Double> terminos, String nombreArchivo) {
+    private void guardarTerminos(Hashtable <String,Double> terminos, String nombreArchivo,boolean lematizados) {
         ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
         int size = terminos.size();
         //String termino;
+        
         Object [] terminosOrdenados = terminos.keySet().toArray();
-        escritor.guardarStringLn(terminosOrdenados[0].toString()+" "+terminos.get(terminosOrdenados[0]), nombreArchivo, false);
+        String espaciosTermino = " ";
+        String espaciosFrecuencia = "";
+        String frecuencia = "";
+        int length;
+
+        try{
+            //El primero crea el archivo desde 0
+            frecuencia = terminos.get(terminosOrdenados[0]).toString();
+            if(lematizados){
+                length = terminosOrdenados[0].toString().length();
+                espaciosTermino = length > 5?" ":"      ".substring(0,6-length);
+                length = frecuencia.toString().length();
+                espaciosFrecuencia = length > 7?"":"       ".substring(0,7-length);      
+                frecuencia = length > 7?frecuencia.substring(0,7):frecuencia;
+            }
+            escritor.guardarStringLn(terminosOrdenados[0].toString()+espaciosTermino+frecuencia+espaciosFrecuencia, nombreArchivo, false);
+        }catch(Exception e){
+            escritor.guardarStringLn("", nombreArchivo, false);          
+        }
         for (int i = 1; i < size; i++){
             /*Se almacena el termino " " la frecuencia*/
-            escritor.guardarStringLn(terminosOrdenados[i].toString()+" "+terminos.get(terminosOrdenados[i]), nombreArchivo, true);
-        }
+            frecuencia = terminos.get(terminosOrdenados[i]).toString();
+            if(lematizados){
+                length = terminosOrdenados[i].toString().length();
+                espaciosTermino = length > 5?" ":"      ".substring(0,6-length);
+                length = frecuencia.toString().length();
+                espaciosFrecuencia = length > 7?"":"       ".substring(0,7-length);
+                frecuencia = length > 7?frecuencia.substring(0,7):frecuencia;
+            }else {
+                espaciosTermino = " ";
+                espaciosFrecuencia = "";
+            }
+            escritor.guardarStringLn(terminosOrdenados[i].toString()+espaciosTermino+frecuencia+espaciosFrecuencia, nombreArchivo, true);
+        }        
     }
     
     /**
@@ -322,9 +383,10 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         ComparadorString c = new ComparadorString();
         Arrays.sort(vectTerminos, c);
         String[] vectDocumentos;
-        String archivo;
+        String archivo;        
         int inicioPalabra;
-        int inicioFrecuencia;
+        int inicioFrecuencia=5;
+        int finalFrecuencia=11;
         Double frecuencia;        
         Double [] norma = new Double [(int)Termino.getTotalDocumentos()];
         for(int i = 0;i<norma.length;i++) 
@@ -337,20 +399,24 @@ public class ExtractorDeTexto <tipoFrecuencia>{
             /*Se sacan los documentos donde aparece este termino*/
             vectDocumentos = terminos.get(vectTerminos[numTermino].toString()).getDocumentosContenedores().split("\n");
             /*Guarda los ws de un termino*/           
-            cadena = "";
-            int finalFrecuencia;
+            cadena = "";            
             String wString;
             /*Se recorren los documentos donde aparece el termino*/
-            for(int numDoc=0;numDoc<vectDocumentos.length;numDoc++){
+            for(int numDoc=0;numDoc<vectDocumentos.length;numDoc++){                
                 archivo = lector.leerTodoArchivo(ruta+vectDocumentos[numDoc]+".txt");////////////**************se puede mejorar
-                inicioPalabra = archivo.indexOf(vectTerminos[numTermino].toString()+" ");
+                inicioPalabra = archivo.indexOf(vectTerminos[numTermino].toString()+"      ".substring(0,6-vectTerminos[numTermino].toString().length()));
                 /*donde inicia la palabra, se salta la palabra y se salta un espacio en blanco*/
-                inicioFrecuencia =inicioPalabra+vectTerminos[numTermino].toString().length()+1;
-                finalFrecuencia = archivo.indexOf("\n",inicioFrecuencia);
-                finalFrecuencia = finalFrecuencia == -1? archivo.length():finalFrecuencia;
-                                
-                frecuencia = Double.parseDouble(archivo.substring(inicioFrecuencia, finalFrecuencia).trim());
-                
+                inicioFrecuencia = inicioPalabra + 6;//vectTerminos[numTermino].toString().length()+1;
+                finalFrecuencia = inicioFrecuencia + 7;//archivo.indexOf("\n",inicioFrecuencia);
+                //finalFrecuencia = finalFrecuencia == -1? archivo.length():finalFrecuencia;
+                frecuencia=0.0;
+                try{
+                    frecuencia = Double.parseDouble(archivo.substring(inicioFrecuencia, finalFrecuencia).trim());
+                }catch(Exception e){
+                    System.out.print("error de frecuencia");
+                }
+                //inicioFrecuencia = finalFrecuencia + 6; //se cuenta el \n
+                //finalFrecuencia = inicioFrecuencia + 7; //el tamaño de la frecuencia                
                 //ws[numDoc] = frecuencia * terminos.get(vectTerminos[numTermino]).idf();                         
                 
                 w = frecuencia * terminos.get(vectTerminos[numTermino].toString()).idf();
