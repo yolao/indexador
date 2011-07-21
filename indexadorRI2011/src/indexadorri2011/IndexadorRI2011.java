@@ -31,8 +31,64 @@ public class IndexadorRI2011 {
             System.out.println("Debe proporcionar la ruta de la colección");
             System.exit(1);
         }
-
+/*
+        ManejadorArchivosTexto manejador = new ManejadorArchivosTexto();
+        String [] lineas = manejador.leerLineasTexto("urlsM"); 
+        String espacios = " ";
+        String [] splits = lineas[0].split(" ");
+        for(int j=splits[0].length()+1;j<1024;j++){
+            espacios+=" ";
+        }
+        lineas[0]= splits[0] + espacios + splits[splits.length-1]+"      ".substring(0, 6-splits[splits.length-1].length())+"\n";
+        manejador.guardarString(lineas[0], "urls.schema", false);
+         for(int i = 1 ; i < lineas.length;i++){
+            //lineas = manejador.leerLineasTexto("urlsM"); 
+            splits = lineas[i].split(" ");
+            espacios = " ";
+            for(int j=splits[0].length()+1;j<1024;j++){
+                espacios+=" ";
+            }
+            try{
+                lineas[i] = splits[0] + espacios + splits[splits.length-1]+"      ".substring(0, 6-splits[splits.length-1].length())+"\n";
+            }catch(Exception e){
+                System.out.print("error extension");
+            }
+            manejador.guardarString(lineas[i], "urls.schema", true);
+        }*/
         
+        
+        
+        
+        /* NULOSSSSSSSSSSSSSSSSSSSSS
+        
+        String [] splits = lineas[0].split("\u0000");
+        
+        
+        for(int j=splits[0].length()+1;j<1024;j++){
+            espacios+=" ";
+        }
+        lineas[0]=splits[0] + espacios + splits[splits.length-1]+"      ".substring(0, 6-splits[splits.length-1].length())+"\n";
+        manejador.guardarString(lineas[0], "urls.schema", false);
+        for(int i = 1 ; i < lineas.length;i++){
+            //lineas = manejador.leerLineasTexto("urlsM"); 
+            splits = lineas[i].split("\u0000");
+            espacios = " ";
+            for(int j=splits[0].length()+1;j<1024;j++){
+                espacios+=" ";
+            }////estoy implementando la vara para arreglar el formato delos urls malos...
+            try{
+                if(null==splits[splits.length-2])
+                    System.out.print("splits err");
+            }catch(Exception e){
+                    System.out.print("splits err");
+            }
+            try{
+                lineas[i] = splits[0]+espacios+ splits[splits.length-1]+"      ".substring(0, 6-splits[splits.length-1].length())+"\n";
+            }catch(Exception e){
+                System.out.print("error extension");
+            }
+            manejador.guardarString(lineas[i], "urls.schema", true);
+        }*/
         
         crearIndiceInvertido(args);
     }
@@ -92,10 +148,10 @@ public class IndexadorRI2011 {
         int numArchivoGlobal = 0;
         boolean carpetaCompleta;
         //Recorre las carpetas de la colección
-        for (int carpeta = 1; carpeta < 10; carpeta++){
+        for (int carpeta = 1; carpeta < 19; carpeta++){
             // La carpeta 8 esta mal hecha, hay q brincarsela.
             System.out.println("procesando la carpeta numero "+carpeta+" para sacar los términos");
-            if(carpeta != 8){
+            if(carpeta != 8 && carpeta != 13){//nos estamos brincando las carpetas que estaban mal hechas
                 numArchivoLocal = 0;
                 carpetaCompleta = false;
                 procesarTerminos(rutaColeccion, carpeta, rutaNueva);

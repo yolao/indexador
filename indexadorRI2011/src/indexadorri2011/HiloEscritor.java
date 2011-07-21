@@ -8,6 +8,10 @@ package indexadorri2011;
  *
  * @author TOTAN
  */
-public class HiloEscritor {
+public class HiloEscritor extends Thread {
     
+    @Override
+    public void run(){
+            
+    }
 }
