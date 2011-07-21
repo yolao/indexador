@@ -103,9 +103,11 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                     System.out.print("callose!!!!");
                 }
                 //busco el término en la tablaHash Global
-                Termino termino = terminos.get(word);
+                if(word.equalsIgnoreCase("voleibol")){
+                    System.out.print("fallo voleibol");
+                }
                 //si el término se encontró por primera vez--------------->Agregar los documentos en los que aparece el termino en la instancia del término.,......
-                if (termino == null){
+                if (!terminos.containsKey(word)){
                     //se agrega a la colección de términos Locales y Globales
                     terminos.put(word,new Termino(word, 1));
                     terminosLocales.put(word, 1.0);
