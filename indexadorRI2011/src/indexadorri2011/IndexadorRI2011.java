@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import java.io.File;
 import java.lang.Double;
 import java.lang.management.GarbageCollectorMXBean;
-
+import java.util.*;
 
 /**
  *
@@ -31,6 +31,9 @@ public class IndexadorRI2011 {
             System.out.println("Debe proporcionar la ruta de la colección");
             System.exit(1);
         }
+
+        
+        
         crearIndiceInvertido(args);
     }
     
@@ -89,8 +92,9 @@ public class IndexadorRI2011 {
         int numArchivoGlobal = 0;
         boolean carpetaCompleta;
         //Recorre las carpetas de la colección
-        for (int carpeta = 1; carpeta < 19; carpeta++){
+        for (int carpeta = 1; carpeta < 10; carpeta++){
             // La carpeta 8 esta mal hecha, hay q brincarsela.
+            System.out.println("procesando la carpeta numero "+carpeta+" para sacar los términos");
             if(carpeta != 8){
                 numArchivoLocal = 0;
                 carpetaCompleta = false;
@@ -123,8 +127,8 @@ public class IndexadorRI2011 {
             }
         }
         
-
-        Termino.setTotalDocumentos(numArchivoGlobal);
+        System.out.println("creando el vocabulario txt sin normalizar ni lematizar");
+        Termino.setTotalDocumentos(numArchivoGlobal);        
         extractor.crearVocabulario("./indice/");
 
                 /*sacar stopwords
