@@ -298,18 +298,18 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         int size = terminos.size();
         //String termino;
         Object [] terminosOrdenados = terminos.keySet().toArray();
-        escritor.guardarStringLn(terminosOrdenados[0].toString()+" "+terminos.get(terminosOrdenados[0]), nombreArchivo, false);
+        escritor.guardarStringLn(terminosOrdenados[0].toString(), nombreArchivo, false);
         String cadena = "";
         cadenaEscribir = "";
         for (int i = 1; i < size; i++){
             /*Se almacena el termino " " la frecuencia*/
             //escritor.guardarStringLn(terminosOrdenados[i].toString(), nombreArchivo, true);
-            cadena += terminosOrdenados[i].toString();
+            cadena += terminosOrdenados[i].toString() + "\n";
         }
         while (hiloEscritor.isEscribir());
         cadenaEscribir = cadena;
-        hiloEscritor.setArchivo(nombreArchivo);        
-        hiloEscritor.setTexto(cadenaEscribir);        
+        hiloEscritor.setArchivo(nombreArchivo);
+        hiloEscritor.setTexto(cadenaEscribir);
         hiloEscritor.setEscribir(true);
     }
     
@@ -394,7 +394,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         for (int i = 1; i < size; i++, cantTerminosEscribir++){
             //termino = llaves.nextElement();
             //escritor.guardarStringLn(termino + " " + terminos.get(termino), ruta + "vocabulario.txt", true);
-            cadena += ((Termino)vectorTerminos[i]).toString();
+            cadena += ((Termino)vectorTerminos[i]).toString() + "\n";
             if (cantTerminosEscribir == 6000 || i + 1 == size){
                 while (hiloEscritor.isEscribir());
                 cadenaEscribir = cadena;
@@ -436,8 +436,8 @@ public class ExtractorDeTexto <tipoFrecuencia>{
             //termino = llaves.nextElement();
             //escritor.guardarStringLn(termino + " " + terminos.get(termino), ruta + "vocabulario.txt", true);
             //escritor.guardarStringLn(((Termino)vectorTerminos[i]).impresionParaVocabulario(), ruta + "vocabulario.schema", true);
-            cadena += ((Termino)vectorTerminos[i]).impresionParaVocabulario();
-            if (cantTerminosEscribir == 3000){
+            cadena += ((Termino)vectorTerminos[i]).impresionParaVocabulario() + "\n";
+            if (cantTerminosEscribir == 3000 || i + 1 == size){
                 while (hiloEscritor.isEscribir());
                 cadenaEscribir = cadena;
                 cadena  = new String();
@@ -499,7 +499,8 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                 //inicioFrecuencia = finalFrecuencia + 6; //se cuenta el \n
                 //finalFrecuencia = inicioFrecuencia + 7; //el tamaño de la frecuencia                
                 //ws[numDoc] = frecuencia * terminos.get(vectTerminos[numTermino]).idf();                         
-                
+                if (frecuencia == 0)
+                    System.out.println(numDoc);                
                 w = frecuencia * terminos.get(vectTerminos[numTermino].toString()).idf();
                 wString = w.toString().length()>7?w.toString().substring(0,7):w.toString();
                 cadena += vectDocumentos[numDoc] + "       ".substring(0,vectDocumentos[numDoc].toString().length()>7?0:7-vectDocumentos[numDoc].length())

@@ -15,14 +15,26 @@ public class ThreadEscritor extends Thread {
     private ManejadorArchivosTexto escritor;
     private boolean escribir;
     private boolean finalizarHilo;
+    
+    public ThreadEscritor(){
+        this.escritor = new ManejadorArchivosTexto();
+    }
 
     @Override
     public void run() {
         while (!finalizarHilo){
             if (escribir){
-                System.out.println("------------------------------------------------------A imprimir bloque.");
+                System.out.println("------------------------------------------------------A imprimir bloque de " + archivo);
                 escritor.guardarString(getTexto(), getArchivo(), true);
                 escribir = false;
+            }
+            synchronized(escritor){
+                try { 
+                    escritor.wait(); 
+                } 
+                catch(Exception e){ 
+                    System.err.println(e.toString()); 
+                }
             }
         }
     }
@@ -39,14 +51,19 @@ public class ThreadEscritor extends Thread {
      */
     public void setEscribir(boolean escribir) {
         this.escribir = escribir;
+        if (escribir){
+            synchronized(escritor){                
+                escritor.notify();
+            }
+        }
+        
     }
 
     /**
      * @param archivo the archivo to set
      */
     public void setArchivo(String archivo) {
-        this.archivo = archivo;
-        this.escritor = new ManejadorArchivosTexto();
+        this.archivo = archivo;        
     }
 
     /**
@@ -82,5 +99,10 @@ public class ThreadEscritor extends Thread {
      */
     public void setFinalizarHilo(boolean finalizarHilo) {
         this.finalizarHilo = finalizarHilo;
+        if (finalizarHilo){
+            synchronized (escritor){
+                escritor.notify();
+            }
+        }
     }
 }
