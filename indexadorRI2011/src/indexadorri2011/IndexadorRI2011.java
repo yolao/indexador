@@ -126,10 +126,10 @@ public class IndexadorRI2011 {
             ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
             // La primera vez crea el archivo, desp solo agrega.
             if(carpeta == 1){
-                escritor.guardarStringLn(urls, (rutaNueva + "urls.txt"), false);
+                escritor.guardarStringLn(urls, (rutaNueva + "urls.schema"), false);
             }
             else
-                escritor.guardarStringLn(urls, (rutaNueva + "urls.txt"), true);
+                escritor.guardarStringLn(urls, (rutaNueva + "urls.schema"), true);
         }
     }
 
@@ -154,7 +154,7 @@ public class IndexadorRI2011 {
             if(carpeta != 8 && carpeta != 13){//nos estamos brincando las carpetas que estaban mal hechas
                 numArchivoLocal = 0;
                 carpetaCompleta = false;
-                procesarTerminos(rutaColeccion, carpeta, rutaNueva);
+                //procesarTerminos(rutaColeccion, carpeta, rutaNueva);
                 
                 do {
                     ruta = rutaColeccion + "/" + carpeta + "/" + numArchivoLocal;
