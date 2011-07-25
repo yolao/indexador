@@ -8,6 +8,7 @@ package indexadorri2011;
  *
  * @author Aaron
  */
+import com.sun.corba.se.impl.orbutil.concurrent.Mutex;
 import net.htmlparser.jericho.*;
 import java.util.*;
 import java.io.*;
@@ -18,13 +19,18 @@ public class ExtractorDeTexto <tipoFrecuencia>{
     private String texto;
     private Hashtable<String,Termino> terminos;
     Hashtable<String, Integer> stopWords;
+
+    private Boolean terminoEscribir;
+    private Mutex mutex;
     
     ThreadEscritor hiloEscritor;
     String cadenaEscribir;
     
     public ExtractorDeTexto(){
         terminos = new Hashtable<String, Termino> (3000);
-        hiloEscritor = new ThreadEscritor();
+        terminoEscribir = false;
+        mutex = new Mutex();
+        hiloEscritor = new ThreadEscritor(mutex);
         hiloEscritor.setFinalizarHilo(false);
         hiloEscritor.setEscribir(false);
         hiloEscritor.start();
@@ -306,11 +312,42 @@ public class ExtractorDeTexto <tipoFrecuencia>{
             //escritor.guardarStringLn(terminosOrdenados[i].toString(), nombreArchivo, true);
             cadena += terminosOrdenados[i].toString() + "\n";
         }
+
+        try {
+            mutex.acquire();
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+        cadenaEscribir = cadena;
+        hiloEscritor.setArchivo(nombreArchivo);
+        hiloEscritor.setTexto(cadenaEscribir);
+        hiloEscritor.setEscribir(true);
+        mutex.release();
+
+        /* Beto 2
+        synchronized(terminoEscribir){
+            try {
+                terminoEscribir.wait();
+            }
+            catch(Exception e){
+                System.out.println(e.toString());
+            }
+            cadenaEscribir = cadena;
+            hiloEscritor.setArchivo(nombreArchivo);
+            hiloEscritor.setTexto(cadenaEscribir);
+            hiloEscritor.setEscribir(true);
+        }
+
+        /* Beto
         while (hiloEscritor.isEscribir());
         cadenaEscribir = cadena;
         hiloEscritor.setArchivo(nombreArchivo);
         hiloEscritor.setTexto(cadenaEscribir);
         hiloEscritor.setEscribir(true);
+        /* */
+
+
     }
     
     /**
@@ -365,11 +402,44 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         }
         
         // Si el hilo aun esta escribiendo espera hasta poder escribir de nuevo.
+
+        try {
+                mutex.acquire();
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+        cadenaEscribir = cadena;
+        hiloEscritor.setArchivo(nombreArchivo);
+        hiloEscritor.setTexto(cadenaEscribir);
+        hiloEscritor.setEscribir(true);
+        mutex.release();
+
+         /* Beto 2
+        synchronized(terminoEscribir){
+            if(hiloEscritor.isEscribir()){
+                try {
+                    terminoEscribir.wait();
+                }
+                catch(Exception e){
+                    System.out.println(e.toString());
+                }
+            }
+
+            cadenaEscribir = cadena;
+            hiloEscritor.setArchivo(nombreArchivo);
+            hiloEscritor.setTexto(cadenaEscribir);
+            hiloEscritor.setEscribir(true);
+
+        }
+
+        /* beto
         while (hiloEscritor.isEscribir());
         cadenaEscribir = cadena;
         hiloEscritor.setArchivo(nombreArchivo);        
         hiloEscritor.setTexto(cadenaEscribir);        
         hiloEscritor.setEscribir(true);
+        /* */
     }
     
     /**
@@ -386,8 +456,35 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         Arrays.sort(vectorTerminos, c);        
         //String termino;
         escritor.guardarStringLn(((Termino)vectorTerminos[0]).toString(), ruta + "vocabulario.txt", false);
+
+        try {
+            mutex.acquire();
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+        hiloEscritor.setArchivo(ruta + "vocabulario.txt");
+        mutex.release();
+
+        /* Beto 2
+        synchronized(terminoEscribir){
+            if(hiloEscritor.isEscribir()){
+                try {
+                    terminoEscribir.wait();
+                }
+                catch(Exception e){
+                    System.out.println(e.toString());
+                }
+            }
+            hiloEscritor.setArchivo(ruta + "vocabulario.txt");
+        }
+
+        /* Beto
         while(hiloEscritor.isEscribir());
-        hiloEscritor.setArchivo(ruta + "vocabulario.txt");        
+        hiloEscritor.setArchivo(ruta + "vocabulario.txt");
+        /* */
+
+
         String cadena = "";
         cadenaEscribir = "";
         int cantTerminosEscribir = 0;
@@ -396,12 +493,47 @@ public class ExtractorDeTexto <tipoFrecuencia>{
             //escritor.guardarStringLn(termino + " " + terminos.get(termino), ruta + "vocabulario.txt", true);
             cadena += ((Termino)vectorTerminos[i]).toString() + "\n";
             if (cantTerminosEscribir == 6000 || i + 1 == size){
+
+
+                try {
+                    mutex.acquire();
+                }
+                catch(Exception e){
+                    System.out.println(e.toString());
+                }
+                cadenaEscribir = cadena;
+                cadena  = new String();
+                hiloEscritor.setTexto(cadenaEscribir);
+                hiloEscritor.setEscribir(true);
+                cantTerminosEscribir = 0;
+                mutex.release();
+
+
+                /*
+                synchronized(terminoEscribir){
+                    if(hiloEscritor.isEscribir()){
+                        try {
+                            terminoEscribir.wait();
+                        }
+                        catch(Exception e){
+                            System.out.println(e.toString());
+                        }
+                    }
+                    cadenaEscribir = cadena;
+                    cadena  = new String();
+                    hiloEscritor.setTexto(cadenaEscribir);
+                    hiloEscritor.setEscribir(true);
+                    cantTerminosEscribir = 0;
+                }
+
+                /* Beto
                 while (hiloEscritor.isEscribir());
                 cadenaEscribir = cadena;
                 cadena  = new String();
                 hiloEscritor.setTexto(cadenaEscribir);
                 hiloEscritor.setEscribir(true);
                 cantTerminosEscribir = 0;
+                /* */
             }
                 
             //escritor.guardarStringLn(((Termino)vectorTerminos[i]).toString(), ruta + "vocabulario.txt", true);
@@ -427,8 +559,35 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         //String termino;
         System.out.println("guardando terminos ordenados en el vocabulario.squema");        
         escritor.guardarStringLn(((Termino)vectorTerminos[0]).impresionParaVocabulario(), ruta + "vocabulario.schema", false);
+
+
+        try {
+            mutex.acquire();
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+        hiloEscritor.setArchivo(ruta + "vocabulario.schema");
+        mutex.release();
+
+        /*
+        synchronized(terminoEscribir){
+            if(hiloEscritor.isEscribir()){
+                try {
+                    terminoEscribir.wait();
+                }
+                catch(Exception e){
+                    System.out.println(e.toString());
+                }
+            }
+            hiloEscritor.setArchivo(ruta + "vocabulario.schema");
+        }
+
+
+        /* Beto
         while (hiloEscritor.isEscribir());
-        hiloEscritor.setArchivo(ruta + "vocabulario.schema");        
+        hiloEscritor.setArchivo(ruta + "vocabulario.schema");
+        /* */
         String cadena = "";
         cadenaEscribir = "";
         int cantTerminosEscribir = 0;
@@ -438,12 +597,45 @@ public class ExtractorDeTexto <tipoFrecuencia>{
             //escritor.guardarStringLn(((Termino)vectorTerminos[i]).impresionParaVocabulario(), ruta + "vocabulario.schema", true);
             cadena += ((Termino)vectorTerminos[i]).impresionParaVocabulario() + "\n";
             if (cantTerminosEscribir == 3000 || i + 1 == size){
+                try {
+                    mutex.acquire();
+                }
+                catch(Exception e){
+                    System.out.println(e.toString());
+                }
+                cadenaEscribir = cadena;
+                cadena  = new String();
+                hiloEscritor.setTexto(cadenaEscribir);
+                hiloEscritor.setEscribir(true);
+                cantTerminosEscribir = 0;
+                mutex.release();
+
+                    /* Beto 2
+                 synchronized(terminoEscribir){
+                    if(hiloEscritor.isEscribir()){
+                        try {
+                            terminoEscribir.wait();
+                        }
+                        catch(Exception e){
+                            System.out.println(e.toString());
+                        }
+                    }
+                    cadenaEscribir = cadena;
+                    cadena  = new String();
+                    hiloEscritor.setTexto(cadenaEscribir);
+                    hiloEscritor.setEscribir(true);
+                    cantTerminosEscribir = 0;
+                 }
+
+
+                 /* Beto
                 while (hiloEscritor.isEscribir());
                 cadenaEscribir = cadena;
                 cadena  = new String();
                 hiloEscritor.setTexto(cadenaEscribir);
                 hiloEscritor.setEscribir(true);
                 cantTerminosEscribir = 0;
+                /* */
             }
             //System.out.println("termino " + (i+1) + " " + termino + " frecuencia " + terminos.get(termino));
         }
@@ -471,9 +663,37 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         String cadena;
         escritor.guardarString("", ruta+"Postings.schema", false);
         /*Se recorren todos los terminos de la colección*/
+
+
+        try {
+            mutex.acquire();
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+        hiloEscritor.setArchivo(ruta+"Postings.schema");
+        mutex.release();
+
+                /* Beto 2
+        synchronized(terminoEscribir){
+            if(hiloEscritor.isEscribir()){            
+                try {
+                    terminoEscribir.wait();
+                }
+                catch(Exception e){
+                    System.out.println(e.toString());
+                }
+            }
+            hiloEscritor.setArchivo(ruta+"Postings.schema");
+
+        }
+
+        /* Beto
         while (hiloEscritor.isEscribir());
         hiloEscritor.setArchivo(ruta+"Postings.schema");
-        
+        /* */
+
+
         for(int numTermino=0;numTermino<cantTerminos;numTermino++){
             /*Se sacan los documentos donde aparece este termino*/
             System.out.println(numTermino + " / " + cantTerminos);
@@ -509,10 +729,40 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                 if (cadena.length() >= 6000 || numDoc + 1 == vectDocumentos.length){
                     cadenaEscribir = cadena;
                     cadena = new String();
+
+
+                    try {
+                        mutex.acquire();
+                    }
+                    catch(Exception e){
+                        System.out.println(e.toString());
+                    }
+                    hiloEscritor.setTexto(cadenaEscribir);
+                    hiloEscritor.setEscribir(true);
+                    cadena = "";
+                    mutex.release();
+
+                    /* Beto 2
+                    synchronized(terminoEscribir){
+                        if(hiloEscritor.isEscribir()){            
+                            try {
+                                terminoEscribir.wait();
+                            }
+                            catch(Exception e){
+                                System.out.println(e.toString());
+                            }
+                        }
+                        hiloEscritor.setTexto(cadenaEscribir);
+                        hiloEscritor.setEscribir(true);
+                        cadena = "";
+                    }
+
+                    /* Beto
                     while (hiloEscritor.isEscribir());
                     hiloEscritor.setTexto(cadenaEscribir);
                     hiloEscritor.setEscribir(true);
                     cadena = "";
+                    /* */
                 }
             } 
             
@@ -529,7 +779,53 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         }
         System.out.println("guardar Norma");
         escritor.guardarStringLn(cadena, ruta+"Norma.schema", false);
+        
+        try {
+            mutex.acquire();
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+        hiloEscritor.setFinalizarHilo(true);
+        cadena = "";
+        mutex.release();
+
+
+        synchronized(escritor){
+            try {
+                escritor.notify();
+            }
+            catch(Exception e){
+                System.out.println(e.toString());
+            }
+        }
+
+        // Espere a q termine el escritor.
+        try {
+            mutex.acquire();
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+           System.out.println("adios main");
+
+                    /* Beto 2
+        synchronized(terminoEscribir){
+            if(hiloEscritor.isEscribir()){
+                try {
+                    terminoEscribir.wait();
+                }
+                catch(Exception e){
+                    System.out.println(e.toString());
+                }
+            }
+            hiloEscritor.setFinalizarHilo(true);
+        }
+
+
+        /* Beto
         while (hiloEscritor.isEscribir());
         hiloEscritor.setFinalizarHilo(true);
+        /* */
     }
 }

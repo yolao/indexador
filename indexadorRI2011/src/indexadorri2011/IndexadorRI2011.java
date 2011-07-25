@@ -3,10 +3,10 @@
  * and open the template in the editor.
  */
 package indexadorri2011;
-
+ 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.io.File;
+import java.io.File; 
 import java.lang.Double;
 import java.lang.management.GarbageCollectorMXBean;
 import java.util.*;
@@ -135,7 +135,7 @@ public class IndexadorRI2011 {
 
     private static void crearIndiceInvertido(String[] args) {
         String rutaColeccion = args[0];
-        String ruta;
+        String ruta; 
 
         File dir = new File(rutaNueva);
         if (!dir.exists())
@@ -148,7 +148,24 @@ public class IndexadorRI2011 {
         int numArchivoGlobal = 0;
         boolean carpetaCompleta;
         //Recorre las carpetas de la colección
-        for (int carpeta = 1; carpeta < 19; carpeta++){
+
+
+
+
+
+
+
+//        for (int carpeta = 1; carpeta < 19; carpeta++){
+        for (int carpeta = 14; carpeta < 15; carpeta++){
+
+
+
+
+
+
+
+
+
             // La carpeta 8 esta mal hecha, hay q brincarsela.
             System.out.println("procesando la carpeta numero "+carpeta+" para sacar los términos");
             if(carpeta != 8 && carpeta != 13){//nos estamos brincando las carpetas que estaban mal hechas

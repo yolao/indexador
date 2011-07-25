@@ -4,6 +4,8 @@
  */
 package indexadorri2011;
 
+import com.sun.corba.se.impl.orbutil.concurrent.Mutex;
+
 /**
  *
  * @author Aaron
@@ -15,9 +17,32 @@ public class ThreadEscritor extends Thread {
     private ManejadorArchivosTexto escritor;
     private boolean escribir;
     private boolean finalizarHilo;
+
+    private Boolean terminoEscribir;
+    private Mutex mutex;
     
-    public ThreadEscritor(){
+    public ThreadEscritor(Mutex mutex){
+        this.mutex = mutex;
+
         this.escritor = new ManejadorArchivosTexto();
+        /*
+        try {
+            mutex.release();
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+
+        /* Beto 2
+        synchronized(terminoEscribir){
+            try {
+                terminoEscribir.notify();
+            }
+            catch(Exception e){
+                System.out.println(e.toString());
+            }
+        }
+        /* */
     }
 
     @Override
@@ -27,13 +52,30 @@ public class ThreadEscritor extends Thread {
                 System.out.println("------------------------------------------------------A imprimir bloque de " + archivo);
                 escritor.guardarString(getTexto(), getArchivo(), true);
                 escribir = false;
+                try {
+                    mutex.release();
+                }
+                catch(Exception e){
+                    System.out.println(e.toString());
+                }
             }
+            /* Beto 2
+            synchronized(terminoEscribir){
+                try {
+                    terminoEscribir.notify();
+                }
+                catch(Exception e){
+                    System.out.println(e.toString());
+                }
+            }
+            /* */
             synchronized(escritor){
-                try { 
+                try {
+                    escribir = false;
                     escritor.wait(); 
                 } 
                 catch(Exception e){ 
-                    System.err.println(e.toString()); 
+                    System.out.println(e.toString());
                 }
             }
         }
@@ -52,7 +94,7 @@ public class ThreadEscritor extends Thread {
     public void setEscribir(boolean escribir) {
         this.escribir = escribir;
         if (escribir){
-            synchronized(escritor){                
+            synchronized(escritor){
                 escritor.notify();
             }
         }
@@ -100,9 +142,29 @@ public class ThreadEscritor extends Thread {
     public void setFinalizarHilo(boolean finalizarHilo) {
         this.finalizarHilo = finalizarHilo;
         if (finalizarHilo){
+            try {
+                mutex.release();
+            }
+            catch(Exception e){
+                System.out.println(e.toString());
+            }
+
+            /* Beto 2
+            synchronized(terminoEscribir){
+                try {
+                    terminoEscribir.notify();
+                }
+                catch(Exception e){
+                    System.out.println(e.toString());
+                }
+            }
+            /* */
+            System.out.println("adios escritor");
             synchronized (escritor){
                 escritor.notify();
             }
+            System.out.println("adios final escritos");
+            /* */
         }
     }
 }
