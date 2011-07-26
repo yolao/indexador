@@ -4,6 +4,9 @@
  */
 package indexadorri2011;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Aaron
@@ -13,9 +16,8 @@ public class ThreadEscritor extends Thread {
     private String archivo;
     private String texto;
     private ManejadorArchivosTexto escritor;
-    public boolean escribir;
-    private boolean finalizarHilo;
-    private Object semaforo;
+    private boolean escribir;
+    private boolean finalizarHilo;   
     
     public ThreadEscritor(){
         this.escritor = new ManejadorArchivosTexto();
@@ -25,11 +27,13 @@ public class ThreadEscritor extends Thread {
     private synchronized void escribiendo(){
         while (!finalizarHilo){ 
             try { 
-                wait(); 
+                while(!escribir && !finalizarHilo)
+                    wait(); 
                 if (escribir){
                     System.out.println("------------------------------------------------------A imprimir bloque de " + archivo);
-                    escritor.guardarString(getTexto(), getArchivo(), true);
+                    escritor.guardarString(this.texto, this.archivo, true);
                     escribir = false;
+                    notifyAll();
                     System.out.println("puse el escribir en false... escribir ="+escribir);
                 }
             } 
@@ -41,8 +45,8 @@ public class ThreadEscritor extends Thread {
     
     @Override
     public void run() {
-        //escribiendo();
-        synchronized(escritor){
+        escribiendo();
+        /*synchronized(escritor){
             while (!finalizarHilo){ 
                 try { 
                     escritor.wait(); 
@@ -56,21 +60,10 @@ public class ThreadEscritor extends Thread {
                     System.err.println(e.toString()); 
                 }
             }
-        }
+        }*/
     }
 
-    public synchronized void escribir(boolean escribir, String texto, String archivo){
-        if(escribir==this.escribir){                
-            System.out.println("Quieren escribir y no he terminado");
-        }
-        this.escribir = escribir;
-        this.texto = new String (texto);
-        this.archivo = new String (archivo);
-        if (escribir){
-            escritor.notify();
-        }
-    }
-    
+      
     /**
      * @return the escribir
      */
@@ -81,16 +74,24 @@ public class ThreadEscritor extends Thread {
     /**
      * @param escribir the escribir to set
      */
-    public void setEscribir(boolean escribir) {
-        //while (this.escribir == escribir) ;
-        synchronized(escritor){
-            if(escribir==this.escribir){                
-                System.err.println("Quieren escribir y no he terminado");
-            }
-            this.escribir = escribir;
-            if (escribir){
+    public synchronized void escribir(String nuevoTexto, String nuevoArchivo) {
+        try {
+            //while (this.escribir == escribir) ;
+            //(escritor){
+            while(this.escribir)
+                wait();
+            //if(escribir==this.escribir){                
+              //  System.err.println("Quieren escribir y no he terminado");
+            //}
+            this.texto = nuevoTexto;
+            this.archivo = nuevoArchivo;                    
+            this.escribir = true;
+            //if (escribir){
                 escritor.notify();
-            }
+            //}
+            //}
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ThreadEscritor.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -98,32 +99,32 @@ public class ThreadEscritor extends Thread {
     /**
      * @param archivo the archivo to set
      */
-    public void setArchivo(String archivo) {
+    /*public void setArchivo(String archivo) {
         synchronized(escritor){
             this.archivo = new String(archivo);        
         }
-    }
+    }*/
 
     /**
      * @return the archivo
      */
-    public String getArchivo() {
+    /*public String getArchivo() {
         return archivo;
-    }
+    }*/
 
     /**
      * @return the texto
      */
-    public String getTexto() {
+    /*public String getTexto() {
         return texto;
-    }
+    }*/
 
     /**
      * @param texto the texto to set
      */
-    public void setTexto(String texto) {
+    /*public void setTexto(String texto) {
         this.texto = new String(texto);
-    }
+    }*/
 
     /**
      * @return the finalizarHilo
@@ -135,12 +136,18 @@ public class ThreadEscritor extends Thread {
     /**
      * @param finalizarHilo the finalizarHilo to set
      */
-    public void setFinalizarHilo(boolean finalizarHilo) {
-        this.finalizarHilo = finalizarHilo;
-        if (finalizarHilo){
-            synchronized (escritor){
-                escritor.notify();
+    public synchronized void setFinalizarHilo(boolean finalizarHilo) {
+        try {
+            while(escribir)
+                wait();
+            this.finalizarHilo = finalizarHilo;
+            if (finalizarHilo){
+                //synchronized (escritor){
+                notify();
+                
             }
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ThreadEscritor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
