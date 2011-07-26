@@ -4,8 +4,6 @@
  */
 package indexadorri2011;
 
-import com.sun.corba.se.impl.orbutil.concurrent.Mutex;
-
 /**
  *
  * @author Aaron
@@ -15,72 +13,64 @@ public class ThreadEscritor extends Thread {
     private String archivo;
     private String texto;
     private ManejadorArchivosTexto escritor;
-    private boolean escribir;
+    public boolean escribir;
     private boolean finalizarHilo;
-
-    private Boolean terminoEscribir;
-    private Mutex mutex;
+    private Object semaforo;
     
-    public ThreadEscritor(Mutex mutex){
-        this.mutex = mutex;
-
+    public ThreadEscritor(){
         this.escritor = new ManejadorArchivosTexto();
-        /*
-        try {
-            mutex.release();
-        }
-        catch(Exception e){
-            System.out.println(e.toString());
-        }
-
-        /* Beto 2
-        synchronized(terminoEscribir){
-            try {
-                terminoEscribir.notify();
-            }
-            catch(Exception e){
-                System.out.println(e.toString());
-            }
-        }
-        /* */
+        this.escribir = true;
     }
 
+    private synchronized void escribiendo(){
+        while (!finalizarHilo){ 
+            try { 
+                wait(); 
+                if (escribir){
+                    System.out.println("------------------------------------------------------A imprimir bloque de " + archivo);
+                    escritor.guardarString(getTexto(), getArchivo(), true);
+                    escribir = false;
+                    System.out.println("puse el escribir en false... escribir ="+escribir);
+                }
+            } 
+            catch(Exception e){ 
+                System.err.println(e.toString()); 
+            }
+        }
+    }
+    
     @Override
     public void run() {
-        while (!finalizarHilo){
-            if (escribir){
-                System.out.println("------------------------------------------------------A imprimir bloque de " + archivo);
-                escritor.guardarString(getTexto(), getArchivo(), true);
-                escribir = false;
-                try {
-                    mutex.release();
-                }
-                catch(Exception e){
-                    System.out.println(e.toString());
-                }
-            }
-            /* Beto 2
-            synchronized(terminoEscribir){
-                try {
-                    terminoEscribir.notify();
-                }
-                catch(Exception e){
-                    System.out.println(e.toString());
-                }
-            }
-            /* */
-            synchronized(escritor){
-                try {
-                    escribir = false;
+        //escribiendo();
+        synchronized(escritor){
+            while (!finalizarHilo){ 
+                try { 
                     escritor.wait(); 
+                    if (escribir){
+                        System.out.println("------------------------------------------------------A imprimir bloque de " + archivo);
+                        escritor.guardarString(getTexto(), getArchivo(), true);
+                        escribir = false;
+                    }
                 } 
                 catch(Exception e){ 
-                    System.out.println(e.toString());
+                    System.err.println(e.toString()); 
                 }
             }
         }
     }
 
+    public synchronized void escribir(boolean escribir, String texto, String archivo){
+        if(escribir==this.escribir){                
+            System.out.println("Quieren escribir y no he terminado");
+        }
+        this.escribir = escribir;
+        this.texto = new String (texto);
+        this.archivo = new String (archivo);
+        if (escribir){
+            escritor.notify();
+        }
+    }
+    
     /**
      * @return the escribir
      */
@@ -92,9 +82,13 @@ public class ThreadEscritor extends Thread {
      * @param escribir the escribir to set
      */
     public void setEscribir(boolean escribir) {
-        this.escribir = escribir;
-        if (escribir){
-            synchronized(escritor){
+        //while (this.escribir == escribir) ;
+        synchronized(escritor){
+            if(escribir==this.escribir){                
+                System.err.println("Quieren escribir y no he terminado");
+            }
+            this.escribir = escribir;
+            if (escribir){
                 escritor.notify();
             }
         }
@@ -105,7 +99,9 @@ public class ThreadEscritor extends Thread {
      * @param archivo the archivo to set
      */
     public void setArchivo(String archivo) {
-        this.archivo = archivo;        
+        synchronized(escritor){
+            this.archivo = new String(archivo);        
+        }
     }
 
     /**
@@ -126,7 +122,7 @@ public class ThreadEscritor extends Thread {
      * @param texto the texto to set
      */
     public void setTexto(String texto) {
-        this.texto = texto;
+        this.texto = new String(texto);
     }
 
     /**
@@ -142,29 +138,9 @@ public class ThreadEscritor extends Thread {
     public void setFinalizarHilo(boolean finalizarHilo) {
         this.finalizarHilo = finalizarHilo;
         if (finalizarHilo){
-            try {
-                mutex.release();
-            }
-            catch(Exception e){
-                System.out.println(e.toString());
-            }
-
-            /* Beto 2
-            synchronized(terminoEscribir){
-                try {
-                    terminoEscribir.notify();
-                }
-                catch(Exception e){
-                    System.out.println(e.toString());
-                }
-            }
-            /* */
-            System.out.println("adios escritor");
             synchronized (escritor){
                 escritor.notify();
             }
-            System.out.println("adios final escritos");
-            /* */
         }
     }
 }

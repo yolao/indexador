@@ -231,18 +231,22 @@ class ManejadorArchivosTexto {
     return guardoExitoso;
   }
     // Guarda en archivo un grupo de líneas de texto
-  public boolean guardarString(String texto, String elNombreArchivo, boolean append) {
+  public synchronized boolean  guardarString(String texto, String elNombreArchivo, boolean append) {
+      String miTexto = new String(texto);
     boolean guardoExitoso=true;
 
-    if ((elNombreArchivo == null)&&(texto!=null)) {
+    if ((elNombreArchivo == null)&&(miTexto!=null)) {
       elNombreArchivo = this.obtenerNombreArchivo(MODO_ESCRITURA);
     }
 
-    if ((elNombreArchivo!=null) && (texto!=null)) {
+    if ((elNombreArchivo!=null) && (miTexto!=null)) {
       try {
-        flujoSalida = new PrintWriter(new FileWriter(elNombreArchivo, append));
 
-        flujoSalida.print(texto);
+        flujoSalida = new PrintWriter(new FileWriter(elNombreArchivo, append));
+        if(miTexto==""){
+            System.out.println("Que rayos??? "); //apuesto que no cae aca
+        }  
+        flujoSalida.print(miTexto);
 
       } catch(IOException e) {
         guardoExitoso = false;
