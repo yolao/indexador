@@ -21,7 +21,7 @@ public class ThreadEscritor extends Thread {
     
     public ThreadEscritor(){
         this.escritor = new ManejadorArchivosTexto();
-        this.escribir = true;
+        this.escribir = false;
     }
 
     private synchronized void escribiendo(){
@@ -34,7 +34,7 @@ public class ThreadEscritor extends Thread {
                     escritor.guardarString(this.texto, this.archivo, true);
                     escribir = false;
                     notifyAll();
-                    System.out.println("puse el escribir en false... escribir ="+escribir);
+                    
                 }
             } 
             catch(Exception e){ 
@@ -87,7 +87,7 @@ public class ThreadEscritor extends Thread {
             this.archivo = nuevoArchivo;                    
             this.escribir = true;
             //if (escribir){
-                escritor.notify();
+                notify();
             //}
             //}
         } catch (InterruptedException ex) {
