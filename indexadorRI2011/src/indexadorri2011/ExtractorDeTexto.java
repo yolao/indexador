@@ -109,9 +109,9 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                     System.out.print("callose!!!!");
                 }
                 //busco el término en la tablaHash Global
-                if(word.equalsIgnoreCase("voleibol")){
+                /*if(word.equalsIgnoreCase("voleibol")){
                     System.out.print("fallo voleibol");
-                }
+                }*/
                 //si el término se encontró por primera vez--------------->Agregar los documentos en los que aparece el termino en la instancia del término.,......
                 if (!terminos.containsKey(word)){
                     //se agrega a la colección de términos Locales y Globales
@@ -175,10 +175,10 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         Object [] listaTerminos = terminos.keySet().toArray();
         Termino termino;
         String lematizado;
-        int fusionados=0;
+        //int fusionados=0;
         int cantTerminos = listaTerminos.length;
-        ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
-        escritor.guardarStringLn("lematizado\toriginal\tcon quien se fusionó","palabrasFusionadas.txt", false);
+        //ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
+        //escritor.guardarStringLn("lematizado\toriginal\tcon quien se fusionó","palabrasFusionadas.txt", false);
         for(int indice=0; indice < cantTerminos; indice++){//se recorren todos los términos
             
             if(listaTerminos[indice].toString().length()>puntoCorte){//si el termino necesita lematización
@@ -188,9 +188,9 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                 }
                 if(terminos.containsKey(lematizado)){//si la palabra lematizada concuerda con otra se deben fusionar
                     termino = terminos.get(lematizado);
-                    escritor.guardarStringLn(lematizado + "\t" + listaTerminos[indice].toString()+"\t"+terminos.get(lematizado).toString(), "palabrasFusionadas.txt",true);
+                   // escritor.guardarStringLn(lematizado + "\t" + listaTerminos[indice].toString()+"\t"+terminos.get(lematizado).toString(), "palabrasFusionadas.txt",true);
                     termino.fusionar(terminos.get(listaTerminos[indice]));
-                    fusionados++;
+                    //fusionados++;
                     terminos.remove(termino.getTermino());
                     terminos.put(termino.getTermino(),termino);
                     terminos.remove(listaTerminos[indice]);                
@@ -203,7 +203,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                 
             }
         }
-        System.out.println("Cantidad de archivos fusionados " + fusionados);
+      //  System.out.println("Cantidad de archivos fusionados " + fusionados);
         
     }
     
@@ -235,7 +235,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         documento = new Hashtable<String, Double>(500);
         for(int numDocumento=0;numDocumento<cantidadArchivos;numDocumento++){//itera sobre los documentos
             documento.clear();
-            System.out.println("lematizando el documento y quitando stopwords"+numDocumento);
+            System.out.println("lematizando el documento y quitando stopwords "+numDocumento+"/"+cantidadArchivos);
             archivo = lector.leerLineasTexto(ruta+"/"+numDocumento+".txt");
             maxFrec = 0.0;             
             
@@ -395,7 +395,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         ComparadorTerminos c = new ComparadorTerminos();
         Arrays.sort(vectorTerminos, c);        
         //String termino;
-        escritor.guardarStringLn(((Termino)vectorTerminos[0]).toString(), ruta + "vocabulario.txt", false);
+        escritor.guardarString(((Termino)vectorTerminos[0]).toString()+"\n", ruta + "vocabulario.txt", false);
         //while(hiloEscritor.isEscribir());        
 //        hiloEscritor.setArchivo(ruta + "vocabulario.txt");        
         String cadena = "";
@@ -437,7 +437,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         
         //String termino;
         System.out.println("guardando terminos ordenados en el vocabulario.squema");        
-        escritor.guardarStringLn(((Termino)vectorTerminos[0]).impresionParaVocabulario(), ruta + "vocabulario.schema", false);
+        escritor.guardarString(((Termino)vectorTerminos[0]).impresionParaVocabulario()+"\n", ruta + "vocabulario.schema", false);
         //while (hiloEscritor.isEscribir());
        // hiloEscritor.setArchivo(ruta + "vocabulario.schema");        
         String cadena = "";
@@ -489,8 +489,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         cadena = "";
         String wString;
         for(int numTermino=0;numTermino<cantTerminos;numTermino++){
-            /*Se sacan los documentos donde aparece este termino*/
-            System.out.println(numTermino + " / " + cantTerminos);
+            /*Se sacan los documentos donde aparece este termino*/   
             vectDocumentos = terminos.get(vectTerminos[numTermino].toString()).getDocumentosContenedores().split("\n");
             /*Guarda los ws de un termino*/           
             //cadena = "";            
@@ -525,6 +524,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                     //while (hiloEscritor.isEscribir());
           /*          hiloEscritor.setTexto(cadenaEscribir);
                     hiloEscritor.setEscribir(true);*/
+                    System.out.println(numTermino + " / " + cantTerminos);
                     hiloEscritor.escribir(cadenaEscribir, ruta+"Postings.schema");
                     cadena = "";
                 }
@@ -542,7 +542,7 @@ public class ExtractorDeTexto <tipoFrecuencia>{
             cadena += (normaDocu.length()>7? normaDocu.substring(0,7):normaDocu + "       ".substring(0,7-normaDocu.toString().length()))+"\n"; 
         }
         System.out.println("guardar Norma");
-        escritor.guardarStringLn(cadena, ruta+"Norma.schema", false);
+        escritor.guardarString(cadena, ruta+"Norma.schema", false);
         //while (hiloEscritor.isEscribir());
         hiloEscritor.setFinalizarHilo(true);
     }
