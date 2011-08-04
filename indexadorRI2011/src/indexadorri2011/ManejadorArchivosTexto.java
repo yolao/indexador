@@ -3,11 +3,10 @@ package indexadorri2011;
 // Código reutilizado. Fuente Pablo López Gutiérrez
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader; // clase para lectura de archivos de texto
-import java.io.FileWriter; // clase para escritura de archivos de texto
 import java.io.BufferedReader; // clase para lectura de flujos de texto en forma agrupada (arreglos, l�neas, etc.)
 import java.io.File;
-import java.io.PrintWriter; // clase para conversi�n de objetos con formato a un flujo de salida de texto
 import java.io.IOException; // excepciones generadas por manipulaci�n de archivos
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,21 +18,19 @@ class ManejadorArchivosTexto {
   private final String TEXTO_BOTON_ABRIR_ARCHIVO = "Leer de archivo";
   private final String TEXTO_BOTON_GUARDAR_ARCHIVO = "Guardar en archivo";
   private BufferedReader flujoEntrada;
-  private PrintWriter flujoSalida;
   private JFileChooser selector;
   private String archivo;
   private int numeroDeLinea;
+    private FileOutputStream os;
   
   public ManejadorArchivosTexto() {
     flujoEntrada = null;
-    flujoSalida = null;
     selector = null;
     archivo = null;
     numeroDeLinea = 0;
   }
   
   public ManejadorArchivosTexto(String elNombreArchivo){    
-    flujoSalida = null;
     selector = null;
     numeroDeLinea = 0;
     archivo = elNombreArchivo;    
@@ -73,35 +70,6 @@ class ManejadorArchivosTexto {
     return linea;
   }
   
-  public String leerTodoArchivo(String elNombreArchivo){
-    String lasLineas = "";
-    archivo = elNombreArchivo;
-
-    if (elNombreArchivo == null) {
-      elNombreArchivo = this.obtenerNombreArchivo(MODO_LECTURA);
-    }
-    
-    if (elNombreArchivo!=null) {
-      try {
-        flujoEntrada = new BufferedReader(new FileReader(elNombreArchivo));
-        //System.out.println("en manejador");
-        String linea = flujoEntrada.readLine();
-        while (linea != null) {
-          lasLineas += linea + "\n";
-          linea = flujoEntrada.readLine();
-        }
-      } catch (IOException excepcion) {}
-      
-      try {  // Cierra el flujo de entrada y libera cualquier recurso del sistema asociado con �l
-        if (flujoEntrada != null) {
-          flujoEntrada.close();
-        } 
-      } catch (IOException excepcion) {}
-    }    
-    lasLineas = lasLineas.substring(0, lasLineas.length()-1);
-    return lasLineas;
-  }
-  
   public void setNumeroDeLinea(int numeroDeLinea){
       this.numeroDeLinea = numeroDeLinea;
       leerLinea(numeroDeLinea - 1);
@@ -129,67 +97,40 @@ class ManejadorArchivosTexto {
   }
   // Lee de archivo un grupo de l�neas de texto
   public String[] leerLineasTexto(String elNombreArchivo) {
-    String[] lasLineas = null;
-    archivo = elNombreArchivo;
-
-    if (elNombreArchivo == null) {
-      elNombreArchivo = this.obtenerNombreArchivo(MODO_LECTURA);
-    }
-    
-    if (elNombreArchivo!=null) {
-      try {
-        flujoEntrada = new BufferedReader(new FileReader(elNombreArchivo));
-        //System.out.println("en manejador");
-        lasLineas = new String[0];
-        String linea = flujoEntrada.readLine();
-        while (linea != null) {
-          lasLineas = this.agrandarArregloLineas(lasLineas);
-          lasLineas[lasLineas.length-1] = linea;
-          linea = flujoEntrada.readLine();
-        }
-      } catch (IOException excepcion) {}
+      String[] lasLineas=null;
       
-      try {  // Cierra el flujo de entrada y libera cualquier recurso del sistema asociado con �l
-        if (flujoEntrada != null) {
-          flujoEntrada.close();
-        } 
-      } catch (IOException excepcion) {}
-    }    
-    return lasLineas;
+        try {            
+            archivo = elNombreArchivo;
+            String contenido = this.leerTodoArchivo(elNombreArchivo,null);
+            lasLineas = contenido.split("\n");
+        } catch (IOException ex) {
+            Logger.getLogger(ManejadorArchivosTexto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lasLineas;
   }
   
-  public String[] agrandarArregloLineas(String[] elArreglo) {
-    String[] nuevoArreglo = new String[elArreglo.length + 1];
-    for (int indice=0;indice<elArreglo.length;indice++) {
-      nuevoArreglo[indice] = elArreglo[indice];
-    }
-    return nuevoArreglo;
-  }
-
-  // Guarda en archivo un grupo de líneas de texto
+  /* Guarda en archivo un grupo de líneas de texto
+   * Luego de terminar de escribir el archivo se debe llamar al metodo cerrar()
+   */
   public boolean guardarLineasTexto(String[] lasLineas, String elNombreArchivo, boolean append) {
     boolean guardoExitoso=true;
-
+        
     if ((elNombreArchivo == null)&&(lasLineas!=null)) {
       elNombreArchivo = this.obtenerNombreArchivo(MODO_ESCRITURA);
     }
 
     if ((elNombreArchivo!=null) && (lasLineas!=null)) {
-      try {
-        flujoSalida = new PrintWriter(new FileWriter(elNombreArchivo, append));
-
-        
-        for (int indice=0;indice<lasLineas.length;indice++) {
-            if (lasLineas[indice] != null)
-                flujoSalida.println(lasLineas[indice]);
-        }
-      } catch(IOException excepcion) {
-        guardoExitoso = false;
-      }
-
-      if (flujoSalida!=null) { // Cierra el flujo de salida y libera cualquier recurso del sistema asociado con �l
-        flujoSalida.close();
-      }
+          String texto="";
+          for(int i = 0; i < lasLineas.length;i++)
+              texto += lasLineas[i] + "\n";
+          
+          if(!(new File(elNombreArchivo)).exists()){
+              this.crearArchivo(elNombreArchivo, texto);
+          }else if(append){
+              this.agregarAlArchivo(texto);
+          }else {
+              this.crearArchivo(elNombreArchivo, texto);
+          }
     }else {
       guardoExitoso = false;
     }
@@ -203,62 +144,31 @@ class ManejadorArchivosTexto {
       }
       return file.length();
   }
-
-    // Guarda en archivo un grupo de líneas de texto
-  public boolean guardarStringLn(String texto, String elNombreArchivo, boolean append) {
-    boolean guardoExitoso=true;
-
-    if ((elNombreArchivo == null)&&(texto!=null)) {
-      elNombreArchivo = this.obtenerNombreArchivo(MODO_ESCRITURA);
-    }
-
-    if ((elNombreArchivo!=null) && (texto!=null)) {
-      try {
-        flujoSalida = new PrintWriter(new FileWriter(elNombreArchivo, append));
-
-        flujoSalida.println(texto);
-
-      } catch(IOException e) {
-        guardoExitoso = false;
-      }
-
-      if (flujoSalida!=null) { // Cierra el flujo de salida y libera cualquier recurso del sistema asociado con �l
-        flujoSalida.close();
-      }
-    }else {
-      guardoExitoso = false;
-    }
-    return guardoExitoso;
-  }
-    // Guarda en archivo un grupo de líneas de texto
-  public synchronized boolean  guardarString(String texto, String elNombreArchivo, boolean append) {
-      String miTexto = new String(texto);
-    boolean guardoExitoso=true;
-
-    if ((elNombreArchivo == null)&&(miTexto!=null)) {
-      elNombreArchivo = this.obtenerNombreArchivo(MODO_ESCRITURA);
-    }
-
-    if ((elNombreArchivo!=null) && (miTexto!=null)) {
-      try {
-
-        flujoSalida = new PrintWriter(new FileWriter(elNombreArchivo, append));
-        if(miTexto==""){
-            System.out.println("Que rayos??? "); //apuesto que no cae aca
-        }  
-        flujoSalida.print(miTexto);
-
-      } catch(IOException e) {
-        guardoExitoso = false;
-      }
-
-      if (flujoSalida!=null) { // Cierra el flujo de salida y libera cualquier recurso del sistema asociado con �l
-        flujoSalida.close();
-      }
-    }else {
-      guardoExitoso = false;
-    }
-    return guardoExitoso;
+  
+  /**
+   * 
+   * @param archivo
+   * @param salto
+   * @param numLineas
+   * @return lineas leidas
+   */
+  public String[] leerLineasDesdePosicion(String archivo, long salto, int numLineas){
+      String[] lineas = null;
+      if(archivo!=null){
+           try {
+               flujoEntrada = new BufferedReader(new FileReader(archivo));
+               long s = flujoEntrada.skip(salto);
+               
+               lineas = new String[numLineas];
+               for (int i=0; i < numLineas; ++i)
+                   lineas[i] = flujoEntrada.readLine();
+               flujoEntrada.close();
+           }
+           catch (IOException ex) {
+               Logger.getLogger(ManejadorArchivosTexto.class.getName()).log(Level.SEVERE, null, ex);
+           }           
+      }      
+      return lineas;
   }
   
   private String obtenerNombreArchivo(int modo) {
@@ -283,5 +193,54 @@ class ManejadorArchivosTexto {
   }
   
 
-  
+
+    public String leerTodoArchivo(String fileName, String charsetName)throws java.io.IOException {    
+        java.io.InputStream is = new java.io.FileInputStream(fileName);                    
+        try {    
+            final int bufsize = 60096;    
+            int available = is.available();    
+            byte data[] = new byte[available < bufsize ? bufsize : available];    
+            int used = 0;    
+            while (true) {    
+                if (data.length - used < bufsize) {    
+                    byte newData[] = new byte[data.length << 1];    
+                    System.arraycopy(data, 0, newData, 0, used);    
+                    data = newData;    
+                }    
+                int got = is.read(data, used, data.length - used);    
+                if (got <= 0) break;    
+                    used += got;    
+            }    
+            return charsetName != null ? new String(data, 0, used, charsetName)    
+                               : new String(data, 0, used);    
+        } finally {
+            is.close();  
+        }  
+    }
+    
+    public void crearArchivo(String fileName, String datos){
+        try {
+            os = new java.io.FileOutputStream(fileName);
+            agregarAlArchivo(datos);
+        } catch (IOException ex) {
+            Logger.getLogger(ManejadorArchivosTexto.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
+    public void agregarAlArchivo(String datos){
+        try {            
+            os.write(datos.getBytes(), 0, datos.getBytes().length);            
+            os.flush();
+        } catch (IOException ex) {
+            Logger.getLogger(ManejadorArchivosTexto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void cerrarArchivo(){
+        try {
+            os.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ManejadorArchivosTexto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

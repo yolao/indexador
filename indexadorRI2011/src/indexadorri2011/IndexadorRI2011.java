@@ -93,7 +93,7 @@ public class IndexadorRI2011 {
         crearIndiceInvertido(args);
     }
     
-    public static void procesarTerminos(String rutaColeccion, int carpeta, String rutaNueva){
+    public static void procesarTerminos(String rutaColeccion, int carpeta, String rutaNueva, ManejadorArchivosTexto escritor){
         ManejadorArchivosTexto lector;
         String urls = "";
         File archivo;
@@ -102,7 +102,7 @@ public class IndexadorRI2011 {
         if (archivo.exists() && archivo.isFile()) {
             try{
                 lector = new ManejadorArchivosTexto();
-                urls = lector.leerTodoArchivo(ruta);
+                urls = lector.leerTodoArchivo(ruta,null);
             }
             catch(Exception ex){
                 //Logger.getLogger(ExtractorDeTexto.class.getName()).log(Level.SEVERE, null, ex);
@@ -114,7 +114,7 @@ public class IndexadorRI2011 {
             if (archivo.exists() && archivo.isFile()) {
                 try{
                     lector = new ManejadorArchivosTexto();
-                    urls = lector.leerTodoArchivo(ruta);
+                    urls = lector.leerTodoArchivo(ruta,null);
                 }
                 catch(Exception ex){
                     Logger.getLogger(ExtractorDeTexto.class.getName()).log(Level.SEVERE, null, ex);
@@ -123,13 +123,13 @@ public class IndexadorRI2011 {
         }
         if(urls.length() > 0){
             // guarda en el archivo de URLS los urls recien leidos...
-            ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
+
             // La primera vez crea el archivo, desp solo agrega.
             if(carpeta == 1){
-                escritor.guardarStringLn(urls, (rutaNueva + "urls.schema"), false);
+                escritor.crearArchivo((rutaNueva + "urls.schema"), urls);
             }
             else
-                escritor.guardarStringLn(urls, (rutaNueva + "urls.schema"), true);
+                escritor.agregarAlArchivo(urls);
         }
     }
 
@@ -148,13 +148,15 @@ public class IndexadorRI2011 {
         int numArchivoGlobal = 0;
         boolean carpetaCompleta;
         //Recorre las carpetas de la colección
+        
+        ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
         for (int carpeta = 1; carpeta < 19; carpeta++){
             // La carpeta 8 esta mal hecha, hay q brincarsela.
             System.out.println("procesando la carpeta numero "+carpeta+" para sacar los términos");
             if(carpeta != 8 && carpeta != 13){//nos estamos brincando las carpetas que estaban mal hechas
                 numArchivoLocal = 0;
                 carpetaCompleta = false;
-                //procesarTerminos(rutaColeccion, carpeta, rutaNueva);
+                procesarTerminos(rutaColeccion, carpeta, rutaNueva,escritor);
                 
                 do {
                     ruta = rutaColeccion + "/" + carpeta + "/" + numArchivoLocal;
@@ -184,7 +186,7 @@ public class IndexadorRI2011 {
                 }while(!carpetaCompleta);
             }
         }
-        
+        escritor.cerrarArchivo();
         System.out.println("creando el vocabulario txt sin normalizar ni lematizar");
         Termino.setTotalDocumentos(numArchivoGlobal);        
         extractor.crearVocabulario("./indice/");

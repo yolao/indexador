@@ -8,6 +8,7 @@ package indexadorri2011;
  *
  * @author Aaron
  */
+import java.util.logging.Level;
 import net.htmlparser.jericho.*;
 import java.util.*;
 import java.io.*;
@@ -304,7 +305,8 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         int size = terminos.size();
         //String termino;
         Object [] terminosOrdenados = terminos.keySet().toArray();
-        escritor.guardarStringLn(terminosOrdenados[0].toString(), nombreArchivo, false);
+        escritor.crearArchivo(nombreArchivo, terminosOrdenados[0].toString());
+        //escritor.guardarStringLn(terminosOrdenados[0].toString(), nombreArchivo, false);
         String cadena = "";
         cadenaEscribir = "";
         for (int i = 1; i < size; i++){
@@ -318,7 +320,8 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         hiloEscritor.setTexto(cadenaEscribir);
         hiloEscritor.setEscribir(true);*/
         //hiloEscritor.escribir(cadena,nombreArchivo);
-        escritor.guardarString(cadena, nombreArchivo, true);
+        escritor.agregarAlArchivo(cadena);
+        escritor.cerrarArchivo();
     }
     
     /**
@@ -349,9 +352,9 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                 espaciosFrecuencia = length > 7?"":"       ".substring(0,7-length);
                 frecuencia = length > 7?frecuencia.substring(0,7):frecuencia;
             }
-            escritor.guardarString(terminosOrdenados[0].toString()+espaciosTermino+frecuencia+espaciosFrecuencia+"\n", nombreArchivo, false);
+            escritor.crearArchivo(nombreArchivo, terminosOrdenados[0].toString()+espaciosTermino+frecuencia+espaciosFrecuencia+"\n");
         }catch(Exception e){
-            escritor.guardarStringLn("", nombreArchivo, false);
+            escritor.crearArchivo(nombreArchivo,"");
         }
         String cadena = "";
         //cadenaEscribir = "";
@@ -369,22 +372,9 @@ public class ExtractorDeTexto <tipoFrecuencia>{
                 espaciosFrecuencia = "";
             }
             cadena += terminosOrdenados[i].toString() + espaciosTermino + frecuencia + espaciosFrecuencia + "\n";
-            //escritor.guardarStringLn(terminosOrdenados[i].toString()+espaciosTermino+frecuencia+espaciosFrecuencia, nombreArchivo, true);
         }
-        /*if(lematizados){
-            escritor.guardarString(cadena,nombreArchivo,true);
-        }else{*/
-        // Si el hilo aun esta escribiendo espera hasta poder escribir de nuevo.
-        //while (hiloEscritor.isEscribir());
-            //cadenaEscribir = cadena;
-            /*hiloEscritor.setArchivo(nombreArchivo);       
-            hiloEscritor.setTexto(cadenaEscribir);        
-            hiloEscritor.setEscribir(true);*/
-            //hiloEscritor.escribir(cadenaEscribir, nombreArchivo);
-            escritor.guardarString(cadena, nombreArchivo, true);
-       // }
-      /*  while(hiloEscritor.escribir == true){}
-        hiloEscritor.escribir(true, texto, nombreArchivo);*/
+        escritor.agregarAlArchivo(cadena);       
+        escritor.cerrarArchivo();
     }
     
     /**
@@ -396,35 +386,22 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         Termino.reiniciarContador();
         ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
         int size = terminos.size();
+        int cantTerminosEscribir = 0;
         Object [] vectorTerminos = terminos.values().toArray();
         ComparadorTerminos c = new ComparadorTerminos();
         Arrays.sort(vectorTerminos, c);        
-        //String termino;
-        escritor.guardarString(((Termino)vectorTerminos[0]).toString()+"\n", ruta + "vocabulario.txt", false);
-        //while(hiloEscritor.isEscribir());        
-//        hiloEscritor.setArchivo(ruta + "vocabulario.txt");        
+        escritor.crearArchivo(ruta + "vocabulario.txt",  ((Termino)vectorTerminos[0]).toString()+"\n");
         String cadena = "";
-        //cadenaEscribir = "";
-        int cantTerminosEscribir = 0;
+        
         for (int i = 1; i < size; i++, cantTerminosEscribir++){
-            //termino = llaves.nextElement();
-            //escritor.guardarStringLn(termino + " " + terminos.get(termino), ruta + "vocabulario.txt", true);
             cadena += ((Termino)vectorTerminos[i]).toString() + "\n";
             if (cantTerminosEscribir == 6000 || i + 1 == size){
-                //while (hiloEscritor.isEscribir());
-                //cadenaEscribir = cadena;
-                //cadena  = new String();
-               /* hiloEscritor.setTexto(cadenaEscribir);
-                hiloEscritor.setEscribir(true);*/
-                //hiloEscritor.escribir(cadenaEscribir, ruta+"vocabulario.txt");
-                escritor.guardarString(cadena, ruta+"vocabulario.txt", true);
+                escritor.agregarAlArchivo(cadena);
                 cadena = "";
                 cantTerminosEscribir = 0;
             }
-                
-            //escritor.guardarStringLn(((Termino)vectorTerminos[i]).toString(), ruta + "vocabulario.txt", true);
-            //System.out.println("termino " + (i+1) + " " + termino + " frecuencia " + terminos.get(termino));
         }
+        escritor.cerrarArchivo();
     }
     
         /**
@@ -438,36 +415,25 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         ManejadorArchivosTexto escritor = new ManejadorArchivosTexto();
         int size = terminos.size();
         Object [] vectorTerminos = terminos.values().toArray();
+        String cadena = "";
+        cadenaEscribir = "";
+
         ComparadorTerminosAlfabetico c = new ComparadorTerminosAlfabetico();
         System.out.println("ordenando todos los terminos");
         Arrays.sort(vectorTerminos, c);
-        
-        //String termino;
         System.out.println("guardando terminos ordenados en el vocabulario.squema");        
-        escritor.guardarString(((Termino)vectorTerminos[0]).impresionParaVocabulario()+"\n", ruta + "vocabulario.schema", false);
-        //while (hiloEscritor.isEscribir());
-       // hiloEscritor.setArchivo(ruta + "vocabulario.schema");        
-        String cadena = "";
-        cadenaEscribir = "";
+        escritor.crearArchivo(ruta + "vocabulario.schema", ((Termino)vectorTerminos[0]).impresionParaVocabulario()+"\n" );
         int cantTerminosEscribir = 0;
+        
         for (int i = 1; i < size; i++, cantTerminosEscribir++){
-            //termino = llaves.nextElement();
-            //escritor.guardarStringLn(termino + " " + terminos.get(termino), ruta + "vocabulario.txt", true);
-            //escritor.guardarStringLn(((Termino)vectorTerminos[i]).impresionParaVocabulario(), ruta + "vocabulario.schema", true);
             cadena += ((Termino)vectorTerminos[i]).impresionParaVocabulario() + "\n";
             if (cantTerminosEscribir == 3000 || i + 1 == size){
-                //while (hiloEscritor.isEscribir());                
-                //cadenaEscribir = cadena;
-                //cadena  = new String();
-               /* hiloEscritor.setTexto(cadenaEscribir);
-                hiloEscritor.setEscribir(true);*/
-                //hiloEscritor.escribir(cadenaEscribir, ruta+"vocabulario.schema");
-                escritor.guardarString(cadena, ruta+"vocabulario.schema", true);
+                escritor.agregarAlArchivo(cadena);
                 cantTerminosEscribir = 0;
                 cadena = "";
             }
-            //System.out.println("termino " + (i+1) + " " + termino + " frecuencia " + terminos.get(termino));
         }
+        escritor.cerrarArchivo();
     }
 
     void crearPostingsYNorma(String ruta) {
@@ -486,75 +452,66 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         int finalFrecuencia=11;
         Double frecuencia;        
         Double [] norma = new Double [(int)Termino.getTotalDocumentos()];
+        DecimalFormat df = new DecimalFormat("0.00000");
+        
         for(int i = 0;i<norma.length;i++) 
             norma[i]=0.0;
         Double w;
         String cadena;
-        escritor.guardarString("", ruta+"Postings.schema", false);
+        escritor.crearArchivo(ruta+"Postings.schema", "");
         /*Se recorren todos los terminos de la colección*/
-//        while (hiloEscritor.isEscribir());
-        //hiloEscritor.setSemaforo();
-        //hiloEscritor.setArchivo(ruta+"Postings.schema");
         cadena = "";
         String wString;
         for(int numTermino=0;numTermino<cantTerminos;numTermino++){
             /*Se sacan los documentos donde aparece este termino*/            
             vectDocumentos = terminos.get(vectTerminos[numTermino].toString()).getDocumentosContenedores().split("\n");
             /*Guarda los ws de un termino*/           
-            //cadena = "";            
-            //cadenaEscribir = "";
             /*Se recorren los documentos donde aparece el termino*/
             for(int numDoc=0;numDoc<vectDocumentos.length;numDoc++){                
-                archivo = lector.leerTodoArchivo(ruta+vectDocumentos[numDoc]+".txt");////////////**************se puede mejorar
-                inicioPalabra = archivo.indexOf(vectTerminos[numTermino].toString()+"      ".substring(0,6-vectTerminos[numTermino].toString().length()));
-                /*donde inicia la palabra, se salta la palabra y se salta un espacio en blanco*/
-                inicioFrecuencia = inicioPalabra + 6;//vectTerminos[numTermino].toString().length()+1;
-                finalFrecuencia = inicioFrecuencia + 7;//archivo.indexOf("\n",inicioFrecuencia);
-                //finalFrecuencia = finalFrecuencia == -1? archivo.length():finalFrecuencia;
-                frecuencia=0.0;
-                try{
-                    frecuencia = Double.parseDouble(archivo.substring(inicioFrecuencia, finalFrecuencia).trim());
-                }catch(Exception e){
-                    System.out.print("error de frecuencia");
+                try {
+                    archivo = lector.leerTodoArchivo(ruta+vectDocumentos[numDoc]+".txt",null);
+                    inicioPalabra = archivo.indexOf(vectTerminos[numTermino].toString()+"      ".substring(0,6-vectTerminos[numTermino].toString().length()));
+                    /*donde inicia la palabra, se salta la palabra y se salta un espacio en blanco*/
+                    inicioFrecuencia = inicioPalabra + 6;//vectTerminos[numTermino].toString().length()+1;
+                    finalFrecuencia = inicioFrecuencia + 7;//archivo.indexOf("\n",inicioFrecuencia);
+                    frecuencia=0.0;
+                    try{
+                        frecuencia = Double.parseDouble(archivo.substring(inicioFrecuencia, finalFrecuencia).trim());
+                    }catch(Exception e){
+                        System.out.print("error de frecuencia");
+                    }
+                    if (frecuencia == 0)
+                        System.out.println(numDoc);                
+                    w = frecuencia * terminos.get(vectTerminos[numTermino].toString()).idf();
+                    wString = df.format(w);
+                    wString = wString.substring(0,7);
+                    cadena += vectDocumentos[numDoc] + "       ".substring(0,vectDocumentos[numDoc].toString().length()>7?0:7-vectDocumentos[numDoc].length())
+                           + wString + "\n";
+                    norma[Integer.parseInt(vectDocumentos[numDoc])] += w*w;
+                    if (cadena.length() >= 18000 || (numTermino + 1 == cantTerminos && numDoc + 1 == vectDocumentos.length)){
+                        escritor.agregarAlArchivo(cadena);
+                        System.out.println(numTermino + " / " + cantTerminos);
+                        cadena = "";
+                    }
                 }
-                //inicioFrecuencia = finalFrecuencia + 6; //se cuenta el \n
-                //finalFrecuencia = inicioFrecuencia + 7; //el tamaño de la frecuencia                
-                //ws[numDoc] = frecuencia * terminos.get(vectTerminos[numTermino]).idf();                         
-                if (frecuencia == 0)
-                    System.out.println(numDoc);                
-                w = frecuencia * terminos.get(vectTerminos[numTermino].toString()).idf();
-                wString = w.toString().length()>7?w.toString().substring(0,7):w.toString();
-                cadena += vectDocumentos[numDoc] + "       ".substring(0,vectDocumentos[numDoc].toString().length()>7?0:7-vectDocumentos[numDoc].length())
-                        + wString + "       ".substring(0,7-wString.length())+ "\n";
-                norma[Integer.parseInt(vectDocumentos[numDoc])] += w*w;
-                if (cadena.length() >= 18000 || (numTermino + 1 == cantTerminos && numDoc + 1 == vectDocumentos.length)){
-                    //cadenaEscribir = cadena;
-                    //cadena = new String();
-                    //while (hiloEscritor.isEscribir());
-          /*          hiloEscritor.setTexto(cadenaEscribir);
-                    hiloEscritor.setEscribir(true);*/
-                    //hiloEscritor.escribir(cadenaEscribir, ruta+"Postings.schema");
-                    escritor.guardarString(cadena, ruta+"Postings.schema", true);
-                    System.out.println(numTermino + " / " + cantTerminos);
-                    cadena = "";
+                /*Guarda los ids de los doc donde aparece el termino junto con el w en el doc*/ 
+                catch (IOException ex) {
+                    java.util.logging.Logger.getLogger(ExtractorDeTexto.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } 
-            
-            /*Guarda los ids de los doc donde aparece el termino junto con el w en el doc*/ 
-            
-            //escritor.guardarString(cadena, ruta+"Postings.schema", true);            
+            }  
+            /*Guarda los ids de los doc donde aparece el termino junto con el w en el doc*/
         }
         /*se termina de calcular la norma y se guarda*/
         cadena = "";
         String normaDocu;
-        DecimalFormat df = new DecimalFormat("0.00000");
+        
         for(int i=0;i<norma.length;i++){
             normaDocu = df.format(Math.sqrt(norma[i]));
-            cadena += (normaDocu.length()>7? normaDocu.substring(0,7):normaDocu + "       ".substring(0,7-normaDocu.toString().length()))+"\n"; 
+            cadena += (normaDocu.substring(0,7))+"\n"; 
         }
+        escritor.cerrarArchivo();
         System.out.println("guardar Norma");
-        escritor.guardarString(cadena, ruta+"Norma.schema", false);
-        //while (hiloEscritor.isEscribir());
-        //hiloEscritor.setFinalizarHilo(true);
+        escritor.crearArchivo( ruta+"Norma.schema", cadena);
+        escritor.cerrarArchivo();
     }
 }
