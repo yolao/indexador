@@ -13,6 +13,7 @@ import java.util.*;
 import java.io.*;
 import java.net.*;
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 
 public class ExtractorDeTexto <tipoFrecuencia>{
     private String texto;
@@ -546,8 +547,9 @@ public class ExtractorDeTexto <tipoFrecuencia>{
         /*se termina de calcular la norma y se guarda*/
         cadena = "";
         String normaDocu;
+        DecimalFormat df = new DecimalFormat("0.00000");
         for(int i=0;i<norma.length;i++){
-            normaDocu = Math.sqrt(norma[i]) + "";
+            normaDocu = df.format(Math.sqrt(norma[i]));
             cadena += (normaDocu.length()>7? normaDocu.substring(0,7):normaDocu + "       ".substring(0,7-normaDocu.toString().length()))+"\n"; 
         }
         System.out.println("guardar Norma");
