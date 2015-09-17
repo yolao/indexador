@@ -1,0 +1,1 @@
+Codigo que crea el indice de la coleccion obtenida en el curso de Recuperacion de Informacion de la Escuela de Ciencias de la Computacion e Informatica de la Universidad de Costa Rica en el ciclo I-2011.
